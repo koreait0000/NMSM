@@ -1,31 +1,37 @@
+drop database nmsm;
+
+create database nmsm default character set utf8mb4 collate utf8mb4_general_ci;
+
+use nmsm;
+
 CREATE TABLE nmsm_user (
   iuser INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  u_nm VARCHAR NOT NULL,
-  u_email VARCHAR UNIQUE NOT NULL,
+  u_nm VARCHAR(10) NOT NULL,
+  u_email VARCHAR(30) UNIQUE NOT NULL,
   u_pw VARCHAR(60) NOT NULL,
   u_birth DATE,
   u_tel VARCHAR(11),
-  auth TINYINT(1)
+  auth TINYINT(1) comment '0 : 권한 없음, 1 : 권한 있음'
 );
 
 CREATE TABLE dog_info (
   idog INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   iuser INT UNSIGNED NOT NULL,
-  d_type INT UNSIGNED NOT NULL,
-  d_breed INT UNSIGNED NOT NULL,
+  d_type INT UNSIGNED NOT NULL comment '',
+  d_breed INT UNSIGNED NOT NULL comment '',
   d_age INT UNSIGNED NOT NULL,
-  d_nm VARCHAR NOT NULL,
+  d_nm VARCHAR(10) NOT NULL,
   d_weight FLOAT(4, 2) NOT NULL,
   d_gender TINYINT(1) UNSIGNED NOT NULL,
   d_regNum INT(12),
   d_neuter TINYINT(1) UNSIGNED NOT NULL,
-  FOREIGN KEY (iuser) REFERENCES nmsm (iuser)
-);
+  FOREIGN KEY (iuser) REFERENCES nmsm_user (iuser)
+); -- 관련 설명 comment 필요
 
 CREATE TABLE hotel_info (
     ihotel INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     iuser INT UNSIGNED,
-    h_acceptable INT(100) UNSIGNED NOT NULL,
+    h_acceptable INT UNSIGNED NOT NULL,
     h_location VARCHAR(10) NOT NULL,
     h_address VARCHAR(50) NOT NULL,
     h_img VARCHAR(100) NOT NULL,
@@ -61,7 +67,7 @@ CREATE TABLE hotel_review (
     review_regdt DATE DEFAULT NOW(),
     FOREIGN KEY (iuser) REFERENCES nmsm_user (iuser),
     FOREIGN KEY (ihotel) REFERENCES hotel_info (ihotel)
-);
+); -- img는 한 장만??
 
 CREATE TABLE like_list (
   ihotel INT UNSIGNED,
