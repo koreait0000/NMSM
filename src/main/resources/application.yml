@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/nmsm
+    url: jdbc:mysql://localhost:3308/nmsm
     username: root
     password: koreait
 #TODO : 추후 실제 서비스때 계정 및 패스워드 변경 필요
