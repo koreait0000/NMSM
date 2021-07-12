@@ -1,4 +1,4 @@
-package com.example.nmsm.config;
+package com.example.nmsm.sta.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

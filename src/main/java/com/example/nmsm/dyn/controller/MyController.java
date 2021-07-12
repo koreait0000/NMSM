@@ -1,11 +1,10 @@
-package com.example.nmsm.controller;
+package com.example.nmsm.dyn.controller;
 
-import com.example.nmsm.config.auth.PrincipalDetails;
-import com.example.nmsm.model.DogInfoEntity;
-import com.example.nmsm.model.NmsmUserEntity;
-import com.example.nmsm.service.BookInfoService;
-import com.example.nmsm.service.DogInfoService;
-import com.example.nmsm.service.UserService;
+import com.example.nmsm.sta.config.auth.PrincipalDetails;
+import com.example.nmsm.sta.model.UserEntity;
+import com.example.nmsm.dyn.service.BookInfoService;
+import com.example.nmsm.dyn.service.DogInfoService;
+import com.example.nmsm.dyn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -42,7 +41,7 @@ public class MyController {
     }
 
     @PostMapping("/regist")
-    public String doRegist(NmsmUserEntity userEntity){
+    public String doRegist(UserEntity userEntity){
         System.out.println(userEntity);
         userEntity.setAuth("USER");
         userEntity.setU_pw(bCryptPasswordEncoder.encode(userEntity.getU_pw()));

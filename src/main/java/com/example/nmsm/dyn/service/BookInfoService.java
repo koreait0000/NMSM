@@ -1,8 +1,8 @@
-package com.example.nmsm.service;
+package com.example.nmsm.dyn.service;
 
-import com.example.nmsm.config.auth.PrincipalDetails;
-import com.example.nmsm.dao.BookInfoDAO;
-import com.example.nmsm.model.BookInfo;
+import com.example.nmsm.sta.config.auth.PrincipalDetails;
+import com.example.nmsm.dyn.dao.BookInfoDAO;
+import com.example.nmsm.sta.model.BookInfoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ public class BookInfoService extends CommonService{
     @Autowired
     private BookInfoDAO bookInfoDAO;
 
-    public List<BookInfo> getBookInfo(PrincipalDetails principalDetails){
+    public List<BookInfoEntity> getBookInfo(PrincipalDetails principalDetails){
         return bookInfoDAO.selectBookInfoByUpk(getIuser(principalDetails));
     }
 }

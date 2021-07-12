@@ -1,7 +1,7 @@
-package com.example.nmsm.service;
+package com.example.nmsm.dyn.service;
 
 
-import com.example.nmsm.config.auth.PrincipalDetails;
+import com.example.nmsm.sta.config.auth.PrincipalDetails;
 
 public class CommonService {
 

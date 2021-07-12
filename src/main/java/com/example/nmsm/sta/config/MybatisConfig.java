@@ -1,4 +1,4 @@
-package com.example.nmsm.config;
+package com.example.nmsm.sta.config;
 
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,14 +12,14 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.example.nmsm.dao")
+@MapperScan(basePackages = "com.example.nmsm.dyn.dao")
 public class MybatisConfig {
 
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource);
-        sqlSessionFactory.setTypeAliasesPackage("com.example.nmsm.model");
+        sqlSessionFactory.setTypeAliasesPackage("com.example.nmsm.sta.model");
         sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
 
         return  sqlSessionFactory.getObject();

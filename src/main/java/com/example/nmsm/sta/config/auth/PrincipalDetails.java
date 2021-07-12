@@ -1,6 +1,6 @@
-package com.example.nmsm.config.auth;
+package com.example.nmsm.sta.config.auth;
 
-import com.example.nmsm.model.NmsmUserEntity;
+import com.example.nmsm.sta.model.UserEntity;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,13 +16,13 @@ import java.util.Map;
 @Data
 public class PrincipalDetails implements UserDetails {
 
-    private NmsmUserEntity userEntity;
+    private UserEntity userEntity;
     private Map<String, Object> attributes;
 
-    public PrincipalDetails(NmsmUserEntity userEntity){
+    public PrincipalDetails(UserEntity userEntity){
         this.userEntity = userEntity;
     }
-    public PrincipalDetails(NmsmUserEntity userEntity,
+    public PrincipalDetails(UserEntity userEntity,
                             Map<String, Object> attributes){
         this.userEntity = userEntity;
         this.attributes = attributes;
