@@ -11,7 +11,7 @@ CREATE TABLE nmsm_user (
   u_pw VARCHAR(60) NOT NULL,
   u_birth DATE,
   u_tel VARCHAR(11),
-  auth TINYINT(1) comment '0 : 권한 없음, 1 : 권한 있음'
+  auth VARCHAR(10) check(auth in('ADMIN','USER','OWNER'))
 );
 
 CREATE TABLE dog_info (
