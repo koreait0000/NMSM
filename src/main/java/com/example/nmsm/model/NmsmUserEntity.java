@@ -1,11 +1,12 @@
 package com.example.nmsm.model;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter
-@Setter
+@Data
 public class NmsmUserEntity {
     private int iuser;
     private String u_nm;
@@ -13,5 +14,5 @@ public class NmsmUserEntity {
     private String u_pw;
     private String u_birth;
     private String u_tel;
-    private boolean comment;
+    private String auth;
 }
