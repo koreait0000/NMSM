@@ -84,8 +84,10 @@ public class MyController {
     public String goMyHotel(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
+
         bookInfoService.getBookInfo(principalDetails);
         return "/my/mybook";
     }
+
 
 }
