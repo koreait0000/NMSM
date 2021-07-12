@@ -1,4 +1,4 @@
-package com.example.nmsm.model;
+package com.example.nmsm.sta.model;
 
 import lombok.Data;
 import lombok.Getter;
@@ -9,7 +9,7 @@ public class DogInfoEntity {
     private int idog;
     private int iuser;
     private int d_type;
-    private int d_breed;
+    private int breed_pk;
     private int d_age;
     private String d_nm;
     private double d_weight;

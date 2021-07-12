@@ -1,7 +1,7 @@
-package com.example.nmsm.config.auth;
+package com.example.nmsm.sta.config.auth;
 
-import com.example.nmsm.dao.NmsmUserDAO;
-import com.example.nmsm.model.NmsmUserEntity;
+import com.example.nmsm.dyn.dao.UserDAO;
+import com.example.nmsm.sta.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 public class PrincipalDetailsService implements UserDetailsService {
 
     @Autowired
-    private NmsmUserDAO nmsmUserDAO;
+    private UserDAO nmsmUserDAO;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println(this.getClass().getSimpleName()+"진입");
-        NmsmUserEntity userEntity = nmsmUserDAO.selectByUnm(username);
+        UserEntity userEntity = nmsmUserDAO.selectByUnm(username);
         if (userEntity != null){
             return new PrincipalDetails(userEntity);
         }

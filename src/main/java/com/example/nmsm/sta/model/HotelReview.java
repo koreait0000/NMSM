@@ -1,4 +1,4 @@
-package com.example.nmsm.model;
+package com.example.nmsm.sta.model;
 
 import lombok.Data;
 import lombok.Getter;
@@ -11,7 +11,6 @@ public class HotelReview {
     private int ihotel;
     private double review_star;
     private String review_cnt;
-    private String review_img;
     private String review_regdt;
 
 }
