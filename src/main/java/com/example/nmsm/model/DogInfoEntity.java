@@ -1,10 +1,10 @@
 package com.example.nmsm.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class DogInfoEntity {
     private int idog;
     private int iuser;
