@@ -70,10 +70,46 @@
         #gnb ul li a {
             color: #fff;
         }
-  </style>
+
+        .drag-drop-box {
+            display: flex;
+        }
+        .dogs-box {
+            border: none;
+            border-radius: 30px;
+            background-color: #F9EDD7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            margin: 30px;
+        }
+        .draggable img {
+            border: none;
+            border-radius: 30px;
+        }
+        .draggable {
+            margin: 30px;
+            text-align: center;
+            font-weight: 900;
+        }
+        .dogs-box-text {
+            display: block;
+        }
+        .reservation-box {
+            border: none;
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 30px;
+            display: block;
+            justify-content: center;
+            align-items: center;
+        }
+
+</style>
 </head>
 <body>
-      <div class="container">
+    <div class="container">
         <header>
             <nav id="gnb">
                 <div id="gnb-logo">
@@ -103,25 +139,112 @@
             </nav>
         </header>
         <section>
-          <form action="post">
-            <input type="text" class="input" placeholder="Name" />
-            <div>
-              <input type="email" class="input" placeholder="Email" />
-              @
-              <select name="" id="">
-                <option value="">naver.com</option>
-                <option value="">google.com</option>
-                <option value="">google.com</option>
-                <option value="">google.com</option>
-              </select>
+            <div class="reservation-box">
+                <div class="calender">
+                    <h1>달력 api</h1>
+                </div>
+                <form action="post">
+                    <input type="text" class="input" placeholder="Name" />
+                    <div>
+                        <input type="email" class="input" placeholder="Email" />
+                        @
+                        <select name="" id="">
+                            <option value="">naver.com</option>
+                            <option value="">google.com</option>
+                            <option value="">google.com</option>
+                            <option value="">google.com</option>
+                        </select>
+                    </div>
+                    <input type="number" class="input" placeholder="000-0000-0000" />
+                    <label for=""><input type="radio">픽업요청</label>
+                    <label for=""><input type="radio">미용</label>
+                    <label for=""><input type="radio">스파</label>
+                    <label for=""><input type="radio">아카데미</label>
+                </form>
+                <div class="drag-drop-box">
+                    <div class="dogs-box">
+                        <div class="dogs-box-text">
+                            <h1>예약할 강아지</h1>
+                        </div>
+                        <div class="draggable" draggable="true">
+                            <img src="img/NM.png" alt="" width="100" height="100">
+                            <p>Dog name</p>
+                        </div>
+                        <div class="draggable" draggable="true">
+                            <img src="img/NM.png" alt="" width="100" height="100">
+                            <p>Dog name</p>
+                        </div>
+                    </div>
+                    <div class="dogs-box">
+                        <div class="dogs-box-text">
+                            <h1>내 강아지</h1>
+                            <p>드래그 해주세요</p>
+                        </div>
+                        <div class="draggable" draggable="true">
+                            <img src="img/NM.png" alt="" width="100" height="100">
+                            <p>Dog name</p>
+                        </div>
+                        <div class="draggable" draggable="true">
+                            <img src="img/NM.png" alt="" width="100" height="100">
+                            <p>Dog name</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <input type="number" class="input" placeholder="000-0000-0000" />
-            <input type="datetime" class="input"  />
-            <button type="submit">결제하기</button>
-          </form>
-          <div class="drag-drop-box">
-            
-          </div>
+            <div class="payment-box">
+                <h1>결제방식 선택</h1>
+                <label for=""><input type="radio" name="" id="">무통장입금</label>
+                <label for=""><input type="radio" name="" id="">카드결제</label>
+                <label for=""><input type="radio" name="" id="">휴대폰결제</label>
+                <label for=""><input type="radio" name="" id="">간편결제</label>
+                
+                <label for=""><input type="radio" name="" id="">KakaoPay</label>
+                <label for=""><input type="radio" name="" id="">NaverPay</label>
+                <label for=""><input type="radio" name="" id="">Payco</label>
+                <button type="submit">결제하기</button>
+            </div>
         </section>
+    <script>
+        const draggables = document.querySelectorAll('.draggable')
+        const containers = document.querySelectorAll('.dogs-box')
+
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', () => {
+        draggable.classList.add('dragging')
+        })
+
+        draggable.addEventListener('dragend', () => {
+        draggable.classList.remove('dragging')
+        })
+    })
+
+    containers.forEach(container => {
+        container.addEventListener('dragover', e => {
+        e.preventDefault()
+        const afterElement = getDragAfterElement(container, e.clientY)
+        const draggable = document.querySelector('.dragging')
+        if (afterElement == null) {
+            container.appendChild(draggable)
+        } else {
+            container.insertBefore(draggable, afterElement)
+        }
+        })
+    })
+
+    function getDragAfterElement(container, y) {
+        const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+
+        return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect()
+        const offset = y - box.top - box.height / 2
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child }
+        } else {
+            return closest
+        }
+        }, { offset: Number.NEGATIVE_INFINITY }).element
+    }
+        </script>
+
 </body>
 </html>
