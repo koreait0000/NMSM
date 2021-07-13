@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
-public class HotelReview {
+public class HotelReviewEntity {
     private int ireview;
     private int iuser;
     private int ihotel;

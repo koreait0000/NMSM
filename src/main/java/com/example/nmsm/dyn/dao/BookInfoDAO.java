@@ -8,4 +8,5 @@ import java.util.List;
 public interface BookInfoDAO {
 
     List<BookInfoEntity> selectBookInfoByUpk(int u_pk);
+    
 }
