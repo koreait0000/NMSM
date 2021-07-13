@@ -22,39 +22,54 @@ CREATE TABLE dog_breed (
 CREATE TABLE dog_info (
   idog INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   iuser INT UNSIGNED NOT NULL,
-  d_type INT UNSIGNED NOT NULL comment '0 : 소형견, 1 : 중형견, 2 : 대형견',
   breed_pk INT UNSIGNED NOT NULL,
-  d_age INT UNSIGNED NOT NULL,
+  d_age DATE NOT NULL,
   d_nm VARCHAR(10) NOT NULL,
-  d_weight FLOAT(4, 2) NOT NULL,
   d_gender TINYINT(1) UNSIGNED NOT NULL,
+  d_weight FLOAT(4, 2) UNSIGNED NOT NULL,
   d_regNum INT(12) comment '강아지 등록 번호',
   d_neuter TINYINT(1) UNSIGNED NOT NULL comment '0 : 중성화 했음, 1 : 중성화 안했음',
   FOREIGN KEY (iuser) REFERENCES user (iuser),
   FOREIGN KEY (breed_pk) REFERENCES dog_breed (breed_pk)
-); -- 관련 설명 comment 필요
+);
 
 
 CREATE TABLE hotel_info (
     ihotel INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     iuser INT UNSIGNED,
-    h_acceptable INT UNSIGNED NOT NULL,
+    h_capacity INT UNSIGNED NOT NULL,
     h_location VARCHAR(10) NOT NULL,
     h_address VARCHAR(50) NOT NULL,
     h_price INT UNSIGNED NOT NULL,
     mapX decimal(20, 16) NOT NULL,
     mapY double(20, 16) NOT NULL,
-    h_preDetail VARCHAR(100) NOT NULL comment '리스트에서 미리 볼 수 있는 설명',
-    h_detail VARCHAR(500) NOT NULL,
+    h_preDetail VARCHAR(100) NOT NULL comment '요약 설명',
+    h_detail TEXT NOT NULL,
     h_tel VARCHAR(11) NOT NULL,
-    h_service INT,
+    h_star FLOAT(2, 1),
     FOREIGN KEY (iuser) REFERENCES user (iuser)
 );
+
+CREATE TABLE service (
+    iservice INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    s_nm VARCHAR(20) not null
+);
+
+CREATE TABLE hotel_service (
+    s_price INT UNSIGNED,
+    ihotel INT UNSIGNED,
+    iservice INT UNSIGNED,
+    PRIMARY KEY (ihotel, iservice),
+    FOREIGN KEY (iservice) REFERENCES service (iservice),
+    FOREIGN KEY (ihotel) REFERENCES hotel_info (ihotel)
+);
+
 
 CREATE TABLE hotel_img (
     ihotel INT UNSIGNED,
     h_img VARCHAR(100) NOT NULL,
-    PRIMARY KEY (ihotel, h_img)
+    PRIMARY KEY (ihotel, h_img),
+    FOREIGN KEY (ihotel) REFERENCES hotel_info (ihotel)
 );
 
 CREATE TABLE book_info (
@@ -71,7 +86,9 @@ CREATE TABLE book_info (
 CREATE TABLE book_dog (
     ibook INT UNSIGNED,
     idog INT UNSIGNED,
-    PRIMARY KEY (ibook, idog)
+    PRIMARY KEY (ibook, idog),
+    FOREIGN KEY (ibook) REFERENCES book_info (ibook),
+    FOREIGN KEY (idog) REFERENCES dog_info (idog)
 );
 
 CREATE TABLE hotel_review (
@@ -88,7 +105,8 @@ CREATE TABLE hotel_review (
 CREATE TABLE review_img (
     ireview INT UNSIGNED,
     review_img VARCHAR(100),
-    PRIMARY KEY (ireview, review_img)
+    PRIMARY KEY (ireview, review_img),
+    FOREIGN KEY (ireview) REFERENCES hotel_review (ireview)
 );
 
 CREATE TABLE like_list (
