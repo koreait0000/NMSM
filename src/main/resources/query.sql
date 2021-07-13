@@ -115,6 +115,18 @@ CREATE TABLE like_list (
   PRIMARY KEY (ihotel, iuser)
 );
 
+CREATE TABLE book_dog_service (
+    ibds int unsigned PRIMARY KEY,
+    ibook int unsigned,
+    idog int unsigned,
+    iservice INT UNSIGNED,
+    ihotel INT UNSIGNED,
+    FOREIGN KEY (ibook) REFERENCES book_dog(ibook),
+    FOREIGN KEY (idog) REFERENCES book_dog (idog),
+    FOREIGN KEY (iservice) REFERENCES hotel_service (iservice),
+    FOREIGN KEY (ihotel) REFERENCES hotel_service (ihotel)
+);
+
 INSERT INTO dog_breed
     (breed_nm)
     VALUES

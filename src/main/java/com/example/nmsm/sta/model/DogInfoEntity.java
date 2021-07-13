@@ -8,13 +8,12 @@ import lombok.Setter;
 public class DogInfoEntity {
     private int idog;
     private int iuser;
-    private int d_type;
     private int breed_pk;
     private int d_age;
     private String d_nm;
-    private double d_weight;
     private boolean d_gender;
+    private double d_weight;
     private int d_regNum;
-    private boolean d_neuter;
+    private boolean d_neuter; // 중성화 여부
 
 }

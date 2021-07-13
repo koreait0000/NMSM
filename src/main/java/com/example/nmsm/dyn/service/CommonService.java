@@ -8,4 +8,5 @@ public class CommonService {
     public int getIuser(PrincipalDetails principalDetails){
         return principalDetails.getUserEntity().getIuser();
     }
+
 }
