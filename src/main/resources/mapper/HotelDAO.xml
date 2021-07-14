@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.nmsm.dyn.dao.HotelDAO">
+    <select id="getHotelList" resultType="HotelInfoEntity">
+
+    </select>
+
+    <select id="getHotelInfo" resultType="HotelInfoEntity">
+        SELECT *
+        FROM hotel_info
+        WHERE ihotel = #{ihotel}
+    </select>
+
+    <select id="getHotelReview" resultType="HotelReviewEntity">
+        SELECT A.review_star, A.review_cnt, A.review_regdt, B.review_img
+        FROM hotel_review A
+        LEFT JOIN review_img B
+        ON A.ireview = B.ireview
+    </select>
+
+    <insert id="insHotelReview">
+        INSERT INTO hotel_review
+        ( review_star, review_cnt )
+        VALUES
+        ( #{review_star}, #{review_cnt} )
+    </insert>
+
+    <insert id="insHotelReviewImg">
+        INSERT INTO review_img
+        ( ireview, review_img )
+        VALUES
+        ( #{ireview}, #{review_img} )
+    </insert>
+
+    <update id="updHotelReview">
+        UPDATE hotel_review
+        SET review_star = #{review_star}, review_cnt = #{review_cnt}
+        WHERE ireview = #{ireview}
+    </update>
+
+    <update id="updHotelReviewImage">
+        UPDATE review_img
+        SET review_img = #{review_img}
+        WHERE ireview = #{ireview}
+    </update>
+    <delete id="delHotelReview">
+        DELETE FROM hotel_review
+        WHERE ireview = #{ireview}
+    </delete>
+
+    <delete id="delHotelReviewImg">
+        DELETE FROM review_img
+        WHERE ireview = #{ireview}
+    </delete>
+
+</mapper>
