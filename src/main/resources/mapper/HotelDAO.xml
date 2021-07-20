@@ -8,9 +8,12 @@
     </select>
 
     <select id="getHotelInfo" resultType="HotelInfoEntity">
-        SELECT *
-        FROM hotel_info
-        WHERE ihotel = #{ihotel}
+        SELECT A.h_capacity, A.h_location, A.address, A.h_price, A.mapX, A.mapY,
+               A.h_preDetail, A.h_detail, A.h_tel, A.h_service, B.h_img
+        FROM hotel_info A
+        LEFT JOIN hotel_img B
+        ON A.ihotel = B.ihotel
+        WHERE A.ihotel = #{ihotel}
     </select>
 
     <select id="getHotelReview" resultType="HotelReviewEntity">

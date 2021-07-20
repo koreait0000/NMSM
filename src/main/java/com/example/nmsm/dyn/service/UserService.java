@@ -1,6 +1,7 @@
 package com.example.nmsm.dyn.service;
 
 import com.example.nmsm.dyn.dao.UserDAO;
+import com.example.nmsm.sta.model.LikeListEntity;
 import com.example.nmsm.sta.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,5 +15,9 @@ public class UserService extends CommonService{
     public int doJoin(UserEntity userEntity){
 
         return userDAO.insertUser(userEntity);
+    }
+
+    public void insLike(LikeListEntity likeListEntity) {
+        userDAO.insLike(likeListEntity);
     }
 }

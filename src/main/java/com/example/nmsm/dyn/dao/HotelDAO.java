@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface HotelDAO {
     List<HotelInfoEntity> getHotelList(BookInfoEntity bookInfoEntity);
-    HotelInfoEntity getHotelInfo(int ihotel);
+    HotelInfoEntity getHotelInfo(BookInfoEntity bookinfo);
     List<HotelReviewEntity> getHotelReview(int ihotel);
 
     void insHotelReview(HotelReviewEntity hotelReviewEntity);
@@ -21,4 +21,5 @@ public interface HotelDAO {
     void delHotelReview(int ireview);
 
 
+    int selMaxPageVal(BookInfoEntity bookinfo);
 }
