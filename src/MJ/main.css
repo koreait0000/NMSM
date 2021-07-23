@@ -173,53 +173,281 @@ i {
 
 .modal-content {
   position: relative;
-  width: 30%;
-  height: 70%;
+  height: 550px;
+  width: 350px;
   padding: 2rem 3rem;
   text-align: center;
   border: none;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  background-image: url("img/NM.png");
-  background-repeat: no-repeat;
-  background-position: 30% 30%;
+  overflow: hidden;
 }
 
-.form-title {
-  font-size: 2rem;
+.modal-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: cover;
+  background-image: url("img/NM.png");
+}
+
+.signup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  z-index: 5;
+  transition: all 0.3s ease;
+}
+
+.modal-content .signup .slide-up {
+  top: 5%;
+  transform: translate(-50%, 0%);
+  transition: all 0.3s ease;
+}
+
+.modal-content .signup.slide-up .form-holder,
+.modal-content .signup.slide-up .submit-btn {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-content .signup.slide-up .form-title {
+  color: #fff;
+  font-size: 2em;
   cursor: pointer;
   text-align: center;
 }
 
-.input {
-  width: 80%;
-  font-size: 0.7rem;
-  padding: 0.5rem 1rem;
+.modal-content .signup.slide-up .form-title span {
+  margin-right: 0.5rem;
+  font-size: 1.8rem;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+.modal-content .signup .form-holder {
+  border-radius: 15px;
+  background-color: #fff;
+  overflow: hidden;
+  margin-top: 50px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+.modal-content .signup .form-holder .input {
+  border: 0;
   outline: none;
-  border: none;
-  margin-bottom: 0.5rem;
+  box-shadow: none;
+  display: block;
+  height: 2.5rem;
+  line-height: 1rem;
+  padding: 0.5rem 0.9rem;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  font-size: 0.7rem;
+}
+
+.modal-content .signup .form-holder .input:last-child {
+  border-bottom: 0;
+}
+
+.modal-content .signup .submit-btn {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.7);
+  border: 0;
+  border-radius: 15px;
+  display: block;
+  margin: 15px auto;
+  padding: 15px 45px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transition: all 0.3s ease;
+}
+
+.login {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ff7606;
+  z-index: 5;
+  transition: all 0.3s ease;
+}
+
+.login::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  transform: translate(-50%, 0);
+  background-color: #ff7606;
+  width: 200%;
+  height: 250px;
+  border-radius: 50%;
+  z-index: 4;
+  transition: all 0.3s ease;
+}
+
+.modal-content .login .center {
+  position: absolute;
+  top: calc(50% - 10%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  z-index: 5;
+  transition: all 0.3s ease;
+}
+
+.modal-content .login .center .form-title {
+  color: #000;
+  font-size: 1.7em;
+  text-align: center;
+}
+
+.modal-content .login .center .form-title span {
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-content .login .center .form-holder {
+  border-radius: 15px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  overflow: hidden;
+  margin-top: 50px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+.modal-content .login .center .form-holder .input {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 8px 15px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  font-size: 12px;
+}
+
+.modal-content .login .center .form-holder .input:last-child {
+  border-bottom: 0;
+}
+
+.modal-content .login .center .form-holder .input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content .login .center .submit-btn {
+  background-color: #F9EDD7;
+  color: #000;
+  border: 0;
   border-radius: 1rem;
+  display: block;
+  margin: 15px auto;
+  padding: 8px 0px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.modal-content .login .center .submit-btn:hover {
+  transition: all 0.3s ease;
+  background-color: #dacdb4;
+}
+
+.modal-content .login.slide-up {
+  top: 90%;
+  transition: all 0.3s ease;
+}
+
+.modal-content .login.slide-up .center {
+  top: 10%;
+  transform: translate(-50%, 0%);
+  transition: all 0.3s ease;
+}
+
+.modal-content .login.slide-up .form-holder,
+.modal-content .login.slide-up .submit-btn {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.login.slide-up .form-title {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+.login.slide-up .form-title span {
+  margin-right: 5px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+.social p {
+  font-size: 1rem;
+  color: #F9EDD7;
+}
+
+.social img {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  margin: 0rem 0.5rem;
 }
 
 .naver {
-  width: 2.6rem;
-  height: 2.6rem;
+  background-color: #fff;
 }
 
 .google {
-  width: 2.8rem;
-  height: 2.8rem;
-  margin: 0.5rem 1rem;
+  background-color: #fff;
 }
 
 .kakao {
-  width: 2.8rem;
-  height: 2.8rem;
+  background-color: #f7e600;
 }
 
-.submitBtn {
-  margin: 2rem auto;
+.hidden {
+  display: none;
 }
+
 
 .closeBtn {
   position: absolute;
@@ -230,9 +458,7 @@ i {
   padding: 0.5rem 1.2rem;
 }
 
-.hidden {
-  display: none;
-}
+
 
 /* modal animation */
 #scale-up-center {
