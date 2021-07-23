@@ -77,6 +77,11 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>5.5.1</version>
         </dependency>
+        <!-- oauth-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

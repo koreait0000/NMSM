@@ -9,16 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BookInfoService extends CommonService {
-
+public class BookInfoService extends CommonService{
     @Autowired
     private BookInfoDAO bookInfoDAO;
 
-    public List<BookInfoEntity> getBookInfo(PrincipalDetails principalDetails) {
+    public List<BookInfoEntity> getBookInfo(PrincipalDetails principalDetails){
         return bookInfoDAO.selectBookInfoByUpk(getIuser(principalDetails));
-    }
-
-    public void insBookHotel(BookInfoEntity bookInfoEntity) {
-        bookInfoDAO.insBookHotel(bookInfoEntity);
     }
 }

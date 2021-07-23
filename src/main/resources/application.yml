@@ -10,3 +10,14 @@ spring:
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 961163244284-sek7s5lhr3ch4ba1ftc1ggk984m28pvp.apps.googleusercontent.com
+              client-secret: cv57bNxy0P0NFWfuzpwPsiiL
+              scope:
+                - email
+                - profile

@@ -114,16 +114,16 @@
                 <!-- TODO : 소셜로그인 서비스 -->
                 <div class="social">
                   <h4>Social Login</h4>
-                  <img class="naver" src="img/naver.png" alt="">
-                  <img class="google" src="img/google.png" alt="">
-                  <img class="kakao" src="img/kakaotalk.png" alt="">
+                  <a href=""><img class="naver" src="img/naver.png" alt=""></a>
+                  <a href="/oauth2/authorization/google"><img class="google" src="img/google.png" alt=""></a>
+                  <a href=""><img class="kakao" src="img/kakaotalk.png" alt=""></a>
                 </div>
                 <button class="submitBtn btn">Log in</button>
               </div>
               <!-- 로그인 -->
 
               <!-- 회원가입 -->
-              <div class="signup">
+              <form class="signup" method="">
                 <h2 class="form-title" id="signup">
                   <span>or</span>Sign up
                 </h2>
@@ -135,7 +135,7 @@
                   <input type="date" class="input" />
                 </div>
                 <button class="btn">Sign up</button>
-              </div>
+              </form>
               <!-- 회원가입 -->
 
 
