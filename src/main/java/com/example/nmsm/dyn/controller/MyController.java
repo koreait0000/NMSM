@@ -1,5 +1,6 @@
 package com.example.nmsm.dyn.controller;
 
+import com.example.nmsm.dyn.service.HotelInfoService;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import com.example.nmsm.sta.model.UserEntity;
 import com.example.nmsm.dyn.service.BookInfoService;
@@ -26,6 +27,8 @@ public class MyController {
     private DogInfoService dogInfoService;
     @Autowired
     private BookInfoService bookInfoService;
+    @Autowired
+    private HotelInfoService hotelInfoService;
 
     @GetMapping("/")
     public String goMain(){
@@ -55,6 +58,7 @@ public class MyController {
         return "";
     }
 
+    // TODO : 모두 model에 할당해주기!
     @GetMapping("/my/mypet")
     public String goMyPet(Model model,
                           @AuthenticationPrincipal PrincipalDetails principalDetails){
@@ -71,12 +75,12 @@ public class MyController {
         return "/my/mybook";
     }
 
-    @GetMapping("/my/myfav")
+    @GetMapping("/my/mylike")
     public String goMyFav(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-        bookInfoService.getBookInfo(principalDetails);
-        return "/my/mybook";
+        hotelInfoService.getLikeHotel(principalDetails);
+        return "/my/mylike";
     }
 
     @GetMapping("/my/myhotel")
@@ -84,7 +88,7 @@ public class MyController {
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
 
-        bookInfoService.getBookInfo(principalDetails);
+        hotelInfoService.getMyHotel(principalDetails);
         return "/my/mybook";
     }
 

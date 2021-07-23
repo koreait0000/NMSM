@@ -1,4 +1,4 @@
-drop database nmsm;
+drop database if exists nmsm;
 
 create database nmsm default character set utf8mb4 collate utf8mb4_general_ci;
 
@@ -15,7 +15,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE dog_breed (
-    breed_pk INT PRIMARY KEY AUTO_INCREMENT,
+    breed_pk INT unsigned PRIMARY KEY AUTO_INCREMENT,
     breed_nm VARCHAR(30) NOT NULL
 );
 
