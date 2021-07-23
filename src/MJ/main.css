@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: "BCcardL";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.1/BCcardL.woff")
-    format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.1/BCcardL.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
+
 /* font */
 
 * {
@@ -94,8 +94,7 @@ body {
 }
 
 .tracking-in-expand:hover {
-  -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)
-    both;
+  -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
 
@@ -202,6 +201,22 @@ i {
   border-radius: 1rem;
 }
 
+.naver {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+.google {
+  width: 2.8rem;
+  height: 2.8rem;
+  margin: 0.5rem 1rem;
+}
+
+.kakao {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
 .submitBtn {
   margin: 2rem auto;
 }
@@ -221,8 +236,7 @@ i {
 
 /* modal animation */
 #scale-up-center {
-  -webkit-animation: scale-up-center 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
+  -webkit-animation: scale-up-center 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: scale-up-center 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
@@ -287,5 +301,4 @@ i {
 }
 
 /* Medium devices (tablets, 768px and up) : md*/
-@media screen and (max-width: 768px) {
-}
+@media screen and (max-width: 768px) {}
