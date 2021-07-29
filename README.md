@@ -1,6 +1,8 @@
 # 놀멍쉬멍
 ## https://github.com/koreait0000/NMSM
-
+<img src="/imsi/놀멍쉬멍_기획서1.jpg">
+<img src="/imsi/놀멍쉬멍_기획서2.jpg">
+<img src="/imsi/놀멍쉬멍_기획서3.jpg">
 
 
 ## flow chart
