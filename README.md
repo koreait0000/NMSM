@@ -1,11 +1,10 @@
-# NMSM
-
-## 기획
-
+# 놀멍쉬멍
 ## https://github.com/koreait0000/NMSM
 
-## hello
 
-## hello 2
+
+## flow chart
 <img src="/imsi/NMSM.png" height="600">
+
+## DataBase
 <img src="/imsi/NMSM_DB2.png" height="600">
