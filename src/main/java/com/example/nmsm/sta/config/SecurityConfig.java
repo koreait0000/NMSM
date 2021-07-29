@@ -1,6 +1,8 @@
 package com.example.nmsm.sta.config;
 
+import com.example.nmsm.sta.config.auth.PrincipalOauth2UserService;
 import com.example.nmsm.sta.handler.LoginSuccessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private PrincipalOauth2UserService principalOauth2UserService;
     @Bean
     public BCryptPasswordEncoder encodePwd(){
         return new BCryptPasswordEncoder();
@@ -20,11 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http)throws Exception{
         http
-            .csrf().disable() // ?
-            .httpBasic().disable() // ?
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
-            .and()
+            .csrf().disable()
             .authorizeRequests()
 //            .antMatchers("").permitAll() // 허용
 //            .antMatchers("").authenticated() // 인증 필요
@@ -42,13 +42,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .logout()
             .logoutSuccessUrl("/")
-//                .deleteCookies() // TODO : ???
-
             .and()
             .oauth2Login()
             .loginPage("/login")
             .successHandler(new LoginSuccessHandler())
-            .userInfoEndpoint(); // 로그인 후 처리
+            .userInfoEndpoint()
+            .userService(principalOauth2UserService); // 로그인 후 처리
 
 
 
