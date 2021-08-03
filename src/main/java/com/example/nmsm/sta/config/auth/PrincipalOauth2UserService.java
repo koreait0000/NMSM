@@ -45,26 +45,24 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             default:
                 System.out.println("지원하지 않는 로그인");
         }
-        // TODO : 로그인 처리 정리하기
+        // 회원 정보 받아오기 + 회원가입 하기
         String providerId = oAuth2UserInfo.getProviderId();
+        String username = oAuth2UserInfo.getName();
         String email = oAuth2UserInfo.getEmail();
-        String username = provider + providerId;
-        String password = bCryptPasswordEncoder.encode("겟인데어");
+        String password = bCryptPasswordEncoder.encode(username+providerId);
         String role = "ROLE_USER";
-
-        System.out.println(provider);
-
-        UserEntity user = userDAO.selectByUnm(username);
+        UserEntity user = userDAO.selectByEmail(email);
 
         if(user == null){
-//            user = UserEn.builder()
-//                .username(username)
-//                .password(password)
-//                .email(email)
-//                .role(role)
-//                .provider(provider)
-//                .providerId(providerId)
-//                .build();
+            user = UserEntity.builder()
+                .u_nm(username)
+                .u_email(email)
+                .u_pw(password)
+                .u_birth(null)
+                .u_tel(null)
+                .auth(role)
+                .build();
+            System.out.println(user);
             userDAO.insertUser(user);
         }else {
 

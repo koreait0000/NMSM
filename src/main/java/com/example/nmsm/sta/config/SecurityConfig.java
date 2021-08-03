@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http)throws Exception{
+        // TODO : 접근 제어 설정
         http
             .csrf().disable()
             .authorizeRequests()

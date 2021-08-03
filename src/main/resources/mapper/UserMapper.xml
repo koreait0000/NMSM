@@ -3,6 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.nmsm.dyn.dao.UserDAO">
+    <select id="selectByUnm">
+        select * from user
+        where u_nm = #{u_nm}
+    </select>
+    <select id="selectByEmail">
+        select * from user
+        where u_email = #{u_email}
+    </select>
     <insert id="insertUser">
         insert into user
         (u_nm,u_email,u_pw,u_birth,u_tel,auth)
