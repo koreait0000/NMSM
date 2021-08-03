@@ -6,12 +6,12 @@ use nmsm;
 
 CREATE TABLE user (
   iuser INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  u_nm VARCHAR(10) NOT NULL,
-  u_email VARCHAR(30) UNIQUE NOT NULL,
-  u_pw VARCHAR(60) NOT NULL,
-  u_birth DATE,
-  u_tel VARCHAR(11),
-  auth VARCHAR(10) check(auth in('ADMIN','USER','OWNER'))
+  u_nm VARCHAR(10) NOT NULL comment '유저 이름',
+  u_email VARCHAR(30) UNIQUE NOT NULL comment '유저 메일',
+  u_pw VARCHAR(60) NOT NULL comment '비밀번호',
+  u_birth DATE comment '생일',
+  u_tel VARCHAR(11) comment '전화번호',
+  auth VARCHAR(10) check(auth in('ROLE_ADMIN','ROLE_USER','ROLE_OWNER'))
 );
 
 CREATE TABLE dog_breed (

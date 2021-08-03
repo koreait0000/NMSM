@@ -20,31 +20,22 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
     private UserEntity userEntity;
     private Map<String, Object> attributes;
 
-    // 일반 로그인
     public PrincipalDetails(UserEntity userEntity){
+        // 일반 로그인
         this.userEntity = userEntity;
     }
-    // oauth 로그인
+
     public PrincipalDetails(UserEntity userEntity,
                             Map<String, Object> attributes){
+        // oauth 로그인
         this.userEntity = userEntity;
         this.attributes = attributes;
     }
 
-    @Override
-    public Map<String, Object> getAttributes() {
-        return attributes;
-    }
-
-    @Override
-    public String getName() {
-        return null;
-    }
-
+    // 권한 리턴
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collect = new ArrayList<>();
-
         collect.add(new GrantedAuthority() {
             @Override
             public String getAuthority() {
@@ -84,5 +75,14 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
         return true;
     }
 
+    @Override
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
 
 }
