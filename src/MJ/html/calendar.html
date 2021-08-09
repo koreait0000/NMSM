@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <!-- 화면 해상도에 따라 글자 크기 대응(모바일 대응) -->
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+
+    <!-- fullcalendar CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js"></script>
+    <!-- fullcalendar 언어 CDN -->
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="calendar.js" />
+
+    <title>예약확인</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="container">
+        <!-- calendar -->
+        <div class="calendar-container" id="calendar-container">
+          <!-- TODO : host 이름 받아오기 -->
+          <div class="calendar-title">**HOST님의 예약현황</div>
+          <div class="calendar" id="calendar"></div>
+        </div>
+      </div>
+
+  </body>
+</html>
