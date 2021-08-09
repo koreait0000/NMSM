@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <!-- 화면 해상도에 따라 글자 크기 대응(모바일 대응) -->
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <!-- 파비콘 Favicon -->
+    <link rel="shortcut icon" href="img/appleFavicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/appleFavicon.png" />
+    <link rel="icon" sizes="192x192" href="img/androidFavicon.png" />
+    <!-- 파비콘 Favicon -->
+
+    <!-- 아이콘 icon CDN : fontawesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <!-- 아이콘 icon CDN -->
+
+    <!-- 부트스트랩 CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- 부트스트랩 CDN -->
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- fullcalendar CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js"></script>
+    <!-- fullcalendar 언어 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js"></script>
+    <title>예약확인</title>
+    <style>
+      /* font */
+      @import url("https://fonts.googleapis.com/css?family=Poppins:700");
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
+
+      @font-face {
+        font-family: "BCcardL";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.1/BCcardL.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      /* font */
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      body {
+        /* width: 100vw; */
+        min-height: 100vh;
+        justify-content: center;
+        font-family: "BCcardL", sans-serif;
+        background-color: #f9edd7;
+      }
+
+      .logo {
+        width: 10rem;
+      }
+
+      .gnb {
+        margin: 3rem;
+        display: flex;
+        justify-content: space-between;
+      }
+      .lnb > ul > li > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 3rem;
+        color: #fff;
+        background: #ff7606;
+      }
+      .lnb ul ul {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        display: none;
+      }
+      .lnb ul ul li a {
+        display: block;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+        background: #aaa;
+      }
+
+      .btn {
+        padding: 10px;
+        font-family: "Poppins", sans-serif;
+        color: white;
+        background-color: #ff7606;
+        font-size: 1em;
+        font-weight: 900;
+        border: none;
+        border-radius: 1.5rem;
+        margin-left: 20px;
+      }
+
+      .btn:hover {
+        color: white;
+        background-color: #dd6e14;
+      }
+
+      .foot-print {
+        width: 1rem;
+        height: 1rem;
+      }
+      /* 캘린더 위의 해더 스타일(날짜가 있는 부분) */
+      .fc-header-toolbar {
+        padding-top: 1em;
+        padding-left: 1em;
+        padding-right: 1em;
+      }
+      .calendar-container {
+        background-color: #fff;
+        border: none;
+        margin: 2rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        outline: none;
+      }
+      .calendar-title {
+        font-size: 3rem;
+        font-weight: 900;
+        text-align: center;
+        background-color: #ff7606;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        color: #fff;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <nav class="gnb nav">
+          <div class="logo">
+            <a href="#">
+              <img src="img/nav_logo.svg" alt="logo" width="100" />
+            </a>
+          </div>
+
+          <ul>
+            <!-- 프로젝트에 대한 설명 페이지로 이동-->
+            <li class="btn">ABOUT</li>
+            <!-- 조원들 프로필 페이지 -->
+            <li class="btn">CONTACT</li>
+            <li class="btn lnb">
+              <svg
+                class="foot-print"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                xml:space="preserve"
+              >
+                <title>foot-print</title>
+                <g>
+                  <g stroke="null" id="svg_1">
+                    <path
+                      fill="#ffffff"
+                      stroke="null"
+                      d="m10.11359,14.96222c-0.21784,0.49421 -0.64702,0.77708 -1.21602,0.87462c-0.24711,0.04227 -0.49096,0.00325 -0.73156,-0.06503c-0.65678,-0.17883 -1.01768,-0.51697 -1.49564,-0.97542c-0.22435,-0.21459 -0.4812,-0.39342 -0.79009,-0.4617c-0.2406,-0.05202 -0.48771,-0.08454 -0.73156,-0.1203c-0.47145,-0.06503 -0.69579,-0.09754 -1.164,-0.17883c-0.43243,-0.07153 -0.83886,-0.24711 -1.23878,-0.41943c-0.28937,-0.12681 -0.55924,-0.29263 -0.77383,-0.52672c-0.18208,-0.19834 -0.3544,-0.40642 -0.43569,-0.67303c-0.13331,-0.42918 -0.05202,-0.81935 0.19508,-1.19326c0.41618,-0.64052 0.71205,-1.16725 1.32006,-1.61919c0.77708,-0.57549 1.60619,-1.05345 2.51657,-1.38184c0.55599,-0.20159 1.13148,-0.30563 1.72649,-0.29588c0.4747,0.00651 0.88113,0.18208 1.23227,0.49096c0.41943,0.36741 0.72831,0.8161 0.97867,1.30706c0.66003,1.30706 0.81935,2.63687 0.8161,4.1c-0.00651,0.37066 -0.07153,0.73482 -0.20809,1.13798z"
+                      id="svg_2"
+                    />
+                    <path
+                      fill="#ffffff"
+                      stroke="null"
+                      d="m13.82017,5.85834c-0.15607,0.31538 -0.31864,0.62426 -0.53323,0.90389c-0.51047,0.65678 -1.13798,1.13148 -1.92807,1.33632c-0.32514,0.08454 -0.64052,0.04877 -0.92665,-0.11055c-0.36416,-0.20484 -0.57875,-0.53323 -0.67954,-0.94615c-0.09754,-0.39017 -0.05202,-0.78359 0.08129,-1.164c0.41293,-1.18675 1.20951,-2.00285 2.32799,-2.48081c0.38041,-0.16257 0.78033,-0.20809 1.1705,-0.09104c0.35765,0.1073 0.59825,0.35115 0.71855,0.7153c0.14631,0.44544 0.1138,0.90063 -0.03252,1.35257c-0.05853,0.16257 -0.13331,0.32189 -0.19834,0.48446l0.00001,0z"
+                      id="svg_3"
+                    />
+                    <path
+                      fill="#ffffff"
+                      stroke="null"
+                      d="m9.32676,4.5838c-0.19834,0.51372 -0.48446,0.95916 -0.90389,1.31681c-0.20159,0.17232 -0.43243,0.29588 -0.68279,0.38366c-0.17558,0.05853 -0.3414,0.03577 -0.51372,-0.00651c-0.66978,-0.16582 -1.04044,-0.63727 -1.27454,-1.24853c-0.24385,-0.63402 -0.26987,-1.28755 -0.17558,-1.95083c0.09754,-0.69254 0.33164,-1.33307 0.77058,-1.8858c0.24385,-0.30888 0.53648,-0.55924 0.90063,-0.72181c0.53323,-0.2341 1.09247,-0.12355 1.49239,0.30238c0.30238,0.32189 0.48446,0.7088 0.582,1.13798c0.15607,0.69905 0.14306,1.39484 -0.02926,2.08739c-0.04552,0.19834 -0.1073,0.39017 -0.16582,0.58525l0,0.00002z"
+                      id="svg_4"
+                    />
+                    <path
+                      fill="#ffffff"
+                      stroke="null"
+                      d="m14.62326,10.60862c-0.19183,0.51697 -0.47795,0.96241 -0.88438,1.31356c-0.32839,0.28612 -0.69254,0.48446 -1.09247,0.58525c-0.56899,0.14306 -1.10222,-0.21134 -1.31031,-0.75107c-0.15282,-0.39992 -0.15607,-0.81285 -0.00651,-1.24203c0.31538,-0.89413 0.85512,-1.56392 1.65821,-1.95733c0.31538,-0.15607 0.64702,-0.2406 0.97867,-0.18533c0.40967,0.06828 0.69579,0.31538 0.8161,0.76083c0.10079,0.37391 0.06503,0.75758 -0.04877,1.14124c-0.03577,0.1138 -0.07478,0.22435 -0.11055,0.33489l0.00001,0z"
+                      id="svg_5"
+                    />
+                    <path
+                      fill="#ffffff"
+                      stroke="null"
+                      d="m4.86911,7.2857c-0.1073,0.31213 -0.25361,0.6015 -0.48771,0.84211c-0.33489,0.33489 -0.72506,0.49421 -1.19651,0.37391c-0.3544,-0.09104 -0.66003,-0.27637 -0.90714,-0.54298c-0.63402,-0.67954 -0.89413,-1.50214 -0.88113,-2.41578c0.00651,-0.51047 0.12681,-0.99818 0.34465,-1.45987c0.16907,-0.36416 0.42918,-0.66003 0.78359,-0.86162c0.57224,-0.32839 1.1705,-0.25036 1.67772,0.21134c0.44544,0.40642 0.7023,0.92014 0.84536,1.49564c0.15932,0.63727 0.14631,1.27779 -0.02601,1.91181c-0.04877,0.14631 -0.10405,0.29588 -0.15282,0.44544l-0.00001,0z"
+                      id="svg_6"
+                    />
+                  </g>
+                </g>
+              </svg>
+              <ul>
+                <li><a href="#">프로필수정</a></li>
+                <li><a href="#">찜목록</a></li>
+                <li><a href="#">반려견등록</a></li>
+                <li><a href="#">호스트 호텔관리</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <!-- calendar -->
+      <div class="calendar-container" id="calendar-container">
+        <!-- TODO : host 이름 받아오기 -->
+        <div class="calendar-title">**HOST님의 예약현황</div>
+        <div class="calendar" id="calendar"></div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".lnb ul li").hover(
+          function () {
+            $(this).find("ul").stop().slideDown();
+          },
+          function () {
+            $(this).find("ul").stop().slideUp();
+          }
+        );
+      });
+    </script>
+    <script>
+      (function () {
+        $(function () {
+          // calendar element 취득
+          var calendarEl = $("#calendar")[0];
+          // full-calendar 생성하기
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            height: "1000px", // calendar 높이 설정
+            expandRows: true, // 화면에 맞게 높이 재설정
+            slotMinTime: "08:00", // Day 캘린더에서 시작 시간
+            slotMaxTime: "20:00", // Day 캘린더에서 종료 시간
+            // 해더에 표시할 툴바
+            headerToolbar: {
+              left: "prev,next today",
+              center: "title",
+              right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
+            },
+            initialView: "dayGridMonth", // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+            initialDate: "2021-07-15", // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+            navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+            editable: true, // 수정 가능?
+            selectable: true, // 달력 일자 드래그 설정가능
+            nowIndicator: true, // 현재 시간 마크
+            dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
+            locale: "ko", // 한국어 설정
+            eventAdd: function (obj) {
+              // 이벤트가 추가되면 발생하는 이벤트
+              console.log(obj);
+            },
+            eventChange: function (obj) {
+              // 이벤트가 수정되면 발생하는 이벤트
+              console.log(obj);
+            },
+            eventRemove: function (obj) {
+              // 이벤트가 삭제되면 발생하는 이벤트
+              console.log(obj);
+            },
+            select: function (arg) {
+              // 캘린더에서 드래그로 이벤트를 생성기능
+              var title = prompt("Event Title:");
+              if (title) {
+                calendar.addEvent({
+                  title: title,
+                  start: arg.start,
+                  end: arg.end,
+                  allDay: arg.allDay,
+                });
+              }
+              calendar.unselect();
+            },
+          });
+          // 캘린더 랜더링
+          calendar.render();
+        });
+      })();
+    </script>
+  </body>
+</html>
