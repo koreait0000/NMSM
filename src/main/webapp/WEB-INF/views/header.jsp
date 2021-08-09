@@ -37,7 +37,7 @@
       <!-- jquery CDN -->
       
   
-      <link rel="stylesheet" href="common.css" />
+      <link rel="stylesheet" href="header.css" />
   <title>놀멍쉬멍</title>
 
 </head>
