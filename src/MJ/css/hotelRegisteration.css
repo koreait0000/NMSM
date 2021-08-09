@@ -1,0 +1,25 @@
+.form-holder form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.service {
+  display: block;
+}
+
+.service-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.service img {
+  width: 6rem;
+}
+
+.hotel-info {
+  margin-bottom: 1rem;
+}
