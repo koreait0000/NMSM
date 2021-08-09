@@ -33,11 +33,34 @@
   />
   <!-- 부트스트랩 CDN -->
 
+  <!-- datapicker -->
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
+  />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css"
+  />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css"
+  />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+  <!-- datapicker -->
+
   <link rel="stylesheet" href="main.css" />
 
   <title>놀멍쉬멍</title>
 </head>
 <body>
+
 <div class="wrap">
   <header>
     <nav class="gnb nav">
@@ -61,7 +84,8 @@
                   class="foot-print"
                   xmlns="http://www.w3.org/2000/svg"
                   version="1.1"
-                  xml:space="preserve">
+                  xml:space="preserve"
+          >
                 <title>foot-print</title>
             <g>
               <g stroke="null" id="svg_1">
@@ -98,52 +122,65 @@
               </g>
             </g>
               </svg>
-          <div class="modal hidden">
-            <!-- 모달창 백그라운드-->
-            <div class="modal-overlay"></div>
-            <div class="modal-content" id="scale-up-center">
-              <span><button class="btn closeBtn">X</button></span>
 
-              <!-- 로그인 -->
-              <div class="login slide-up">
-                <h2 class="form-title" id="login"><span>or</span>Log in</h2>
-                <div class="form-holder">
-                  <input type="email" class="input" placeholder="Email" />
-                  <input type="password" class="input" placeholder="Password"/>
-                </div>
-                <!-- TODO : 소셜로그인 서비스 -->
-                <div class="social">
-                  <h4>Social Login</h4>
-                  <a href=""><img class="naver" src="img/naver.png" alt=""></a>
-                  <a href="/oauth2/authorization/google"><img class="google" src="img/google.png" alt=""></a>
-                  <a href=""><img class="kakao" src="img/kakaotalk.png" alt=""></a>
-                </div>
-                <button class="submitBtn btn">Log in</button>
-              </div>
-              <!-- 로그인 -->
-
-              <!-- 회원가입 -->
-              <form class="signup" method="">
-                <h2 class="form-title" id="signup">
-                  <span>or</span>Sign up
-                </h2>
-                <div class="form-holder">
-                  <input type="text" class="input" placeholder="Name" />
-                  <input type="email" class="input" placeholder="Email" />
-                  <input type="password" class="input" placeholder="Password"/>
-                  <input type="number" class="input" placeholder="000-0000-0000" />
-                  <input type="date" class="input" />
-                </div>
-                <button class="btn">Sign up</button>
-              </form>
-              <!-- 회원가입 -->
-
-
-            </div>
-          </div>
         </li>
       </ul>
     </nav>
+    <div class="modal hidden">
+      <!-- 모달창 백그라운드-->
+
+      <div class="modal-content" id="scale-up-center">
+
+        <!-- 회원가입 -->
+        <div class="signup">
+          <h2 class="form-title" id="signup">
+            <span>or</span>Sign up
+          </h2>
+          <form class="form-holder">
+            <input type="text" class="input" placeholder="Name" />
+            <input type="email" class="input" placeholder="Email" />
+            <input
+                    type="password"
+                    class="input"
+                    placeholder="Password"
+            />
+            <input type="tel" class="input" placeholder="tel" />
+            <input type="date" class="input" />
+          </form>
+          <button class="submit-btn btn">Sign up</button>
+        </div>
+        <!-- 회원가입 -->
+        <!-- 로그인 -->
+        <div class="login slide-up">
+          <div class="center">
+            <h2 class="form-title" id="login">
+              <span>or</span>Log in
+            </h2>
+            <form class="form-holder">
+              <input type="email" class="input" placeholder="Email" />
+              <input
+                      type="password"
+                      class="input"
+                      placeholder="Password"
+              />
+            </form>
+            <button class="submit-btn btn">Log in</button>
+
+            <!-- TODO : 소셜로그인 서비스 -->
+            <div class="social">
+              <p>Social Login</p>
+              <div class="social-login">
+                <img class="naver" src="img/naver.png" alt="" />
+                <img class="google" src="img/google.png" alt="" />
+                <img class="kakao" src="img/kakaotalk.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 로그인 -->
+      </div>
+      <div class="modal-overlay"></div>
+    </div>
   </header>
 
   <section class="title">
@@ -165,40 +202,73 @@
   </section>
 
   <section>
-    <div class="form-book">
-      <form>
-        <label>체크인<input type="date" /></label>
-        <label>체크아웃<input type="date" /></label>
-        <label>위치
-          <select>
-            <option value="서울"></option>
-            <option value="대전"></option>
-            <option value="광주"></option>
-            <option value="대구"></option>
-            <option value="부산"></option>
-            <option value="제주도"></option>
-          </select>
-        </label>
-        <label>반려견
-          <select>
-            <option value="1"></option>
-            <option value="2"></option>
-            <option value="3"></option>
-            <option value="4+"></option>
-          </select>
-        </label>
-        <a href="#"> <i class="fas fa-search fa-2x"></i></a>
+    <div class="form-book container px-1 px-sm-5 mx-auto">
+      <form autocomplete="off">
+        <div class="input-group flex-row d-flex justify-content-center">
+          <div class="col input-daterange">
+            <label
+                    class="ml-3 form-control-placeholder"
+                    id="start-p"
+                    for="start"
+            >체크인
+              <span class="fa fa-calendar" id="fa-1"></span>
+              <input
+                      type="text"
+                      id="start"
+                      class="form-control text-left mr-2"
+                      placeholder="From"/>
+            </label>
+          </div>
+          <div class="col input-daterange">
+            <label
+                    class="ml-3 form-control-placeholder"
+                    id="end-p"
+                    for="end"
+            >체크아웃
+              <span class="fa fa-calendar" id="fa-2"></span>
+              <input
+                      type="text"
+                      id="end"
+                      class="form-control text-left ml-2"
+                      placeholder="To"/>
+            </label>
+          </div>
+          <div class="col">
+            <label
+            >위치
+              <div>
+                <select>
+                  <option value="서울">서울</option>
+                  <option value="대전">대전</option>
+                  <option value="광주">광주</option>
+                  <option value="대구">대구</option>
+                  <option value="부산">부산</option>
+                  <option value="제주도">제주도</option>
+                </select>
+              </div>
+            </label>
+          </div>
+          <div class="col">
+            <label
+            >반려견
+              <input type="number" placeholder="마리 수">
+            </label>
+          </div>
+          <div class="col">
+            <a href="#"><i class="fas fa-search fa-1.2x"></i></a>
+          </div>
       </form>
-      </d>
+    </div>
   </section>
 </div>
 
 <script>
-  // 모달 창
+  // 모달 창 띄우기
   const openBtn = document.getElementById("openBtn");
   const modal = document.querySelector(".modal");
   const overlay = modal.querySelector(".modal-overlay");
-  const closeBtn = modal.querySelector(".closeBtn");
+
+
 
   const openModal = () => {
     modal.classList.remove("hidden");
@@ -207,13 +277,52 @@
     modal.classList.add("hidden");
   };
 
-  overlay.addEventListener("click", closeModal);
-  closeBtn.addEventListener("click", closeModal);
   openBtn.addEventListener("click", openModal);
-  // 모달 창
+  overlay.addEventListener("click", closeModal);
+  // 모달 창 띄우기
 
   // 모달 슬라이드
+  console.clear();
+
+  const loginBtn = document.getElementById("login");
+  const signupBtn = document.getElementById("signup");
+
+  loginBtn.addEventListener("click", (e) => {
+    let parent = e.target.parentNode.parentNode;
+    Array.from(e.target.parentNode.parentNode.classList).find((element) => {
+      if (element !== "slide-up") {
+        parent.classList.add("slide-up");
+      } else {
+        signupBtn.parentNode.classList.add("slide-up");
+        parent.classList.remove("slide-up");
+      }
+    });
+  });
+
+  signupBtn.addEventListener("click", (e) => {
+    let parent = e.target.parentNode;
+    Array.from(e.target.parentNode.classList).find((element) => {
+      if (element !== "slide-up") {
+        parent.classList.add("slide-up");
+      } else {
+        loginBtn.parentNode.parentNode.classList.add("slide-up");
+        parent.classList.remove("slide-up");
+      }
+    });
+  });
   // 모달 슬라이드
+</script>
+<script>
+  //datepicker
+  $(document).ready(function () {
+    $(".input-daterange").datepicker({
+      format: "dd-mm-yyyy",
+      clearBtn: true,
+      disableTouchKeyboard: true,
+      todayHighlight: true,
+      startDate: "0d",
+    });
+  });
 </script>
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -222,4 +331,3 @@
 ></script>
 </body>
 </html>
-

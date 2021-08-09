@@ -4,8 +4,7 @@
 
 @font-face {
   font-family: "BCcardL";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.1/BCcardL.woff")
-  format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.1/BCcardL.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -57,6 +56,7 @@ body {
   border: none;
   border-radius: 1.5rem;
   margin-left: 20px;
+  outline: none;
 }
 
 .btn:hover {
@@ -95,8 +95,7 @@ body {
 }
 
 .tracking-in-expand:hover {
-  -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)
-  both;
+  -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
 
@@ -141,6 +140,7 @@ body {
   justify-content: space-around;
   vertical-align: middle;
   z-index: 10000;
+  margin-top: 18rem;
 }
 
 i {
@@ -163,6 +163,7 @@ i {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  font-family: "Poppins", sans-serif;
 }
 
 .modal-overlay {
@@ -173,6 +174,7 @@ i {
 }
 
 .modal-content {
+  z-index: 10;
   position: relative;
   height: 550px;
   width: 350px;
@@ -229,7 +231,7 @@ i {
 .modal-content .signup.slide-up .form-title span {
   color: #fff;
   margin-right: 0.5rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   opacity: 1;
   visibility: visible;
   transition: all 0.3s ease;
@@ -237,9 +239,10 @@ i {
 
 .signup .form-title {
   color: #fff;
-  font-size: 1.8em;
+  font-size: 2em;
   text-align: center;
 }
+
 .signup .form-title span {
   color: #fff;
   opacity: 0;
@@ -348,13 +351,14 @@ i {
 .modal-content .login .center .form-title span {
   color: #f9edd7;
   margin-right: 0.5rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   opacity: 1;
   visibility: visible;
   transition: all 0.3s ease;
 }
+
 .login .form-title {
-  font-size: 1.8em;
+  font-size: 2em;
   text-align: center;
 }
 
@@ -377,7 +381,6 @@ i {
   font-size: 0.7rem;
 }
 
-/* ----------------------------------------------- */
 .login .center .form-holder {
   border-radius: 15px;
   background-color: #fff;
@@ -473,8 +476,7 @@ i {
 
 /* modal animation */
 #scale-up-center {
-  -webkit-animation: scale-up-center 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
-  both;
+  -webkit-animation: scale-up-center 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: scale-up-center 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
@@ -539,5 +541,4 @@ i {
 }
 
 /* Medium devices (tablets, 768px and up) : md*/
-@media screen and (max-width: 768px) {
-}
+@media screen and (max-width: 768px) {}
