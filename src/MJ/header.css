@@ -109,7 +109,7 @@ body {
   background-repeat: no-repeat;
   background-position: 10% 50%;
   background-size: cover;
-  background-image: url("img/NM.png");
+  background-image: url("/static/image/NM.png");
 }
 
 .signup {

@@ -30,21 +30,21 @@
         <div class="service-holder hotel-info">
           <h6>서비스는 대형견, 중형견, 소형견으로 Kg단위로 책정 되어집니다.</h6>
           <div class="service">
-            <div><img src="img/salon.png" alt=""></div>
+            <div><img src="/image/salon.png" alt=""></div>
             <label><input type="radio" class="input" />미용 서비스</label>
             <div><input type="text" class="input"  placeholder="대형견 : 가격 설정"/></div>
             <div><input type="text" class="input"  placeholder="중형견 : 가격 설정"/></div>
             <div><input type="text" class="input"  placeholder="소형견 : 가격 설정"/></div>
           </div>
           <div class="service">
-            <div><img src="img/salon.png" alt=""></div>
+            <div><img src="/image/salon.png" alt=""></div>
             <label><input type="radio" class="input" />스파 서비스</label>
             <div><input type="text" class="input"  placeholder="대형견 : 가격 설정"/></div>
             <div><input type="text" class="input"  placeholder="중형견 : 가격 설정"/></div>
             <div><input type="text" class="input"  placeholder="소형견 : 가격 설정"/></div>
           </div>
           <div class="service">
-            <div><img src="img/salon.png" alt=""></div>
+            <div><img src="/image/salon.png" alt=""></div>
             <label><input type="radio" class="input" />
               그루밍 서비스<br>
               (목욕, 발톱, 빗질)
@@ -54,25 +54,25 @@
             <div><input type="text" class="input"  placeholder="소형견 : 가격 설정"/></div>
           </div>
           <div class="service">
-            <div><img src="img/pick-up.png" alt=""></div>
+            <div><img src="/image/pick-up.png" alt=""></div>
             <label><input type="radio" class="input" />픽업 서비스</label>
             <div><input type="text" class="input"  placeholder="가격 설정"/></div>
           </div>
           <div class="service">
-            <div><img src="img/pick-up.png" alt=""></div>
+            <div><img src="/image/pick-up.png" alt=""></div>
             <label><input type="radio" class="input" />드롭 서비스</label>
             <div><input type="text" class="input"  placeholder="가격 설정"/></div>
           </div>
           <div class="service">
-            <div><img src="img/pick-up.png" alt=""></div>
+            <div><img src="/image/pick-up.png" alt=""></div>
             <label><input type="radio" class="input" />산책 서비스</label>
           </div>
           <div class="service">
-            <div><img src="img/parking.png" alt=""></div>
+            <div><img src="/image/parking.png" alt=""></div>
             <label><input type="radio" class="input" />주차공간 서비스</label>
           </div>
           <div class="service">
-            <div><img src="img/pick-up.png" alt=""></div>
+            <div><img src="/image/pick-up.png" alt=""></div>
             <label><input type="radio" class="input" />영양제 복용 서비스</label>
           </div>
         </div>

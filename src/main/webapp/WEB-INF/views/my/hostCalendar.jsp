@@ -18,8 +18,8 @@
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js"></script>
   <!-- fullcalendar 언어 CDN -->
 
-  <link rel="stylesheet" href="hostCalendar.js" />
-  <link rel="stylesheet" href="hostCalendar.css" />
+  <script type="application/javascript" href="/js/hostCalendar.js" ></script>
+  <link rel="stylesheet" href="/css/hostCalendar.css" />
 
   <title>예약확인</title>
 </head>

@@ -10,6 +10,7 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+#    static-path-pattern: /static/**
 
   security:
     oauth2:

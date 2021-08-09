@@ -1,45 +1,44 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- 파비콘 Favicon -->
-      <link rel="shortcut icon" href="img/appleFavicon.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="img/appleFavicon.png" />
-      <link rel="icon" sizes="192x192" href="img/androidFavicon.png" />
-      <!-- 파비콘 Favicon -->
-  
-      <!-- 아이콘 icon CDN : fontawesome-->
-      <link
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 파비콘 Favicon -->
+<link rel="shortcut icon" href="/image/appleFavicon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/image/appleFavicon.png" />
+<link rel="icon" sizes="192x192" href="/image/androidFavicon.png" />
+<!-- 파비콘 Favicon -->
+
+<!-- 아이콘 icon CDN : fontawesome-->
+<link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-      />
-      <link
+/>
+<link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-      />
-      <!-- 아이콘 icon CDN -->
-  
-      <!-- 부트스트랩 CDN -->
-      <link
+/>
+<!-- 아이콘 icon CDN -->
+
+<!-- 부트스트랩 CDN -->
+<link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous"
-      />
-      <!-- 부트스트랩 CDN -->
+/>
+<!-- 부트스트랩 CDN -->
 
-      <!-- jquery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <!-- jquery CDN -->
-      
-  
-      <link rel="stylesheet" href="header.css" />
+<!-- jquery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- jquery CDN -->
+
+<link rel="stylesheet" href="/css/header.css" />
+<script type="application/javascript" src="/js/header.js"></script>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
   <title>놀멍쉬멍</title>
-
 </head>
 <body>
   <div class="wrap">
@@ -47,7 +46,7 @@
       <nav class="gnb nav">
         <div class="logo">
           <a href="#">
-            <img src="img/nav_logo.svg" alt="logo" width="100" />
+            <img src="/image/nav_logo.svg" alt="logo" width="100" />
           </a>
         </div>
 
@@ -150,9 +149,9 @@
               <div class="social">
                 <p>Social Login</p>
                 <div class="social-login">
-                  <img class="naver" src="img/naver.png" alt="" />
-                  <img class="google" src="img/google.png" alt="" />
-                  <img class="kakao" src="img/kakaotalk.png" alt="" />
+                  <img class="naver" src="/image/naver.png" alt="" />
+                  <img class="google" src="/image/google.png" alt="" />
+                  <img class="kakao" src="/image/kakaotalk.png" alt="" />
                 </div>
               </div>
             </div>

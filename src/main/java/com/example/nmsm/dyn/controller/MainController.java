@@ -17,6 +17,7 @@ public class MainController {
 
     @GetMapping("/")
     public String goMain(){
+        System.out.println("here is root");
         return "nmsm";
     }
 
