@@ -30,11 +30,6 @@ public class MyController {
     @Autowired
     private HotelInfoService hotelInfoService;
 
-    @GetMapping("/")
-    public String goMain(){
-        return "/main";
-    }
-
     @GetMapping("/regist")
     public String goRegist(){
 

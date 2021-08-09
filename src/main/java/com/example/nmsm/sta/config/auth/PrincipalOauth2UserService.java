@@ -5,6 +5,7 @@ import com.example.nmsm.sta.config.oauth.*;
 import com.example.nmsm.sta.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -17,9 +18,8 @@ import java.util.Map;
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired
     private UserDAO userDAO;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
