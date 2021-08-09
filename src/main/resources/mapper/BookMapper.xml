@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.nmsm.dyn.dao.BookInfoDAO">
+    <insert id="insBookHotel">
+        INSERT INTO book_info
+        ( checkIN, checkOUT, ihotel, iuser )
+        VALUES
+        ( #{ checkIN }, #{ checkOUT }, #{ ihotel }, #{ iuser })
+    </insert>
+    
+    <insert id="insBookDog">
+        INSERT INTO book_dog
+        ( ibook, idog )
+        VALUES
+        ( #{ibook}, #{idog} )
+    </insert>
+
+    <insert id="insBookDogService">
+        INSERT INTO book_dog_service
+        ( ibook, idog, iservice, ihotel )
+        VALUES
+        ( #{ ibook }, #{ idog }, #{ iservice }, #{ ihotel })
+    </insert>
+
+    <update id="updBookHotel">
+        UPDATE book_info
+        SET
+        WHERE
+    </update>
+
+    <update id="updBookDog">
+
+    </update>
+
+    <update id="updBookDogService"></update>
+
+    <delete id="delBookHotel">
+        DELETE FROM book_info
+        WHERE ibook = #{ ibook } AND iuser = #{ iuser }
+    </delete>
+
+    <delete id="delBookDog">
+        DELETE FROM book_dog
+        WHERE ibook = #{ ibook } AND idog = #{ idog }
+    </delete>
+
+    <delete id="delBookDogService">
+        DELETE FROM book_dog_service
+        WHERE ibds = #{ ibds }
+    </delete>
+</mapper>

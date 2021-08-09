@@ -37,6 +37,7 @@ CREATE TABLE dog_info (
 CREATE TABLE hotel_info (
     ihotel INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     iuser INT UNSIGNED,
+    h_name VARCHAR(30) NOT NULL,
     h_capacity INT UNSIGNED NOT NULL,
     h_location VARCHAR(10) NOT NULL,
     h_address VARCHAR(50) NOT NULL,
@@ -78,7 +79,6 @@ CREATE TABLE book_info (
     checkOUT DATE NOT NULL,
     ihotel INT UNSIGNED,
     iuser INT UNSIGNED,
-    service INT UNSIGNED,
     FOREIGN KEY (ihotel) REFERENCES hotel_info (ihotel),
     FOREIGN KEY (iuser) REFERENCES user (iuser)
 );
