@@ -10,4 +10,6 @@ import java.util.List;
 @Setter
 public class HotelInfoDTO extends HotelInfoEntity {
     private List<String> imgList;
+    private int reviewNum;
+    private int like;
 }

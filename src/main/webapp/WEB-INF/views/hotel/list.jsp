@@ -168,6 +168,19 @@
             -webkit-line-clamp: 3;
             overflow: hidden;
         }
+
+        .hotel-rating,.hotel-rating span {
+            display:inline-block;
+            height:55px;
+            overflow:hidden;
+            background:url(star.png)no-repeat;
+        }
+
+        .hotel-rating span{
+            background-position:left bottom;
+            line-height:0;
+            vertical-align:top;
+        }
     </style>
 </head>
 <body>
@@ -207,90 +220,46 @@
         </div>
         <div class="card-box">
             <ul>
-                <li class="card">
-                    <img src="img/NM.png" class="card-image" alt="" />
-                    <div class="card-overlay">
-                        <div class="card-header">
-                            <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
-                            <div class="card-header-text">
-                                <h3 class="hotel-name">Hotel Name</h3>
-                                <span class="hotel-rating">&star;&star;&star;&star;&star; 5.0</span>
+                <c:forEach items="${requestScope.list}" var="item">
+                    <li class="card">
+                        <img src="img/NM.png" class="card-image" alt="" />
+                        <div class="card-overlay">
+                            <div class="card-header">
+                                <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
+                                <div class="card-header-text">
+                                    <h3 class="hotel-name">${item.h_name}</h3>
+                                    <!-- like -->
+                                    <c:if test="${ not empty sessionScope.loginUser && item.isFav eq 1 }">
+                                        <i class="fas fa-kiss-wink-heart"></i>
+                                    </c:if>
+                                    <span class="hotel-rating">
+                                        <span style="width: ${item.h_star * 20}%;"></span>
+                                            ${item.h_star}
+                                    </span>
+                                </div>
                             </div>
+                            <img src="img/parking.png" alt="" width="30">
+                            <img src="img/pick-up.png" alt="" width="30">
+                            <img src="img/salon.png" alt="" width="30">
+                            <p class="hotel-description">${item.preDetail}</p>
                         </div>
-                        <img src="img/parking.png" alt="" width="30">
-                        <img src="img/pick-up.png" alt="" width="30">
-                        <img src="img/salon.png" alt="" width="30">
-                        <p class="hotel-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
-                    </div>
-                </li>
-                <li class="card">
-                    <img src="img/NM.png" class="card-image" alt="" />
-                    <div class="card-overlay">
-                        <div class="card-header">
-                            <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
-                            <div class="card-header-text">
-                                <h3 class="hotel-name">Hotel Name</h3>
-                                <span class="hotel-rating">&star;&star;&star;&star;&star; 5.0</span>
-                            </div>
-                        </div>
-                        <p class="hotel-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
-                    </div>
-                </li>
-                <li class="card">
-                    <img src="img/NM.png" class="card-image" alt="" />
-                    <div class="card-overlay">
-                        <div class="card-header">
-                            <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
-                            <div class="card-header-text">
-                                <h3 class="hotel-name">Hotel Name</h3>
-                                <span class="hotel-rating">&star;&star;&star;&star;&star; 5.0</span>
-                            </div>
-                        </div>
-                        <p class="hotel-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
-                    </div>
-                </li>
-                <li class="card">
-                    <img src="img/NM.png" class="card-image" alt="" />
-                    <div class="card-overlay">
-                        <div class="card-header">
-                            <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
-                            <div class="card-header-text">
-                                <h3 class="hotel-name">Hotel Name</h3>
-                                <span class="hotel-rating">&star;&star;&star;&star;&star; 5.0</span>
-                            </div>
-                        </div>
-                        <p class="hotel-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
-                    </div>
-                </li>
-                <li class="card">
-                    <img src="img/NM.png" class="card-image" alt="" />
-                    <div class="card-overlay">
-                        <div class="card-header">
-                            <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
-                            <div class="card-header-text">
-                                <h3 class="hotel-name">Hotel Name</h3>
-                                <span class="hotel-rating">&star;&star;&star;&star;&star; 5.0</span>
-                            </div>
-                        </div>
-                        <p class="hotel-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
-                    </div>
-                </li>
-                <li class="card">
-                    <img src="img/NM.png" class="card-image" alt="" />
-                    <div class="card-overlay">
-                        <div class="card-header">
-                            <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
-                            <div class="card-header-text">
-                                <h3 class="hotel-name">Hotel Name</h3>
-                                <span class="hotel-rating">&star;&star;&star;&star;&star; 5.0</span>
-                            </div>
-                        </div>
-                        <p class="hotel-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
-                    </div>
-                </li>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
     </section>
+</div>
+<div>
+    <c:forEach begin="1" end="${requestScope.maxPageVal}" var="page">
+        <c:choose>
+            <c:when test="${(empty param.page && page eq 1) || param.page eq page}">
+                <span class="selected">${page}</span>
+            </c:when>
+            <c:otherwise>
+                <span><a href="list?page=${page}&recordCnt=${param.recordCnt == null ? 5 : param.recordCnt}">${page}</a></span>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
 </div>
 </body>
 </html>

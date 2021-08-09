@@ -7,16 +7,26 @@
 
     </select>
 
-    <select id="getHotelInfo" resultType="HotelInfoEntity">
+    <select id="selHotelList" resultType="HotelInfoDTO">
         SELECT A.h_capacity, A.h_location, A.address, A.h_price, A.mapX, A.mapY,
-               A.h_preDetail, A.h_detail, A.h_tel, A.h_service, B.h_img
+               A.h_preDetail, A.h_detail, A.h_tel, A.h_service, A.h_star, A.h_name B.h_img
         FROM hotel_info A
         LEFT JOIN hotel_img B
         ON A.ihotel = B.ihotel
-        WHERE A.ihotel = #{ihotel}
+        WHERE A.h_location = #{ h_location }
+        ORDER BY A.ihotel
+        <if test="recordCnt > 0">
+            LIMIT #{ startIdx }, #{ recordCnt }
+        </if>
     </select>
 
-    <select id="getHotelReview" resultType="HotelReviewEntity">
+    <select id="selMaxPageVal" resultType="int">
+        SELECT CEIL(COUNT(ihotel) / #{recordCnt})
+        FROM hotel_info
+        WHERE h_location = #{ hLocation }
+    </select>
+
+    <select id="selHotelReview" resultType="HotelReviewDTO">
         SELECT A.review_star, A.review_cnt, A.review_regdt, B.review_img
         FROM hotel_review A
         LEFT JOIN review_img B
@@ -34,7 +44,14 @@
         INSERT INTO review_img
         ( ireview, review_img )
         VALUES
-        ( #{ireview}, #{review_img} )
+        ( #{ireview}, #{h_r_img} )
+    </insert>
+
+    <insert id="insAvgStar">
+        INSERT INTO hotel_info
+        ( h_star )
+        VALUES
+        ( SELECT AVG( review_star ) FROM hotel_review WHERE ireview = #{ ireview })
     </insert>
 
     <update id="updHotelReview">
