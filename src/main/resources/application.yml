@@ -8,7 +8,7 @@ spring:
 #TODO : 및 DB에 계정 생성 및 권한 부여 필요
   mvc:
     view:
-      prefix: /WEB-INF/view/
+      prefix: /WEB-INF/views/
       suffix: .jsp
 
   security:
