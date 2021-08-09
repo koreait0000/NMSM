@@ -19,7 +19,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         if (principalDetails.getUserEntity().getAuth() == null){
             response.sendRedirect("/");
         }else {
-            response.sendRedirect("/my");
+            response.sendRedirect("/");
         }
     }
 }

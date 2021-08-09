@@ -18,8 +18,7 @@ public class UserService extends CommonService{
     }
 
     public int doJoin(UserEntity userEntity){
-
-        userEntity.setAuth("USER");
+        userEntity.setAuth("ROLE_USER");
         userEntity.setU_pw(hashPw(userEntity.getU_pw()));
         return userDAO.insertUser(userEntity);
     }

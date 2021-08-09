@@ -5,7 +5,6 @@ import com.example.nmsm.sta.config.oauth.*;
 import com.example.nmsm.sta.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -19,7 +18,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
     @Autowired
     private UserDAO userDAO;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -54,14 +53,13 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         UserEntity user = userDAO.selectByEmail(email);
 
         if(user == null){
-            user = UserEntity.builder()
-                .u_nm(username)
-                .u_email(email)
-                .u_pw(password)
-                .u_birth(null)
-                .u_tel(null)
-                .auth(role)
-                .build();
+            user = new UserEntity();
+            user.setU_email(email);
+            user.setU_nm(username);
+            user.setU_pw(password);
+            user.setU_birth(null);
+            user.setU_tel(null);
+            user.setAuth(role);
             System.out.println(user);
             userDAO.insertUser(user);
         }else {

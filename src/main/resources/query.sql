@@ -53,7 +53,7 @@ CREATE TABLE hotel_info (
 
 CREATE TABLE service (
     iservice INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    s_nm VARCHAR(20) not null
+    s_nm VARCHAR(50) not null
 );
 
 CREATE TABLE hotel_service (

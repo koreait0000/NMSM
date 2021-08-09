@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/my")
 public class MyController {
 
     @Autowired
@@ -30,21 +30,11 @@ public class MyController {
     @Autowired
     private HotelInfoService hotelInfoService;
 
-    @GetMapping("/regist")
-    public String goRegist(){
-
-
-
-        return "/regist";
-    }
-
     @PostMapping("/regist")
     public String doRegist(UserEntity userEntity){
         System.out.println(userEntity);
-        userEntity.setAuth("USER");
-        userEntity.setU_pw(bCryptPasswordEncoder.encode(userEntity.getU_pw()));
         userService.doJoin(userEntity);
-        return "";
+        return "nmsm";
     }
 
     @GetMapping("/login")

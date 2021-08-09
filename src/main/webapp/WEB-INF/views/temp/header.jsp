@@ -33,7 +33,7 @@
 <!-- jquery CDN -->
 
 <link rel="stylesheet" href="/css/header.css" />
-<script type="application/javascript" src="/js/header.js"></script>
+<script type="application/javascript" src="/js/header.js" defer></script>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -45,7 +45,7 @@
     <header>
       <nav class="gnb nav">
         <div class="logo">
-          <a href="#">
+          <a href="/">
             <img src="/image/nav_logo.svg" alt="logo" width="100" />
           </a>
         </div>
@@ -103,6 +103,7 @@
               </g>
             </svg>
           </li>
+          <li class="btn" id="myBtn"></li>
         </ul>
       </nav>
       <div class="modal hidden">
@@ -115,18 +116,14 @@
             <h2 class="form-title" id="signup">
               <span>or</span>Sign up
             </h2>
-            <form class="form-holder">
-              <input type="text" class="input" placeholder="Name" />
-              <input type="email" class="input" placeholder="Email" />
-              <input
-                type="password"
-                class="input"
-                placeholder="Password"
-              />
-              <input type="tel" class="input" placeholder="tel" />
-              <input type="date" class="input" />
+            <form id="regist" class="form-holder" method="post" action="/my/regist">
+              <input name="u_nm" type="text" class="input" placeholder="Name" />
+              <input name="u_email" type="email" class="input" placeholder="Email" />
+              <input name="u_pw" type="password" class="input" placeholder="Password"/>
+              <input name="u_tel" type="tel" class="input" placeholder="tel" />
+              <input name="u_birth" type="date" class="input" />
             </form>
-            <button class="submit-btn btn">Sign up</button>
+            <button form="regist" class="submit-btn btn">Sign up</button>
           </div>
           <!-- 회원가입 -->
           <!-- 로그인 -->
@@ -145,18 +142,21 @@
               </form>
               <button class="submit-btn btn">Log in</button>
   
-              <!-- TODO : 소셜로그인 서비스 -->
               <div class="social">
                 <p>Social Login</p>
                 <div class="social-login">
-                  <img class="naver" src="/image/naver.png" alt="" />
-                  <img class="google" src="/image/google.png" alt="" />
-                  <img class="kakao" src="/image/kakaotalk.png" alt="" />
+                  <a href="/oauth2/authorization/naver">
+                    <img class="naver" src="/image/naver.png" alt="" />
+                  </a>
+                  <a href="/oauth2/authorization/google">
+                    <img class="google" src="/image/google.png" alt="" />
+                  </a>
+<%--                  TODO : 카카오 설정 넣기--%>
+                  <a><img class="kakao" src="/image/kakaotalk.png" alt="" /></a>
                 </div>
               </div>
             </div>
           </div>
-          <!-- 로그인 -->
         </div>
         <div class="modal-overlay"></div>
       </div>
