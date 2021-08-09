@@ -1,0 +1,26 @@
+      /* 캘린더 위의 해더 스타일(날짜가 있는 부분) */
+      .fc-header-toolbar {
+        padding-top: 1em;
+        padding-left: 1em;
+        padding-right: 1em;
+      }
+
+      .calendar-container {
+        background-color: #fff;
+        border: none;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        outline: none;
+        margin-bottom: 10rem;
+      }
+
+      .calendar-title {
+        font-size: 3rem;
+        font-weight: 900;
+        text-align: center;
+        background-color: #ff7606;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        color: #fff;
+        padding: 1rem;
+      }

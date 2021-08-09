@@ -1,0 +1,107 @@
+.hotel-detail {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.hotel-name {
+  font-weight: 900;
+  font-size: 60px;
+}
+
+.hotel-contents {
+  display: flex;
+}
+
+.hotel-article {
+  border: none;
+  border-radius: 30px;
+  background-color: #fff;
+  padding: 30px;
+  letter-spacing: 2px;
+  width: 70%;
+}
+
+.booking-box {
+  border: none;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+  width: 30%;
+}
+
+.review-box {
+  border: none;
+  border-radius: 30px;
+  background-color: #fff;
+  padding: 30px;
+}
+
+.hotel-location {
+  display: flex;
+}
+
+.service-box {
+  display: flex;
+}
+
+.service {
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem;
+  background-color: #f9edd7;
+  border: none;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  width: 7rem;
+  height: 7rem;
+}
+
+.service p {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+section {
+  margin-bottom: 5rem;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 80%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.icon {
+  display: flex;
+  margin-right: 1rem;
+}
