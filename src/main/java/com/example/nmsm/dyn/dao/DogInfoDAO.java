@@ -7,6 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface DogInfoDAO {
-
     List<DogInfoEntity> selectDogInfoByUpk(int u_pk);
 }

@@ -1,0 +1,39 @@
+.drag-drop-box {
+  display: flex;
+}
+
+.dogs-box {
+  border: none;
+  border-radius: 30px;
+  background-color: #F9EDD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin: 30px;
+}
+
+.draggable img {
+  border: none;
+  border-radius: 30px;
+}
+
+.draggable {
+  margin: 30px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.dogs-box-text {
+  display: block;
+}
+
+.reservation-box {
+  border: none;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 30px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
