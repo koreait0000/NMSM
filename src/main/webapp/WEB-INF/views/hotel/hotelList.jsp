@@ -18,7 +18,7 @@
           <div class="col card">
             <!-- TODO : 호스트가 등록한 호텔 메인 이미지 -->
             <!-- TODO : 호스트가 등록한 호텔정보 띄우기, 반복문 -->
-            <img src="img/NM.png" class="card-image" alt="" />
+            <img src="/image/NM.png" class="card-image" alt="" />
             <div class="card-overlay">
               <div class="card-header">
                 <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
@@ -36,9 +36,9 @@
                 </div>
               </div>
               <!-- TODO : 호스트가 등록한 서비스 이미지 띄우기 (호텔정보) -->
-              <img src="img/parking.png" alt="" width="30">
-              <img src="img/pick-up.png" alt="" width="30">
-              <img src="img/salon.png" alt="" width="30">
+              <img src="/image/parking.png" alt="" width="30">
+              <img src="/image/pick-up.png" alt="" width="30">
+              <img src="/image/salon.png" alt="" width="30">
               <p class="hotel-description">${item.preDetail}</p>
             </div>
           </div>

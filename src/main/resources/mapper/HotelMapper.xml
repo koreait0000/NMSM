@@ -3,10 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.nmsm.dyn.dao.HotelDAO">
-    <select id="getHotelList" resultType="HotelInfoEntity">
-
-    </select>
-
     <select id="selHotelList" resultType="HotelInfoDTO">
         SELECT A.h_capacity, A.h_location, A.address, A.h_price, A.mapX, A.mapY,
                A.h_preDetail, A.h_detail, A.h_tel, A.h_service, A.h_star, A.h_name B.h_img
@@ -19,19 +15,29 @@
             LIMIT #{ startIdx }, #{ recordCnt }
         </if>
     </select>
+<!--    TODO : Mapper 작업 하기-->
+    <select id="selHotelInfo" resultType="HotelInfoDTO">
 
-    <select id="selMaxPageVal" resultType="int">
-        SELECT CEIL(COUNT(ihotel) / #{recordCnt})
-        FROM hotel_info
-        WHERE h_location = #{ hLocation }
     </select>
 
     <select id="selHotelReview" resultType="HotelReviewDTO">
         SELECT A.review_star, A.review_cnt, A.review_regdt, B.review_img
         FROM hotel_review A
-        LEFT JOIN review_img B
-        ON A.ireview = B.ireview
+                 LEFT JOIN review_img B
+                           ON A.ireview = B.ireview
     </select>
+
+    <select id="selectLikeHotelInfoByIuser" resultType="HotelInfoDTO">
+
+    </select>
+
+    <select id="selectMyHotelInfoByIuser" resultType="HotelInfoDTO">
+
+    </select>
+
+
+
+
 
     <insert id="insHotelReview">
         INSERT INTO hotel_review
@@ -65,6 +71,7 @@
         SET review_img = #{review_img}
         WHERE ireview = #{ireview}
     </update>
+
     <delete id="delHotelReview">
         DELETE FROM hotel_review
         WHERE ireview = #{ireview}
@@ -74,5 +81,13 @@
         DELETE FROM review_img
         WHERE ireview = #{ireview}
     </delete>
+
+
+
+    <select id="selMaxPageVal" resultType="int">
+        SELECT CEIL(COUNT(ihotel) / #{recordCnt})
+        FROM hotel_info
+        WHERE h_location = #{ hLocation }
+    </select>
 
 </mapper>

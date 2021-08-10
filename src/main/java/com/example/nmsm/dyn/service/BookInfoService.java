@@ -19,9 +19,9 @@ public class BookInfoService extends CommonService{
     }
 
     public void insBookHotelInfo(){
-        bookInfoDAO.insBookHotel();
-        bookInfoDAO.insBookDog();
-        bookInfoDAO.insBookDogService();
+        bookInfoDAO.insBookHotel(null);
+        bookInfoDAO.insBookDog(null);
+        bookInfoDAO.insBookDogService(null);
     }
 
 }

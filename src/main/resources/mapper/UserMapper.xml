@@ -3,11 +3,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.nmsm.dyn.dao.UserDAO">
-    <select id="selectByUnm">
+    <select id="selectByUnm" resultType="UserEntity">
         select * from user
         where u_nm = #{u_nm}
     </select>
-    <select id="selectByEmail">
+    <select id="selectByEmail" resultType="UserEntity">
         select * from user
         where u_email = #{u_email}
     </select>
@@ -17,5 +17,17 @@
         value
         (#{u_nm},#{u_email},#{u_pw},#{u_birth},#{u_tel},#{auth})
     </insert>
+
+    <insert id="insLike">
+        INSERT INTO like_list
+            ( iuser, ihotel )
+        VALUES
+            ( #{ iuser }, #{ ihotel })
+    </insert>
+
+    <delete id="delLike">
+        DELETE FROM like_list
+        WHERE iuser = #{ iuser } AND #{ ihotel }
+    </delete>
 
 </mapper>

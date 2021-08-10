@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/my")
 public class MyController {
 
     @Autowired
@@ -30,31 +30,15 @@ public class MyController {
     @Autowired
     private HotelInfoService hotelInfoService;
 
-    @GetMapping("/regist")
-    public String goRegist(){
-
-
-
-        return "/regist";
-    }
-
     @PostMapping("/regist")
     public String doRegist(UserEntity userEntity){
         System.out.println(userEntity);
-        userEntity.setAuth("USER");
-        userEntity.setU_pw(bCryptPasswordEncoder.encode(userEntity.getU_pw()));
         userService.doJoin(userEntity);
-        return "";
-    }
-
-    @GetMapping("/login")
-    public String goLogin(){
-
-        return "";
+        return "nmsm";
     }
 
     // TODO : 모두 model에 할당해주기!
-    @GetMapping("/my/mypet")
+    @GetMapping("/mypet")
     public String goMyPet(Model model,
                           @AuthenticationPrincipal PrincipalDetails principalDetails){
 
@@ -62,7 +46,7 @@ public class MyController {
         return "/my/mypet";
     }
 
-    @GetMapping("/my/mybook")
+    @GetMapping("/mybook")
     public String goMyBook(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
@@ -70,21 +54,27 @@ public class MyController {
         return "/my/mybook";
     }
 
-    @GetMapping("/my/mylike")
+    @GetMapping("/mylike")
     public String goMyFav(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-        hotelInfoService.getLikeHotel(principalDetails);
+//        hotelInfoService.getLikeHotel(principalDetails);
         return "/my/mylike";
     }
 
-    @GetMapping("/my/myhotel")
+    @GetMapping("/myhotel")
     public String goMyHotel(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
+        System.out.println("hello");
+//        hotelInfoService.getMyHotel(principalDetails);
+        return "/my/myhotel";
+    }
 
-        hotelInfoService.getMyHotel(principalDetails);
-        return "/my/mybook";
+    @GetMapping("/myhotelbook")
+    public String goMyHotelBook(){
+
+        return "/my/myhotelbook";
     }
 
     
