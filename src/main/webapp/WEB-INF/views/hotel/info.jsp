@@ -1,28 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- swiper -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <!-- swiper -->
+  <script href="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-  />
-
-  <link rel="stylesheet" href="hotelDetail.js" />
-  <link rel="stylesheet" href="hotelDetail.css" />
-
-  <title>HotelDetail</title>
-
-</head>
-<body>
 <div class="wrap">
   <section>
     <div class="container">
@@ -293,6 +273,3 @@
 </div>
 </section>
 </div>
-</body>
-</html>
-

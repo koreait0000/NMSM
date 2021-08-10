@@ -24,10 +24,10 @@ public class HotelController {
     private HotelInfoService hotelInfoService;
 
     @GetMapping("/list")
-    public String selHotelList(Model model, BookInfoDTO bookInfoDTO, PrincipalDetails principalDetails){
-        bookInfoDTO.setIuser(hotelInfoService.getIuser(principalDetails));
-        model.addAttribute("list", hotelInfoService.selHotelList(bookInfoDTO, principalDetails));
-        model.addAttribute("maxPageVal", hotelInfoService.selMaxPageVal(bookInfoDTO.getHLocation()));
+    public String selHotelList(Model model, BookInfoDTO bookInfoDTO){
+//        bookInfoDTO.setIuser(hotelInfoService.getIuser(principalDetails));
+//        model.addAttribute("list", hotelInfoService.selHotelList(bookInfoDTO, principalDetails));
+//        model.addAttribute("maxPageVal", hotelInfoService.selMaxPageVal(bookInfoDTO.getHLocation()));
         return "/hotel/list";
     }
 
@@ -38,9 +38,9 @@ public class HotelController {
 
     @GetMapping("/info")
     public String selHotelInfo(Model model, BookInfoEntity bookInfoEntity){
-        System.out.println("ihotel : " + bookInfoEntity.getIhotel());
-        HotelInfoDTO data = hotelInfoService.selHotelInfo(bookInfoEntity);
-        model.addAttribute(data);
+//        System.out.println("ihotel : " + bookInfoEntity.getIhotel());
+//        HotelInfoDTO data = hotelInfoService.selHotelInfo(bookInfoEntity);
+//        model.addAttribute(data);
         return "/hotel/info";
     }
 
