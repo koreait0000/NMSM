@@ -9,8 +9,9 @@ const openModal = () => {
 const closeModal = () => {
   modal.classList.add("hidden");
 };
-
-openBtn.addEventListener("click", openModal);
+if(openBtn){
+  openBtn.addEventListener("click", openModal);
+}
 overlay.addEventListener("click", closeModal);
 // 모달 창 띄우기
 

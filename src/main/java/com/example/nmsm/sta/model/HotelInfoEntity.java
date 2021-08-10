@@ -6,6 +6,7 @@ import lombok.Data;
 public class HotelInfoEntity {
     private int ihotel;
     private int iuser;
+    private String h_name;
     private int h_capacity;
     private String h_location;
     private String h_address;
@@ -16,5 +17,6 @@ public class HotelInfoEntity {
     private String h_detail;
     private String h_tel;
     private int h_service; //
+    private int h_star;
 
 }

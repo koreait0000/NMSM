@@ -3,9 +3,12 @@ package com.example.nmsm.dyn.service;
 import com.example.nmsm.dyn.dao.HotelDAO;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import com.example.nmsm.sta.model.BookInfoEntity;
+import com.example.nmsm.sta.model.HotelInfoEntity;
+import com.example.nmsm.sta.model.ServiceEntity;
 import com.example.nmsm.sta.model.dto.BookInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelReviewDTO;
+import com.example.nmsm.sta.model.dto.HotelServiceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +20,17 @@ public class HotelInfoService extends CommonService{
     @Autowired
     private HotelDAO hotelDAO;
     public List<HotelInfoDTO> getLikeHotel(PrincipalDetails principalDetails){
-        return hotelDAO.selectLikeHotelInfoByIuser(getIuser(principalDetails));
+        List<HotelInfoDTO> list = hotelDAO.selectLikeHotelInfoByIuser(getIuser(principalDetails));
+        System.out.println("all: "+list.get(0).toString());
+        for(HotelServiceDTO a:list.get(0).getServiceList()){
+            System.out.println("service : "+a.getS_nm());
+        }
+        return list;
+    }
+    public void registHotel(HotelInfoEntity hotelInfoEntity, PrincipalDetails principalDetails){
+        hotelInfoEntity.setIuser(getIuser(principalDetails));
+        hotelDAO.insertHotel(hotelInfoEntity);
+
     }
     public HotelInfoDTO getMyHotel(PrincipalDetails principalDetails){
         return hotelDAO.selectMyHotelInfoByIuser(getIuser(principalDetails));
@@ -65,6 +78,10 @@ public class HotelInfoService extends CommonService{
         //TODO: 등록된 review에 사진이 있으면 사진 먼저 삭제
         hotelDAO.delHotelReviewImg(hotelReviewDTO);
         return hotelDAO.delHotelReview(hotelReviewDTO);
+    }
+
+    public List<ServiceEntity> getAllService(){
+        return serviceDAO.selectAllInfo();
     }
 
 

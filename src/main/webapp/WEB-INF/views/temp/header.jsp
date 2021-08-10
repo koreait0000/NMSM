@@ -108,7 +108,7 @@
           <h2 class="form-title" id="login">
             <span>or</span>Log in
           </h2>
-          <form class="form-holder">
+          <form id="loginForm" class="form-holder" method="post" action="/login">
             <input type="email" class="input" placeholder="Email" />
             <input
               type="password"
@@ -116,7 +116,7 @@
               placeholder="Password"
             />
           </form>
-          <button class="submit-btn btn">Log in</button>
+          <button form="loginForm" class="submit-btn btn">Log in</button>
 
           <div class="social">
             <p>Social Login</p>

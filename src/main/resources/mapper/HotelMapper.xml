@@ -3,6 +3,32 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.nmsm.dyn.dao.HotelDAO">
+    <resultMap id="hotelInfo" type="com.example.nmsm.sta.model.dto.HotelInfoDTO">
+        <result property="ihotel" column="ihotel"></result>
+        <collection property="imgList" select="selectHotelImgList" column="ihotel"></collection>
+        <collection property="serviceList" select="selectServcieList" column="ihotel"></collection>
+    </resultMap>
+
+    <select id="selectHotelImgList" resultType="string">
+        select h_img from hotel_img
+        where ihotel = #{ihotel}
+    </select>
+    <select id="selectServcieList" resultType="HotelServiceDTO">
+        select hser.*, ser.s_nm
+        from hotel_service hser
+        left join service ser
+        on hser.iservice = ser.iservice
+        where hser.ihotel = #{ihotel};
+    </select>
+
+    <select id="selectLikeHotelInfoByIuser" resultMap="hotelInfo">
+        select *
+        from hotel_info
+        where ihotel in
+              (select ihotel from like_list
+               where iuser = #{iuser});
+    </select>
+
     <select id="selHotelList" resultType="HotelInfoDTO">
         SELECT A.h_capacity, A.h_location, A.address, A.h_price, A.mapX, A.mapY,
                A.h_preDetail, A.h_detail, A.h_tel, A.h_service, A.h_star, A.h_name B.h_img
@@ -27,9 +53,7 @@
                            ON A.ireview = B.ireview
     </select>
 
-    <select id="selectLikeHotelInfoByIuser" resultType="HotelInfoDTO">
 
-    </select>
 
     <select id="selectMyHotelInfoByIuser" resultType="HotelInfoDTO">
 
@@ -58,6 +82,13 @@
         ( h_star )
         VALUES
         ( SELECT AVG( review_star ) FROM hotel_review WHERE ireview = #{ ireview })
+    </insert>
+
+    <insert id="insertHotel">
+        insert into hotel_info
+        (h_name, h_detail, h_address, h_tel, h_capacity)
+        value
+        (#{h_name},#{h_detail},#{h_address},#{h_tel}, #{h_capacity})
     </insert>
 
     <update id="updHotelReview">

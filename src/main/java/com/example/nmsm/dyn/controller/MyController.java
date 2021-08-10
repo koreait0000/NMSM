@@ -2,6 +2,7 @@ package com.example.nmsm.dyn.controller;
 
 import com.example.nmsm.dyn.service.HotelInfoService;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
+import com.example.nmsm.sta.model.HotelInfoEntity;
 import com.example.nmsm.sta.model.UserEntity;
 import com.example.nmsm.dyn.service.BookInfoService;
 import com.example.nmsm.dyn.service.DogInfoService;
@@ -30,7 +31,7 @@ public class MyController {
     @Autowired
     private HotelInfoService hotelInfoService;
 
-    @PostMapping("/regist")
+    @PostMapping("/regist")// check
     public String doRegist(UserEntity userEntity){
         System.out.println(userEntity);
         userService.doJoin(userEntity);
@@ -38,7 +39,7 @@ public class MyController {
     }
 
     // TODO : 모두 model에 할당해주기!
-    @GetMapping("/mypet")
+    @GetMapping("/mypet") // front
     public String goMyPet(Model model,
                           @AuthenticationPrincipal PrincipalDetails principalDetails){
 
@@ -46,7 +47,7 @@ public class MyController {
         return "/my/mypet";
     }
 
-    @GetMapping("/mybook")
+    @GetMapping("/mybook") // front
     public String goMyBook(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
@@ -58,7 +59,7 @@ public class MyController {
     public String goMyFav(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-//        hotelInfoService.getLikeHotel(principalDetails);
+        model.addAttribute("list",hotelInfoService.getLikeHotel(principalDetails));
         return "/my/mylike";
     }
 
@@ -66,8 +67,18 @@ public class MyController {
     public String goMyHotel(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-        System.out.println("hello");
+        System.out.println("myhotel");
+        model.addAttribute("services",hotelInfoService.getAllService());
 //        hotelInfoService.getMyHotel(principalDetails);
+        return "/my/myhotel";
+    }
+    @PostMapping("/myhotel")
+    public String registHotel(HotelInfoEntity hotelInfoEntity,
+                              @AuthenticationPrincipal PrincipalDetails principalDetails){
+        System.out.println(hotelInfoEntity);
+        System.out.println("registHotel");
+        hotelInfoService.registHotel(hotelInfoEntity,principalDetails);
+
         return "/my/myhotel";
     }
 

@@ -1,16 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="favHotelList.css" />
-  <title>FavHotelList</title>
-</head>
-<body>
 <div class="container">
   <header>
     <nav id="gnb">
@@ -48,30 +38,27 @@
     </div>
     <div class="card-box">
       <ul>
+        <c:forEach items="${list}" var="item">
         <li class="card">
-          <!--
-              TODO : 가져올 내용들 확인하기
-              호텔 이미지
-              호텔 이름
-              호텔 별점
-              호텔 설명
-          -->
-          <img src="/image/NM.png" class="card-image" alt="" />
+          <img src="${itme.h_img}" class="card-image" alt="" />
           <div class="card-overlay">
             <div class="card-header">
               <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
               <div class="card-header-text">
-                <h3 class="hotel-name">Hotel Name</h3>
-                <span class="hotel-rating">&star;&star;&star;&star;&star; 5.0</span>
+                <h3 class="hotel-name">${item.h_name}</h3>
+                <span class="hotel-rating">&star;&star;&star;&star;&star; h_star</span>
               </div>
             </div>
             <img src="/image/parking.png" alt="" width="30">
             <img src="/image/pick-up.png" alt="" width="30">
             <img src="/image/salon.png" alt="" width="30">
-            <p class="hotel-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+            <p class="hotel-description">
+              ${item.h_preDetail}
+            </p>
           </div>
         </li>
+        </c:forEach>
+      </ul>
+    </div>
   </section>
 </div>
-</body>
-</html>

@@ -1,11 +1,9 @@
 package com.example.nmsm.dyn.dao;
 
 
+import com.example.nmsm.sta.model.HotelInfoEntity;
 import com.example.nmsm.sta.model.dto.HotelInfoDTO;
 import com.example.nmsm.sta.model.BookInfoEntity;
-import com.example.nmsm.sta.model.HotelReviewEntity;
-import com.example.nmsm.sta.model.ReviewImgEntity;
-import com.example.nmsm.sta.model.dto.HotelInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelReviewDTO;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -24,6 +22,8 @@ public interface HotelDAO {
     void insHotelReview(HotelReviewDTO hotelReviewDTO);
     void insHotelReviewImg(HotelReviewDTO hotelReviewDTO);
     void insAvgStar(HotelReviewDTO hotelReviewDTO);
+
+    void insertHotel(HotelInfoEntity hotelInfoEntity);
 
     int updHotelReview(HotelReviewDTO hotelReviewDTO);
     int updHotelReviewImg(HotelReviewDTO hotelReviewDTO);
