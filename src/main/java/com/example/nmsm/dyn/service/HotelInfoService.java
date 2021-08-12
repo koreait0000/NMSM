@@ -11,7 +11,10 @@ import com.example.nmsm.sta.model.dto.HotelReviewDTO;
 import com.example.nmsm.sta.model.dto.HotelServiceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -28,6 +31,7 @@ public class HotelInfoService extends CommonService{
         return list;
     }
     public void registHotel(HotelInfoEntity hotelInfoEntity, PrincipalDetails principalDetails){
+        // TODO : 호텔이 있냐 없냐에 따라 insert or update
         hotelInfoEntity.setIuser(getIuser(principalDetails));
         hotelDAO.insertHotel(hotelInfoEntity);
 
@@ -82,6 +86,26 @@ public class HotelInfoService extends CommonService{
 
     public List<ServiceEntity> getAllService(){
         return serviceDAO.selectAllInfo();
+    }
+
+    public void regisHotelImg(PrincipalDetails principalDetails,
+                              MultipartFile[] files){
+        if(files == null)return;
+        int iuser = getIuser(principalDetails);
+        String baseDir = "D:/nmsm/"+iuser;
+        System.out.printf(baseDir);
+        File folder = new File(baseDir);
+        folder.mkdir();
+        for(int i=0; i<files.length; i++){
+            String fileName = iuser+"-"+(i+1)+".jpg";
+            File saveFile = new File(baseDir,fileName);
+            try {
+                files[i].transferTo(saveFile);
+                System.out.printf("파일 성공!");
+            } catch (IOException e) {
+                System.out.printf("파일 실패!");
+            }
+        }
     }
 
 

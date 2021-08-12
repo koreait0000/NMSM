@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/my")
@@ -74,10 +76,16 @@ public class MyController {
     }
     @PostMapping("/myhotel")
     public String registHotel(HotelInfoEntity hotelInfoEntity,
+                              String h_address_1,
+                              String h_address_2,
+                              @RequestParam MultipartFile[] files,
                               @AuthenticationPrincipal PrincipalDetails principalDetails){
+        // TODO : myhotel.jsp 에서 service 받아오기. checkbox 필요
+        hotelInfoEntity.setH_address(h_address_1+h_address_2);
         System.out.println(hotelInfoEntity);
         System.out.println("registHotel");
-        hotelInfoService.registHotel(hotelInfoEntity,principalDetails);
+        hotelInfoService.regisHotelImg(principalDetails,files);
+//        hotelInfoService.registHotel(hotelInfoEntity,principalDetails);
 
         return "/my/myhotel";
     }
