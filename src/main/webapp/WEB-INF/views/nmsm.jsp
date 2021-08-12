@@ -84,7 +84,7 @@
             </label>
           </div>
           <div class="col">
-            <a href="#"><i class="fas fa-search fa-1.2x"></i></a>
+            <a href="/hotel/list"><i class="fas fa-search fa-1.2x"></i></a>
           </div>
         </div>
       </form>

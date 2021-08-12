@@ -2,6 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <script href="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	3230aea4ab512dde1e4de89760aa5719"></script>ㄴ
+
+
 
 <div class="wrap">
   <section>
@@ -25,8 +28,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <!--지도 API  -->
-            <img src="/image/location.PNG" alt="" class="map" />
+            <div id="map" style="width:500px;height:400px;"></div>
           </div>
         </div>
       </div>
@@ -273,3 +275,4 @@
 </div>
 </section>
 </div>
+

@@ -24,7 +24,8 @@ public class HotelController {
     private HotelInfoService hotelInfoService;
 
     @GetMapping("/list")
-    public String selHotelList(Model model, BookInfoDTO bookInfoDTO){
+    public String selHotelList(Model model) {
+        BookInfoDTO bookInfoDTO = new BookInfoDTO();
 //        bookInfoDTO.setIuser(hotelInfoService.getIuser(principalDetails));
 //        model.addAttribute("list", hotelInfoService.selHotelList(bookInfoDTO, principalDetails));
 //        model.addAttribute("maxPageVal", hotelInfoService.selMaxPageVal(bookInfoDTO.getHLocation()));
