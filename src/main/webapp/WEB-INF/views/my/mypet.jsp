@@ -1,13 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <div class="container">
     <section>
-        <h1>나의 반려견</h1>
-        <div class="mypet-box">
-            <!-- TODO : 등록한 강아지 사진 / 이름 들고 오기 -->
-            <img src="../img/NM.png" alt="" width="200">
-            <h4>식빵이</h4>
+        <div class="mypet-holder">
+            <h1>나의 반려견</h1>
+            <div class="mypet-box">
+                <div class="mypet">
+                    <!-- TODO : 등록한 강아지 사진 / 이름 들고 오기 -->
+                    <img src="../img/NM.png" alt="" width="200">
+                    <h4>식빵이</h4>
+                </div>
+            </div>
         </div>
 
         <div class="toggle-btn">
@@ -49,15 +52,15 @@
                     <li>
                         <label>
                             반려견 성별
-                            <div>
+                            <div class="toggle">
                                 <label for="dog-gender">
-                                    <input type="radio" name="dog-gender" id="dog-gender" value="남" checked>
-                                    <span>남</span>
+                                    <input type="radio" name="dog-gender" id="dog-gender-m" value="남" checked>
+                                    <label for="dog-gender-m">남</label>
                                 </label>
 
                                 <label for="dog-gender">
-                                    <input type="radio" name="dog-gender" id="dog-gender" value="여">
-                                    <span >여</span>
+                                    <input type="radio" name="dog-gender" id="dog-gender-f" value="여">
+                                    <label for="dog-gender-f">여</label>
                                 </label>
                             </div>
                         </label>
