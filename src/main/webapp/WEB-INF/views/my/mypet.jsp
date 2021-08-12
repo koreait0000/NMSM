@@ -5,14 +5,15 @@
     <section>
         <h1>나의 반려견</h1>
         <div class="mypet-box">
+            <%-- ${pets}를 이용해서 내 강아지 값 들고오기 --%>
             <!-- TODO : 등록한 강아지 사진 / 이름 들고 오기 -->
-            <img src="../img/NM.png" alt="" width="200">
+            <img src="/image/NM.png" alt="" width="200">
             <h4>식빵이</h4>
         </div>
 
         <div class="toggle-btn">
             <a>
-                <img src="../img/foorprint.svg" width="100">
+                <img src="/image/foorprint.svg" width="100">
                 <h6>반려견 등록</h6>
             </a>
         </div>
@@ -25,10 +26,9 @@
                             반려견 사진등록
                             <div>
                                 <label for="input-file">
-                                    <!-- 사진 누르면 업로드 되도록 했음 -->
-                                    <div><img src="../img/NM.png" alt="" width="200"></div>
+                                    <div><img src="/image/NM.png" alt="" width="200"></div>
                                 </label>
-                                <input type="file" id="input-file"/>
+                                <input type="file" id="input-file" name="file"/>
                             </div>
                         </label>
                     </li>
@@ -36,13 +36,13 @@
                     <li>
                         <label>
                             반려견 이름
-                            <div class="input"><input type="text "></div>
+                            <div class="input"><input type="text" name="d_nm"></div>
                         </label>
                     </li>
                     <li>
                         <label>
                             반려견 생년월일
-                            <div class="input"><input type="date"></div>
+                            <div class="input"><input type="date" name="d_birth"></div>
                         </label>
                     </li>
 
@@ -50,13 +50,13 @@
                         <label>
                             반려견 성별
                             <div>
-                                <label for="dog-gender">
-                                    <input type="radio" name="dog-gender" id="dog-gender" value="남" checked>
+                                <label for="d_gender">
+                                    <input type="radio" name="d_gender" id="d_gender" value="true" checked>
                                     <span>남</span>
                                 </label>
 
-                                <label for="dog-gender">
-                                    <input type="radio" name="dog-gender" id="dog-gender" value="여">
+                                <label for="d_gender">
+                                    <input type="radio" name="d_gender" id="d_gender" value="false">
                                     <span >여</span>
                                 </label>
                             </div>
@@ -67,13 +67,13 @@
                         <label>
                             중성화
                             <div>
-                                <label for="dog-net">
-                                    <input type="radio" name="dog-net" id="dog-net" value="미완료" checked>
+                                <label for="d_neuter">
+                                    <input type="radio" name="d_neuter" id="d_neuter" value="true" checked>
                                     <span>완료</span>
                                 </label>
 
-                                <label for="dog-net">
-                                    <input type="radio" name="dog-net" id="dog-net" value="미완료">
+                                <label for="d_neuter">
+                                    <input type="radio" name="d_neuter" id="d_neuter" value="false">
                                     <span>미완료</span>
                                 </label>
                             </div>
@@ -84,9 +84,10 @@
                         <label>
                             반려견 견종
                             <div class="select">
-                                <select>
-                                    <!-- TODO : 반려견 견종 받아오기 (믹스견도 데이터에 넣어주세요) -->
-                                    <option>믹스</option>
+                                <select name="breed_pk">
+                                <c:forEach items="${breeds}" var="breed">
+                                    <option value="${breed.breed_pk}">${breed.breed_nm}</option>
+                                </c:forEach>
                                 </select>
                             </div>
                         </label>
@@ -116,7 +117,7 @@
                         <label>
                             반려견 등록번호
                             <div class="input">
-                                <input type="text">
+                                <input type="text" name="d_regNum">
                             </div>
                         </label>
                     </li>
