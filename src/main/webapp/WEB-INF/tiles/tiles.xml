@@ -18,8 +18,8 @@
 
     <definition name="*/*" extends="tiles_temp">
         <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
-        <put-attribute name="css" value="/css{1}/{2}.css"/>
-        <put-attribute name="js" value="/js{1}/{2}.js"/>
+        <put-attribute name="css" value="/css/{1}/{2}.css"/>
+        <put-attribute name="js" value="/js/{1}/{2}.js"/>
     </definition>
 
 

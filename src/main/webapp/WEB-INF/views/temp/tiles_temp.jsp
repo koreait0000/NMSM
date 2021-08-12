@@ -7,6 +7,7 @@
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script type="application/javascript" src="/js/header.js" defer></script>
 
     <link rel="shortcut icon" href="/image/appleFavicon.png" />
@@ -42,10 +43,8 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
     />
-    <link
-            href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css"
-            rel="stylesheet"
-    />
+
+
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/header.css"/>
     <link href="<tiles:getAsString name="css" ignore="true"/>" type="text/css" rel="stylesheet" />
