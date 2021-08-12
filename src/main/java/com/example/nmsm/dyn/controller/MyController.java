@@ -2,6 +2,7 @@ package com.example.nmsm.dyn.controller;
 
 import com.example.nmsm.dyn.service.HotelInfoService;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
+import com.example.nmsm.sta.model.DogInfoEntity;
 import com.example.nmsm.sta.model.HotelInfoEntity;
 import com.example.nmsm.sta.model.UserEntity;
 import com.example.nmsm.dyn.service.BookInfoService;
@@ -40,13 +41,23 @@ public class MyController {
         return "nmsm";
     }
 
-    // TODO : 모두 model에 할당해주기!
     @GetMapping("/mypet") // front
     public String goMyPet(Model model,
                           @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-        dogInfoService.getDogInfo(principalDetails);
+        model.addAttribute("pets",dogInfoService.getDogInfo(principalDetails));
+        model.addAttribute("breeds",dogInfoService.getDogBreed());
         return "/my/mypet";
+    }
+
+    @PostMapping("/mypet")
+    public String registMyPet(Model model,
+                              DogInfoEntity dogInfoEntity,
+                              MultipartFile file,
+                              @AuthenticationPrincipal PrincipalDetails principalDetails){
+
+        dogInfoService.registMyDog(dogInfoEntity,file,principalDetails);
+        return "redirect:mypet";
     }
 
     @GetMapping("/mybook") // front

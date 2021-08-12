@@ -91,20 +91,12 @@ public class HotelInfoService extends CommonService{
     public void regisHotelImg(PrincipalDetails principalDetails,
                               MultipartFile[] files){
         if(files == null)return;
+        // 또는 iuser로 하여금 호텔 pk를 받아와서 처리하도록?
         int iuser = getIuser(principalDetails);
-        String baseDir = "D:/nmsm/"+iuser;
-        System.out.printf(baseDir);
-        File folder = new File(baseDir);
-        folder.mkdir();
+        String baseDir = makeDir("/hotel/"+iuser);
         for(int i=0; i<files.length; i++){
             String fileName = iuser+"-"+(i+1)+".jpg";
-            File saveFile = new File(baseDir,fileName);
-            try {
-                files[i].transferTo(saveFile);
-                System.out.printf("파일 성공!");
-            } catch (IOException e) {
-                System.out.printf("파일 실패!");
-            }
+            saveFile(baseDir,fileName,files[i]);
         }
     }
 

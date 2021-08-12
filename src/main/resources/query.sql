@@ -23,12 +23,13 @@ CREATE TABLE dog_info (
   idog INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   iuser INT UNSIGNED NOT NULL,
   breed_pk INT UNSIGNED NOT NULL,
-  d_age DATE NOT NULL,
+  d_birth DATE NOT NULL,
   d_nm VARCHAR(10) NOT NULL,
   d_gender TINYINT(1) UNSIGNED NOT NULL,
   d_weight FLOAT(4, 2) UNSIGNED NOT NULL,
   d_regNum INT(12) comment '강아지 등록 번호',
   d_neuter TINYINT(1) UNSIGNED NOT NULL comment '0 : 중성화 했음, 1 : 중성화 안했음',
+  d_img VARCHAR(30) comment '멍멍이 증명사진',
   FOREIGN KEY (iuser) REFERENCES user (iuser),
   FOREIGN KEY (breed_pk) REFERENCES dog_breed (breed_pk)
 );
@@ -130,7 +131,7 @@ CREATE TABLE book_dog_service (
 INSERT INTO dog_breed
     (breed_nm)
     VALUES
-    ('골든 리트리버'), ('그레이 하운드'), ('그레이트 덴'), ('그레이트 피레니즈'), ('기타'), ('꼬똥 드 뚤레아'),
+    ('믹스'),('골든 리트리버'), ('그레이 하운드'), ('그레이트 덴'), ('그레이트 피레니즈'), ('기타'), ('꼬똥 드 뚤레아'),
     ('네오폴리탄 마스티프'), ('노르포크 테리어'), ('노리치 테리어'), ('뉴펀들랜드'), ('닥스훈트'), ('달마시안'),
     ('댄디 딘몬트 테리어'), ('도고 까나리오'), ('도고 아르젠티노'), ('도베르만'), ('도사'), ('동경견'),
     ('라브라도 리트리버'), ('라사 압소'), ('라이카'), ('래빗 닥스훈드'), ('랫 테리어'), ('레이크랜드 테리어'),
