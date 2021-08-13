@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mypet</title>
+          <!-- 아이콘 icon CDN : fontawesome-->
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+          />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          />
+          <!-- 아이콘 icon CDN -->
+      
+          <!-- 부트스트랩 CDN -->
+          <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+          />
+          <!-- 부트스트랩 CDN -->
+    
+          <!-- jquery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <!-- jquery CDN -->
+  <style>
+    /* font */
+@import url("https://fonts.googleapis.com/css?family=Poppins:700");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
+
+@font-face {
+  font-family: "BCcardL";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.1/BCcardL.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* font */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  /* width: 100vw; */
+  min-height: 100vh;
+  justify-content: center;
+  font-family: "BCcardL", sans-serif;
+  background-color: #f9edd7;
+}
+.btn {
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  background-color: #ff7606;
+  font-size: 1em;
+  font-weight: 900;
+  border: none;
+  border-radius: 1.5rem;
+  margin-left: 20px;
+  outline: none;
+
+}
+
+.btn:hover {
+  color: white;
+  background-color: #dd6e14;
+}
+
+/* ---------------------------- */
+#input-file {
+  display: none;
+}
+
+.toggle input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -9999px;
+}
+
+.toggle input + label {
+	margin: 0;
+  margin-right: 1rem;
+	padding: 0.75rem 2rem;
+	box-sizing: border-box;
+	position: relative;
+	display: inline-block;
+  color: #fff;
+	border: none;
+  border-radius: 3rem;
+	background-color: #dd6e14;
+	font-size: 1rem;
+	line-height: 140%;
+	font-weight: 600;
+	text-align: center;
+	box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+	transition: background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.toggle input:checked + label {
+  background-color: #ff7606;
+	z-index: 1;
+}
+.fa-check {
+  margin-left: 0.3rem;
+}
+
+.mypet-box {
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 1rem;
+}
+.mypet img {
+  border-radius: 100%;
+}
+.hidden {
+  display: none;
+}
+.foot-print { 
+        width:300px;
+        height: 300px;
+        -webkit-mask: url(../img/foorprint.svg) no-repeat 50% 50%; 
+        -webkit-mask-size: cover;
+        mask-size: cover;
+        background-color: #ff7606;
+        cursor: pointer;
+      }
+
+.foot {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.form-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  border: none;
+  border-radius: 1rem;
+  margin: 5rem 0rem;
+}
+.mypet-box {
+  display: flex;
+  flex-direction: row;
+}
+.form-label {
+  display: flex;
+  justify-content: center;
+}
+li {
+  margin: 3rem 0rem;
+}
+
+input {
+  width: 20rem;
+  height: 3rem;
+  background-color: #f9edd7;
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+input[type="date"] { 
+  outline: none;
+  border: none;
+  background-color: #f9edd7;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+select {
+  width: 20rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 1rem;
+  text-align: center;
+  outline: none;
+  padding-left: 3rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url('https://t1.daumcdn.net/cfile/tistory/99761B495C84AA8716') no-repeat 95% 50%;
+  background-color: #f9edd7;
+}
+label > .fas {
+  display: none;
+}
+  .genderCont > input:checked + label > .fas {
+    display: block;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section>
+      <div class="mypet-holder">
+        <h1>나의 반려견</h1>
+        <div class="mypet-box">
+          <div class="mypet">
+            <!-- TODO : 등록한 강아지 사진 / 이름 들고 오기 -->
+            <img src="../img/NM.png" alt="" width="200">
+            <h4>식빵이</h4>
+          </div>
+          <div class="toggle-btn">
+              <div class="foot-print trigger"></div>
+              <h6>반려견 등록</h6>
+          </div>
+        </div>
+      </div>
+      
+
+      
+      <div class="form-holder">
+        <form>
+          <ul>
+            <li>
+              <label>
+                <div class="form-label"><div class="foot-print foot"></div><h4>반려견 사진등록</h4></div>
+                <div>
+                  <label for="input-file">
+                    <!-- 사진 누르면 업로드 되도록 했음 -->
+                    <div><img src="../img/NM.png" alt="" width="200"></div>
+                  </label>
+                  <input type="file" id="input-file"/> 
+                </div>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <div class="form-label"><div class="foot-print foot"></div><h4>반려견 이름</h4></div>
+                <div><input type="text" placeholder="이름 입력"></div>
+              </label>
+            </li>
+            <li>
+              <label>
+                <div class="form-label"><div class="foot-print foot"></div><h4>반려견 생년월일</h4></div>
+                <div><input type="date"></div>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <div class="form-label"><div class="foot-print foot"></div><h4>반려견 성별</h4></div>
+                <div class="toggle">
+                  <span class="genderCont">
+                    <input type="radio" name="dog-gender" id="dog-gender-m" value="남" checked>
+                    <label for="dog-gender-m">남<i class="fas fa-check"></i></label>
+                  </span>
+
+                  <span class="genderCont">
+                    <input type="radio" name="dog-gender" id="dog-gender-f" value="여">
+                    <label for="dog-gender-f">여<i class="fas fa-check"></i></label>
+                  </span>
+                </div>
+              </label>
+            </li>
+
+            <li>
+            <label>
+              <div class="form-label"><div class="foot-print foot"></div><h4>중성화</h4></div>
+                <div class="toggle">
+                  <label for="dog-net">
+                    <input type="radio" name="dog-net" id="dog-net-not" value="미완료" checked>
+                    <label for="dog-net-not">미완료</label>
+                  </label>
+                  <label for="dog-net">
+                    <input type="radio" name="dog-net" id="dog-net-completion" value="완료" >
+                    <label for="dog-net-completion">완료</label>
+                  </label>
+
+                </div>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <div class="form-label"><div class="foot-print foot"></div><h4>반려견 견종</h4></div>
+                <div class="select">
+                  <select>
+                    <!-- TODO : 반려견 견종 받아오기 (믹스견도 데이터에 넣어주세요) -->
+                    <option>믹스</option>
+                  </select>
+                </div>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <div class="form-label"><div class="foot-print foot"></div><h4>유형</h4></div>
+                
+                <div class="toggle">
+                  <label for="dog-size">
+                    <input type="radio" name="dog-size" id="dog-size-s" value="소형견" checked>
+                    <label for="dog-size-s">소형견</label>
+                  </label>
+                  <label for="dog-size">
+                    <input type="radio" name="dog-size" id="dog-size-m" value="중형견">
+                    <label for="dog-size-m">중형견</label>
+                  </label>
+                  <label for="dog-size">
+                    <input type="radio" name="dog-size" id="dog-size-l" value="대형견">
+                    <label for="dog-size-l">대형견</label>
+                  </label>
+                </div>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <div class="form-label"><div class="foot-print foot"></div><h4>반려견 등록번호</h4></div>
+                
+                <div class="toggle">
+                  <label for="dog-number">
+                    <input type="radio" name="dog-number" id="dog-number-not" checked>
+                    <label class="dog-number-not" for="dog-number-not">없음</label>
+                  </label>
+                  
+                  <label for="dog-number" >
+                    <input type="radio" name="dog-number" id="dog-number-completion">
+                    <label class="dog-number-btn" for="dog-number-completion">있음</label>
+                  </label>
+                </div>
+              </label>
+              <!-- 있음 클릭했을 때 입력 창 뜸 -->
+              <div class="dog-number-box">
+                <input type="text" placeholder="등록번호 입력">
+              </div>
+            </li>
+            <li>
+              <button class="btn" type="submit">등록하기</button>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </section>
+  </div>
+  <script>
+    // 반려견 등록 누르면 form 태그양식 보이게
+    $(document).ready(function() {
+      $('.toggle-btn').on('click', function() {
+        $('.form-holder').slideToggle();
+      })
+    })
+
+    //있음 클릭했을 때 입력 창 뜸 (수정 예정)
+    $(document).ready(function() {
+      $('.dog-number-btn').on('click', function() {
+        $('.dog-number-box').slideToggle();
+      })
+    })
+
+  </script>
+</body>
+</html>
