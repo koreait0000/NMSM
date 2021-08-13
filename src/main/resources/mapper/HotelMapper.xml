@@ -86,9 +86,9 @@
 
     <insert id="insertHotel">
         insert into hotel_info
-        (h_name, h_detail, h_address, h_tel, h_capacity)
+        (h_name, h_detail, h_address, h_location, h_tel, h_capacity)
         value
-        (#{h_name},#{h_detail},#{h_address},#{h_tel}, #{h_capacity})
+        (#{h_name},#{h_detail},#{h_address},#{h_location}, #{h_tel}, #{h_capacity})
     </insert>
 
     <update id="updHotelReview">

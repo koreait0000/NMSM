@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/header.css"/>
     <link href="<tiles:getAsString name="css" ignore="true"/>" type="text/css" rel="stylesheet" />
-    <script src="<tiles:getAsString name="js" ignore="true"></tiles:getAsString>"></script>
+    <script src="<tiles:getAsString name="js" ignore="true"></tiles:getAsString>" defer></script>
 </head>
 <body>
     <header>

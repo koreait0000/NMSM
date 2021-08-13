@@ -96,7 +96,7 @@ public class MyController {
         System.out.println(hotelInfoEntity);
         System.out.println("registHotel");
         hotelInfoService.regisHotelImg(principalDetails,files);
-//        hotelInfoService.registHotel(hotelInfoEntity,principalDetails);
+        hotelInfoService.registHotel(hotelInfoEntity,principalDetails);
 
         return "/my/myhotel";
     }
