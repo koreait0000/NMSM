@@ -1,11 +1,8 @@
 package com.example.nmsm.dyn.controller;
 
-import com.example.nmsm.dyn.service.CommonService;
-import com.example.nmsm.dyn.service.HotelInfoService;
-import com.example.nmsm.sta.config.auth.PrincipalDetails;
+import com.example.nmsm.dyn.service.HotelService;
 import com.example.nmsm.sta.model.BookInfoEntity;
 import com.example.nmsm.sta.model.dto.BookInfoDTO;
-import com.example.nmsm.sta.model.dto.HotelInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelReviewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +18,7 @@ import java.util.Map;
 public class HotelController {
 
     @Autowired
-    private HotelInfoService hotelInfoService;
+    private HotelService hotelService;
 
     @GetMapping("/list")
     public String selHotelList(Model model, BookInfoDTO bookInfoDTO){
@@ -48,21 +45,21 @@ public class HotelController {
     public Map<String, Object> selHotelReview(BookInfoDTO bookInfoDTO){
         int ihotel = bookInfoDTO.getIhotel();
         Map<String, Object> result = new HashMap();
-        result.put("list", hotelInfoService.selHotelReview(bookInfoDTO));
-        result.put("reviewNum", hotelInfoService.selReviewNum(ihotel));
-        result.put("maxPageVal", hotelInfoService.selMaxPageVal(bookInfoDTO.getHLocation()));
+        result.put("list", hotelService.selHotelReview(bookInfoDTO));
+        result.put("reviewNum", hotelService.selReviewNum(ihotel));
+        result.put("maxPageVal", hotelService.selMaxPageVal(bookInfoDTO.getHLocation()));
         return result;
     }
 
     @PostMapping("/review")
     public String insHotelReview(HotelReviewDTO hotelReviewDTO){
-        hotelInfoService.insHotelReview(hotelReviewDTO);
+        hotelService.insHotelReview(hotelReviewDTO);
         return "";
     }
 
     @GetMapping("/delReview")
     public String delHotelReview(HotelReviewDTO hotelReviewDTO) {
-        hotelInfoService.delHotelReview(hotelReviewDTO);
+        hotelService.delHotelReview(hotelReviewDTO);
         return "";
     }
 

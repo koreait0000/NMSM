@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class HotelInfoService extends CommonService{
+public class HotelService extends CommonService{
 
     @Autowired
     private HotelDAO hotelDAO;

@@ -1,6 +1,6 @@
 package com.example.nmsm.dyn.controller;
 
-import com.example.nmsm.dyn.service.HotelInfoService;
+import com.example.nmsm.dyn.service.HotelService;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import com.example.nmsm.sta.model.DogInfoEntity;
 import com.example.nmsm.sta.model.HotelInfoEntity;
@@ -32,7 +32,7 @@ public class MyController {
     @Autowired
     private BookInfoService bookInfoService;
     @Autowired
-    private HotelInfoService hotelInfoService;
+    private HotelService hotelService;
 
     @PostMapping("/regist")// check
     public String doRegist(UserEntity userEntity){
@@ -72,7 +72,7 @@ public class MyController {
     public String goMyFav(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-        model.addAttribute("list",hotelInfoService.getLikeHotel(principalDetails));
+        model.addAttribute("list", hotelService.getLikeHotel(principalDetails));
         return "/my/mylike";
     }
 
@@ -81,7 +81,7 @@ public class MyController {
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
         System.out.println("myhotel");
-        model.addAttribute("services",hotelInfoService.getAllService());
+        model.addAttribute("services", hotelService.getAllService());
 //        hotelInfoService.getMyHotel(principalDetails);
         return "/my/myhotel";
     }
@@ -95,8 +95,8 @@ public class MyController {
         hotelInfoEntity.setH_address(h_address_1+h_address_2);
         System.out.println(hotelInfoEntity);
         System.out.println("registHotel");
-        hotelInfoService.regisHotelImg(principalDetails,files);
-        hotelInfoService.registHotel(hotelInfoEntity,principalDetails);
+        hotelService.regisHotelImg(principalDetails,files);
+        hotelService.registHotel(hotelInfoEntity,principalDetails);
 
         return "/my/myhotel";
     }

@@ -1,7 +1,7 @@
 package com.example.nmsm.dyn.controller;
 
 import com.example.nmsm.dyn.service.BookInfoService;
-import com.example.nmsm.dyn.service.HotelInfoService;
+import com.example.nmsm.dyn.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +16,7 @@ public class BookController {
     @Autowired
     private BookInfoService bookInfoService;
     @Autowired
-    private HotelInfoService hotelInfoService;
+    private HotelService hotelService;
 
     @GetMapping("/book")
     public String bookHotelInfo(Model model) {
