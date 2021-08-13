@@ -19,9 +19,9 @@ public interface HotelDAO {
     List<HotelInfoDTO> selectLikeHotelInfoByIuser(int iuser);
     HotelInfoDTO selectMyHotelInfoByIuser(int iuser);
 
-    void insHotelReview(HotelReviewDTO hotelReviewDTO);
-    void insHotelReviewImg(HotelReviewDTO hotelReviewDTO);
-    void insAvgStar(HotelReviewDTO hotelReviewDTO);
+    int insHotelReview(HotelReviewDTO hotelReviewDTO);
+    int insHotelReviewImg(HotelReviewDTO hotelReviewDTO);
+    int insAvgStar(int ihotel);
 
     void insertHotel(HotelInfoEntity hotelInfoEntity);
 

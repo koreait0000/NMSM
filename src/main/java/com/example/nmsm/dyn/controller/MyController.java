@@ -32,6 +32,7 @@ public class MyController {
     @Autowired
     private BookInfoService bookInfoService;
     @Autowired
+
     private HotelService hotelService;
 
     @PostMapping("/regist")// check

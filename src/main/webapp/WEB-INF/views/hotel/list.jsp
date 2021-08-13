@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row card-box">
         <c:forEach items="${requestScope.list}" var="item">
-          <div class="col card">
+          <div class="col card" onclick="moveToInfo(${}">
             <!-- TODO : 호스트가 등록한 호텔 메인 이미지 -->
             <!-- TODO : 호스트가 등록한 호텔정보 띄우기, 반복문 -->
             <img src="/image/NM.png" class="card-image" alt="" />

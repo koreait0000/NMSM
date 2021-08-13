@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 public class BookInfoDTO extends BookInfoEntity {
     private int book_price;
-    private int page;
+    private int page = 1;
     private int startIdx;
-    private int recordCnt;
+    private int recordCnt = 5;
     private String hLocation;
     private int bookDogNum;
     private int perStar;

@@ -135,6 +135,6 @@
         </div>
       </div>
     </div>
-    <div class="modal-overlay"></div>
+    <div id="modal-overlay"></div>
   </div>
 </div>

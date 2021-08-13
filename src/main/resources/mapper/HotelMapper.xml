@@ -31,11 +31,15 @@
 
     <select id="selHotelList" resultType="HotelInfoDTO">
         SELECT A.h_capacity, A.h_location, A.address, A.h_price, A.mapX, A.mapY,
-               A.h_preDetail, A.h_detail, A.h_tel, A.h_service, A.h_star, A.h_name B.h_img
+               A.h_preDetail, A.h_detail, A.h_tel, A.h_service, A.h_star, A.h_name, B.h_img,
+               CASE WHEN C.ihotel IS NULL THEN 0 ELSE 1 END AS like
         FROM hotel_info A
         LEFT JOIN hotel_img B
         ON A.ihotel = B.ihotel
-        WHERE A.h_location = #{ h_location }
+        LEFT JOIN like_list C
+        ON A.ihotel = C.ihotel
+        AND C.iuser = #{ iuser }
+        WHERE A.h_location = IN (SELECT l_code FROM loc_info WHERE l_name LIKE #{ hLocation })
         ORDER BY A.ihotel
         <if test="recordCnt > 0">
             LIMIT #{ startIdx }, #{ recordCnt }
@@ -43,14 +47,19 @@
     </select>
 <!--    TODO : Mapper 작업 하기-->
     <select id="selHotelInfo" resultType="HotelInfoDTO">
-
+        SELECT A.h_name, A.h_capacity, A.h_location, A.h_address, A.h_price, A.mapX, A.mapY, A.h_preDetail,
+               A.h_detail, A.h_tel, A.h_star, B.h_img
+        FROM hotel_info A
+        LEFT JOIN hotel_img B
+        ON A.ihotel = B.ihotel
+        WHERE ihotel = #{ ihotel }
     </select>
 
     <select id="selHotelReview" resultType="HotelReviewDTO">
         SELECT A.review_star, A.review_cnt, A.review_regdt, B.review_img
         FROM hotel_review A
-                 LEFT JOIN review_img B
-                           ON A.ireview = B.ireview
+        LEFT JOIN review_img B
+        ON A.ireview = B.ireview
     </select>
 
 
@@ -77,12 +86,11 @@
         ( #{ireview}, #{h_r_img} )
     </insert>
 
-    <insert id="insAvgStar">
-        INSERT INTO hotel_info
-        ( h_star )
-        VALUES
-        ( SELECT AVG( review_star ) FROM hotel_review WHERE ireview = #{ ireview })
-    </insert>
+    <update id="insAvgStar">
+        UPDATE hotel_info
+        SET h_star = ( SELECT AVG( review_star ) FROM hotel_review WHERE ihotel = #{ ihotel })
+        WHERE ihotel = #{ ihotel }
+    </update>
 
     <insert id="insertHotel">
         insert into hotel_info
