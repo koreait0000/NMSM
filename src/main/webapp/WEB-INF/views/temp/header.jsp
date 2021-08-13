@@ -135,6 +135,7 @@
         </div>
       </div>
     </div>
-    <div id="modal-overlay"></div>
+    <div class="modal-overlay"></div>
   </div>
 </div>
+<script type="application/javascript" src="/js/header.js" defer></script>

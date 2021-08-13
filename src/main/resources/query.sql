@@ -128,6 +128,34 @@ CREATE TABLE book_dog_service (
     FOREIGN KEY (ihotel) REFERENCES hotel_service (ihotel)
 );
 
+create table loc_info(
+    loc_code int(2) primary key,
+    loc_name varchar(4) not null
+);
+
+insert into loc_info
+(loc_code, loc_name)
+values
+(1,'서울'),
+(2,'경기'),
+(3,'인천'),
+(4,'강원'),
+(5,'충북'),
+(6,'세종'),
+(7,'충남'),
+(8,'대전'),
+(9,'경북'),
+(10,'대구'),
+(11,'울산'),
+(12,'부산'),
+(13,'경남'),
+(14,'전북'),
+(15,'전남'),
+(16,'광주'),
+(17,'제주');
+
+
+
 INSERT INTO dog_breed
     (breed_nm)
     VALUES

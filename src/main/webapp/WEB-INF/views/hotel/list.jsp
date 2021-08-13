@@ -1,13 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
+<script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
 
 <div class="container">
   <section>
     <div class="container">
       <div class="row card-box">
-        <c:forEach items="${requestScope.list}" var="item">
-          <div class="col card" onclick="moveToInfo(${}">
+        <c:forEach items="${list}" var="item">
+        <a href="/hotel/info?ihotel=${item.ihotel}">
+          <div class="col card">
             <!-- TODO : 호스트가 등록한 호텔 메인 이미지 -->
             <!-- TODO : 호스트가 등록한 호텔정보 띄우기, 반복문 -->
             <img src="/image/NM.png" class="card-image" alt="" />
@@ -31,9 +32,10 @@
               <img src="/image/parking.png" alt="" width="30">
               <img src="/image/pick-up.png" alt="" width="30">
               <img src="/image/salon.png" alt="" width="30">
-              <p class="hotel-description">${item.preDetail}</p>
+              <p class="hotel-description">${item.h_preDetail}</p>
             </div>
           </div>
+        </a>
         </c:forEach>
       </div>
     </div>

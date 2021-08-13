@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -55,13 +56,17 @@ public class HotelService extends CommonService{
         return hotelDAO.selectMyHotelInfoByIuser(getIuser(principalDetails));
     }
 
-    public List<HotelInfoDTO> selHotelList(BookInfoDTO bookInfoDTO, PrincipalDetails principalDetails) {
-        bookInfoDTO.setIuser(getIuser(principalDetails));
-
+    public List<HotelInfoDTO> selHotelList(BookInfoDTO bookInfoDTO) {
+        List<HotelInfoDTO> result = new ArrayList<>();
         int startIdx = (bookInfoDTO.getPage() - 1) * bookInfoDTO.getRecordCnt();
         bookInfoDTO.setStartIdx(startIdx);
-        List<HotelInfoDTO> result = hotelDAO.selHotelList(bookInfoDTO);
-
+        result = hotelDAO.selHotelList(bookInfoDTO);
+        for (HotelInfoDTO hotelInfoDTO : result){
+            System.out.println(hotelInfoDTO);
+            System.out.println(hotelInfoDTO.getH_name());
+            System.out.println(hotelInfoDTO.getH_preDetail());
+            System.out.println(hotelInfoDTO.getH_star());
+        }
         return result;
     }
 
@@ -90,8 +95,10 @@ public class HotelService extends CommonService{
     }
 
 
-    public int selMaxPageVal(String hLocation) {
-        return hotelDAO.selMaxPageVal(hLocation);
+    public int selMaxPageVal(String hLocation, int recordCnt) {
+        int result = hotelDAO.selMaxPageVal(hLocation, recordCnt);
+        System.out.println("selMaxPageVal : "+result);
+        return result;
     }
 
     public int selReviewNum(int ihotel) {

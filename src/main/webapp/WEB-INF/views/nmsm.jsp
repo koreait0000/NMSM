@@ -32,7 +32,7 @@
 
   <section>
     <div class="form-book container px-1 px-sm-5 mx-auto">
-      <form autocomplete="off" action="selHotelList" method="post">
+      <form autocomplete="off" action="/hotel/list" method="post">
         <div class="input-group flex-row d-flex justify-content-center">
           <div class="col input-daterange">
             <label
@@ -69,12 +69,9 @@
             >위치
               <div>
                 <select name="hLocation">
-                  <option value="서울">서울</option>
-                  <option value="대전">대전</option>
-                  <option value="광주">광주</option>
-                  <option value="대구">대구</option>
-                  <option value="부산">부산</option>
-                  <option value="제주도">제주도</option>
+                <c:forEach var="loc" items="${locs}">
+                  <option value="${loc.loc_code}">${loc.loc_name}</option>
+                </c:forEach>
                 </select>
               </div>
             </label>
@@ -86,7 +83,7 @@
             </label>
           </div>
           <div class="col">
-            <a href="/hotel/list"><i class="fas fa-search fa-1.2x"></i></a>
+            <button><i class="fas fa-search fa-1.2x"></i></button>
           </div>
         </div>
       </form>
