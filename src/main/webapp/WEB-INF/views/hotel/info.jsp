@@ -10,7 +10,7 @@
   <section>
     <div class="container">
       <div class="hotel-detail">
-        <h1 class="hotel-name">Hotel Name</h1>
+        <h1 class="hotel-name">${h_name}</h1>
         <div class="row">
           <div class="col-md-8">
             <div class="swiper-container mySwiper">
@@ -36,7 +36,7 @@
 
       <div class="hotel-contents">
         <div class="hotel-article">
-          <h1>HOST 임지영님의 호텔서비스</h1>
+          <h1>${data.h_name}</h1>
           <div class="row">
             <div class="col-10">
               <!--호스트 프로필 -->
@@ -46,11 +46,11 @@
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
-                      5.0
+                      ${data.h_star}
                     </span>
               <div class="hotel-location">
                 <i class="fas fa-map-marker-alt"></i>
-                <h4>대구광역시 중구 성내1동</h4>
+                <h4>${data.h_address}</h4>
               </div>
             </div>
             <div class="col">
@@ -64,8 +64,7 @@
             </div>
           </div>
           <h6>
-            호텔 설명(간단한 한줄 설명) : Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
+            호텔 설명(간단한 한줄 설명) : ${data.h_preDetail}
           </h6>
           <hr />
           <div class="service-box">
@@ -86,55 +85,23 @@
               <p>픽업 서비스</p>
             </div>
           </div>
-          <h5>수용 가능한 반려견 20마리</h5>
+          <h5>수용 가능한 반려견 ${data.h_capacity}마리</h5>
 
           <p>
-            호텔 설명: Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Repellat suscipit iusto impedit dolore cupiditate
-            voluptate aspernatur officiis nemo ex modi! Similique amet natus
-            a tempora beatae ea iure nisi temporibus? Lorem ipsum dolor sit,
-            amet consectetur adipisicing elit. Expedita excepturi quisquam,
-            impedit nobis, reiciendis doloremque, assumenda laborum enim
-            iste ipsam ut eaque quaerat nisi nihil. Voluptas nulla saepe
-            totam animi! Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Ratione hic veritatis repellat placeat necessitatibus
-            magni, dolore neque voluptates adipisci facere iste perferendis
-            doloribus. Quidem optio, cupiditate voluptatum ratione animi
-            dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Nesciunt quasi, sunt saepe earum explicabo voluptas labore eius
-            optio hic, atque aliquid placeat et! Odit pariatur, ipsa iste
-            nam sit natus! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Quod, odio unde delectus esse dolore suscipit
-            aspernatur deserunt odit cum, nulla totam a vero iusto!
-            Perferendis, voluptatum expedita. Maiores, beatae molestiae.
-            <br /><br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi
-            doloribus quam aut ipsum laudantium quos veniam natus fugit, quo
-            quod deserunt, adipisci, est reprehenderit nisi quibusdam ab
-            distinctio consequatur dignissimos! Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Accusantium debitis ad hic est
-            ipsam molestiae, nemo, necessitatibus ducimus rem impedit totam
-            et vero neque voluptas quisquam, obcaecati aut fugit temporibus.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui
-            saepe unde quis vitae, inventore distinctio! Suscipit
-            distinctio, animi nisi earum repellendus maxime et voluptate
-            quaerat, atque eaque, cumque illo tenetur? Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Hic voluptas reprehenderit
-            laudantium, architecto corrupti corporis consectetur quod
-            laboriosam non fugit vel doloribus tenetur temporibus, sequi
-            quisquam adipisci nihil ad! Exercitationem!
+            호텔 설명: ${data.h_detail}
           </p>
         </div>
         <div class="booking-box">
-          <h1>₩280,889/ 박</h1>
+          <h1 id="h_price">₩${data.h_price}/박</h1>
           <div class="booking-option">
-            <label>체크인<input type="date" /></label>
-            <label>체크아웃<input type="date" /></label>
-            <label>반려견<input type="number" placeholder="마리수"/></label>
+            <label>체크인<input type="date" id="checkIN"/></label>
+            <label>체크아웃<input type="date" id="checkOUT" /></label>
+            <label>반려견<input type="number" id="dogNum" placeholder="마리수"/></label>
           </div>
+          <button onclick="calHotelPrice()">견적내기</button>
           <button type="submit">예약하기</button>
           <hr />
-          <h1>₩280,889 X 1박 = ₩280,889</h1>
+          <h1 id="result"></h1>
           <h1>총 합계 ₩280,889</h1>
         </div>
       </div>
@@ -161,7 +128,7 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
-            5.0 (후기 100개)
+            ${data.h_star} (후기 ${result.reviewNum}개)
           </h2>
           <div class="review">
             <img

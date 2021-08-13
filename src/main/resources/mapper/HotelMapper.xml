@@ -30,12 +30,12 @@
     </select>
 
     <select id="selHotelList" resultType="HotelInfoDTO">
-        SELECT A.h_capacity, A.h_location, A.h_address, A.h_price, A.mapX, A.mapY,
+        SELECT A.ihotel, A.h_capacity, A.h_location, A.h_address, A.h_price, A.mapX, A.mapY,
                A.h_preDetail, A.h_detail, A.h_tel, A.h_star, A.h_name, B.h_img
         FROM hotel_info A
         LEFT JOIN hotel_img B
         ON A.ihotel = B.ihotel
-        WHERE A.h_location = #{hLocation}
+        WHERE A.h_location = #{ hLocation }
         ORDER BY A.ihotel
         <if test="recordCnt > 0">
             LIMIT #{ startIdx }, #{ recordCnt }
@@ -48,7 +48,7 @@
         FROM hotel_info A
         LEFT JOIN hotel_img B
         ON A.ihotel = B.ihotel
-        WHERE ihotel = #{ ihotel }
+        WHERE A.ihotel = #{ ihotel }
     </select>
 
     <select id="selHotelReview" resultType="HotelReviewDTO">

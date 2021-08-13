@@ -31,7 +31,6 @@ public class HotelController {
     public String selHotelList(Model model, BookInfoDTO bookInfoDTO,
                                @AuthenticationPrincipal PrincipalDetails principalDetails) {
         System.out.println(bookInfoDTO.getHLocation());
-        bookInfoDTO.setIuser(hotelService.getIuser(principalDetails));
         model.addAttribute("list", hotelService.selHotelList(bookInfoDTO));
         model.addAttribute("maxPageVal", hotelService.selMaxPageVal(bookInfoDTO.getHLocation(), bookInfoDTO.getRecordCnt()));
         return "/hotel/list";
