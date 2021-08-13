@@ -15,6 +15,7 @@
           <div class="col-md-8">
             <div class="swiper-container mySwiper">
               <div class="swiper-wrapper">
+                <!--호텔 사진 반복문 돌리기-->
                 <div class="swiper-slide"><img src="/image/NM.png" alt="" class="/image-slide" /></div>
                 <div class="swiper-slide"><img src="/image/NM.png" alt="" class="/image-slide" /></div>
                 <div class="swiper-slide"><img src="/image/NM.png" alt="" class="/image-slide" /></div>

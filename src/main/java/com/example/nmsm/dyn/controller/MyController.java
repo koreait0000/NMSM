@@ -1,6 +1,6 @@
 package com.example.nmsm.dyn.controller;
 
-import com.example.nmsm.dyn.service.HotelInfoService;
+import com.example.nmsm.dyn.service.HotelService;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import com.example.nmsm.sta.model.UserEntity;
 import com.example.nmsm.dyn.service.BookInfoService;
@@ -28,7 +28,7 @@ public class MyController {
     @Autowired
     private BookInfoService bookInfoService;
     @Autowired
-    private HotelInfoService hotelInfoService;
+    private HotelService hotelInfoService;
 
     @PostMapping("/regist")
     public String doRegist(UserEntity userEntity){

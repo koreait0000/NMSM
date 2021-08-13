@@ -7,10 +7,18 @@
         select * from user
         where u_nm = #{u_nm}
     </select>
+
     <select id="selectByEmail" resultType="UserEntity">
         select * from user
         where u_email = #{u_email}
     </select>
+
+    <select id="chkHotelUse" resultType="int">
+        SELECT *
+        FROM book_info
+        WHERE iuser = #{ iuser } AND ihotel = #{ ihotel }
+    </select>
+
     <insert id="insertUser">
         insert into user
         (u_nm,u_email,u_pw,u_birth,u_tel,auth)
