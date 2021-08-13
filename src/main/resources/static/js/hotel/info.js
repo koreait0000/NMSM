@@ -27,11 +27,11 @@
 function calHotelPrice () {
   let h_price = document.getElementById('h_price').innerHTML;
   let dogNum = document.getElementById('dogNum').value;
-  let checkIN = document.getElementById('checkIN');
-  let checkOUT = document.getElementById('checkOUT');
+  let checkIN = document.getElementById('checkIN').value;
+  let checkOUT = document.getElementById('checkOUT').value;
   let result = document.getElementById('result');
 
-  let days = dateDiff(checkOUT.value, checkIN.value);
+  let days = dateDiff(checkOUT, checkIN);
 
   if(isNaN(days)) days=1;
   if(dogNum==='') dogNum=1;
