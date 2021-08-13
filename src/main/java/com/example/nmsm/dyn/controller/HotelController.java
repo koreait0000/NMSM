@@ -6,7 +6,6 @@ import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import com.example.nmsm.sta.model.BookInfoEntity;
 import com.example.nmsm.sta.model.LikeListEntity;
 import com.example.nmsm.sta.model.dto.BookInfoDTO;
-import com.example.nmsm.sta.model.dto.HotelInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelReviewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -66,6 +65,7 @@ public class HotelController {
         result.put("reviewNum", hotelService.selReviewNum(ihotel));
         result.put("maxPageVal", hotelService.selMaxPageVal(bookInfoDTO.getHLocation()));
         result.put("chkHotelUse", hotelService.chkHotelUse(bookInfoDTO));
+
         return result;
     }
 
@@ -97,6 +97,7 @@ public class HotelController {
         Map<String, Integer> data = new HashMap();
         data.put("data", hotelService.updHotelReview(hotelReviewDTO));
         return data;
+
     }
 
 

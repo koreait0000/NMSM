@@ -2,6 +2,8 @@ package com.example.nmsm.dyn.controller;
 
 import com.example.nmsm.dyn.service.HotelService;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
+import com.example.nmsm.sta.model.DogInfoEntity;
+import com.example.nmsm.sta.model.HotelInfoEntity;
 import com.example.nmsm.sta.model.UserEntity;
 import com.example.nmsm.dyn.service.BookInfoService;
 import com.example.nmsm.dyn.service.DogInfoService;
@@ -14,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/my")
@@ -28,25 +32,36 @@ public class MyController {
     @Autowired
     private BookInfoService bookInfoService;
     @Autowired
-    private HotelService hotelInfoService;
 
-    @PostMapping("/regist")
+    private HotelService hotelService;
+
+    @PostMapping("/regist")// check
     public String doRegist(UserEntity userEntity){
         System.out.println(userEntity);
         userService.doJoin(userEntity);
         return "nmsm";
     }
 
-    // TODO : 모두 model에 할당해주기!
-    @GetMapping("/mypet")
+    @GetMapping("/mypet") // front
     public String goMyPet(Model model,
                           @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-        dogInfoService.getDogInfo(principalDetails);
+        model.addAttribute("pets",dogInfoService.getDogInfo(principalDetails));
+        model.addAttribute("breeds",dogInfoService.getDogBreed());
         return "/my/mypet";
     }
 
-    @GetMapping("/mybook")
+    @PostMapping("/mypet")
+    public String registMyPet(Model model,
+                              DogInfoEntity dogInfoEntity,
+                              MultipartFile file,
+                              @AuthenticationPrincipal PrincipalDetails principalDetails){
+
+        dogInfoService.registMyDog(dogInfoEntity,file,principalDetails);
+        return "redirect:mypet";
+    }
+
+    @GetMapping("/mybook") // front
     public String goMyBook(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
@@ -58,7 +73,7 @@ public class MyController {
     public String goMyFav(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-//        hotelInfoService.getLikeHotel(principalDetails);
+        model.addAttribute("list", hotelService.getLikeHotel(principalDetails));
         return "/my/mylike";
     }
 
@@ -66,8 +81,24 @@ public class MyController {
     public String goMyHotel(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-        System.out.println("hello");
+        System.out.println("myhotel");
+        model.addAttribute("services", hotelService.getAllService());
 //        hotelInfoService.getMyHotel(principalDetails);
+        return "/my/myhotel";
+    }
+    @PostMapping("/myhotel")
+    public String registHotel(HotelInfoEntity hotelInfoEntity,
+                              String h_address_1,
+                              String h_address_2,
+                              @RequestParam MultipartFile[] files,
+                              @AuthenticationPrincipal PrincipalDetails principalDetails){
+        // TODO : myhotel.jsp 에서 service 받아오기. checkbox 필요
+        hotelInfoEntity.setH_address(h_address_1+h_address_2);
+        System.out.println(hotelInfoEntity);
+        System.out.println("registHotel");
+        hotelService.regisHotelImg(principalDetails,files);
+        hotelService.registHotel(hotelInfoEntity,principalDetails);
+
         return "/my/myhotel";
     }
 

@@ -1,0 +1,15 @@
+#input-file {
+    display: none;
+}
+
+.d_gender input[type="radio"]{
+    display:none;
+}
+
+.d_gender input[type="radio"]:checked + span{
+    background-color: #f9edd7;
+}
+
+.hidden {
+    display: none;
+}

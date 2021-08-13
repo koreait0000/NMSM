@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <%--<meta charset="UTF-8">--%>
 <%--<meta http-equiv="X-UA-Compatible" content="IE=edge">--%>
@@ -108,7 +109,7 @@
           <h2 class="form-title" id="login">
             <span>or</span>Log in
           </h2>
-          <form class="form-holder">
+          <form id="loginForm" class="form-holder" method="post" action="/login">
             <input type="email" class="input" placeholder="Email" />
             <input
               type="password"
@@ -116,7 +117,7 @@
               placeholder="Password"
             />
           </form>
-          <button class="submit-btn btn">Log in</button>
+          <button form="loginForm" class="submit-btn btn">Log in</button>
 
           <div class="social">
             <p>Social Login</p>

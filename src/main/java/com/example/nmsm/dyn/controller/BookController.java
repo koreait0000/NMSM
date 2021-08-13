@@ -2,6 +2,7 @@ package com.example.nmsm.dyn.controller;
 
 import com.example.nmsm.dyn.service.BookInfoService;
 import com.example.nmsm.dyn.service.HotelService;
+
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,7 +19,8 @@ public class BookController {
     @Autowired
     private BookInfoService bookInfoService;
     @Autowired
-    private HotelService hotelInfoService;
+
+    private HotelService hotelService;
 
     @GetMapping("/book")
     public String bookHotelInfo(Model model,
