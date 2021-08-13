@@ -1,7 +1,6 @@
 // 모달 창 띄우기
 const openBtn = document.getElementById("openBtn");
 const modal = document.querySelector(".modal");
-console.log(modal);
 const overlay = modal.querySelector(".modal-overlay");
 
 const openModal = () => {
@@ -13,7 +12,6 @@ const closeModal = () => {
 if(openBtn){
   openBtn.addEventListener("click", openModal);
 }
-console.log(overlay);
 overlay.addEventListener("click", closeModal);
 // 모달 창 띄우기
 
