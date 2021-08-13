@@ -8,7 +8,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script type="application/javascript" src="/js/header.js" defer></script>
+
 
     <link rel="shortcut icon" href="/image/appleFavicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/image/appleFavicon.png" />

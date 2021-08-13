@@ -32,5 +32,5 @@ public interface HotelDAO {
     int delHotelReviewImg(HotelReviewDTO hotelReviewDTO);
 
     int selReviewNum(int ihotel);
-    int selMaxPageVal(String hLocation);
+    int selMaxPageVal(String hLocation, int recordCnt);
 }

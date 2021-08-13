@@ -6,6 +6,7 @@ import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import com.example.nmsm.sta.model.BookInfoEntity;
 import com.example.nmsm.sta.model.LikeListEntity;
 import com.example.nmsm.sta.model.dto.BookInfoDTO;
+import com.example.nmsm.sta.model.dto.HotelInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelReviewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,13 +27,13 @@ public class HotelController {
     private UserService userService;
 
 
-    @GetMapping("/list")
+    @PostMapping("/list")
     public String selHotelList(Model model, BookInfoDTO bookInfoDTO,
                                @AuthenticationPrincipal PrincipalDetails principalDetails) {
         System.out.println(bookInfoDTO.getHLocation());
         bookInfoDTO.setIuser(hotelService.getIuser(principalDetails));
-        model.addAttribute("list", hotelService.selHotelList(bookInfoDTO, principalDetails));
-        model.addAttribute("maxPageVal", hotelService.selMaxPageVal(bookInfoDTO.getHLocation()));
+        model.addAttribute("list", hotelService.selHotelList(bookInfoDTO));
+        model.addAttribute("maxPageVal", hotelService.selMaxPageVal(bookInfoDTO.getHLocation(), bookInfoDTO.getRecordCnt()));
         return "/hotel/list";
     }
 
@@ -63,7 +64,7 @@ public class HotelController {
         Map<String, Object> result = new HashMap();
         result.put("list", hotelService.selHotelReview(bookInfoDTO));
         result.put("reviewNum", hotelService.selReviewNum(ihotel));
-        result.put("maxPageVal", hotelService.selMaxPageVal(bookInfoDTO.getHLocation()));
+        result.put("maxPageVal", hotelService.selMaxPageVal(bookInfoDTO.getHLocation(), bookInfoDTO.getRecordCnt()));
         result.put("chkHotelUse", hotelService.chkHotelUse(bookInfoDTO));
 
         return result;

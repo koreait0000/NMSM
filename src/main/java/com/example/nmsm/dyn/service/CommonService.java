@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CommonService {
@@ -39,6 +41,8 @@ public class CommonService {
         }
         return saveFile.getPath();
     }
+
+
 
 
 }
