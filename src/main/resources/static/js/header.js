@@ -45,4 +45,12 @@ signupBtn.addEventListener("click", (e) => {
 });
 // 모달 슬라이드
 
+// TODO : 로그인 했을 때 버튼 보이게
+// 마우스 클릭했을 때 sub-menu 나타나게하기
+$(document).ready(function() {
+  $('.menu').on('click', function() {
+    $('.lnb').slideToggle();
+  })
+})
+
 
