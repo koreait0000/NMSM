@@ -8,7 +8,7 @@
         select * from dog_info
     </select>
 
-    <select id="selectDogBreed" resultType="DogBreedEntity">
+    <select id="selectAllDogBreed" resultType="DogBreedEntity">
         select * from dog_breed
     </select>
 
@@ -16,6 +16,6 @@
         insert into dog_info
         (iuser, breed_pk, d_birth, d_nm, d_gender, d_weight, d_regNum, d_neuter)
         value
-        (#{iuser},#{breed_pk},#{d_birth},#{d_gender}, #{d_weight}, #{d_regNum}, #{d_neuter})
+        (#{iuser},#{breed_pk},#{d_birth},#{d_nm},#{d_gender}, #{d_weight}, #{d_regNum}, #{d_neuter})
     </insert>
 </mapper>
