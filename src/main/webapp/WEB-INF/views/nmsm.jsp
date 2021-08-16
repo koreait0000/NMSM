@@ -13,7 +13,6 @@
 
 
 <div class="wrap">
-  <img src="image/background-ocean.svg" class
   <div class="container title">
     <div class="row">
       <div class="col-md-4">
