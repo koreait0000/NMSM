@@ -1,4 +1,3 @@
-
 // 반려견 등록 누르면 form 태그양식 보이게
 $(document).ready(function() {
     $('.toggle-btn').on('click', function() {
@@ -10,5 +9,8 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('.dog-number-btn').on('click', function() {
         $('.dog-number-box').slideToggle();
+    })
+    $('.dog-number-not').on('click', function() {
+        $('.dog-number-box').slideUp();
     })
 })
