@@ -31,7 +31,9 @@
         LOG IN
         <div class="foot-print foot"></div>
       </li>
+    </ul>
       </sec:authorize>
+
       <sec:authorize access="isAuthenticated()">
 <%--            TODO : MJ : MyPage 버튼 수정해주세요
             경로 /my/mypet
@@ -51,10 +53,7 @@
           <a href="/my/myhotel"><li>호스트 호텔관리</li></a>
         </ul>
       </div>
-    </ul>
-
       </sec:authorize>
-    </ul>
   </nav>
   <div class="modal hidden">
     <!-- 모달창 백그라운드-->
