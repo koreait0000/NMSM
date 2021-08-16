@@ -414,7 +414,7 @@ body {
   width:1.2rem;
   height: 1.2rem;
   display: inline-block;
-  -webkit-mask: url(img/foorprint.svg) no-repeat 50% 50%;
+  -webkit-mask: url(/image/footprint.svg) no-repeat 50% 50%;
   -webkit-mask-size: cover;
   mask-size: cover;
 }
