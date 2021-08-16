@@ -56,7 +56,7 @@ public class MyController {
                               DogInfoEntity dogInfoEntity,
                               MultipartFile file,
                               @AuthenticationPrincipal PrincipalDetails principalDetails){
-
+//        System.out.println(dogInfoEntity);
         dogInfoService.registMyDog(dogInfoEntity,file,principalDetails);
         return "redirect:mypet";
     }

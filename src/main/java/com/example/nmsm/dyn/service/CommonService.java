@@ -3,6 +3,7 @@ package com.example.nmsm.dyn.service;
 
 import com.example.nmsm.dyn.dao.ServiceDAO;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,6 +39,8 @@ public class CommonService {
             multipartFile.transferTo(saveFile);
         } catch (IOException e) {
             System.out.printf("저장 실패 : "+baseDir+fileName);
+        } catch (NullPointerException e){
+            System.out.println("사진 넣어주세요!");
         }
         return saveFile.getPath();
     }
