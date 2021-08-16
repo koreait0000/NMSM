@@ -409,3 +409,46 @@ body {
 }
 
 /* modal animation */
+
+.foot-print {
+  width:1.2rem;
+  height: 1.2rem;
+  display: inline-block;
+  -webkit-mask: url(img/foorprint.svg) no-repeat 50% 50%;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+.foot { background-color: #fff; }
+
+a {
+  color: #fff;
+}
+
+.lnb {
+  background-color: #ff7606;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-family: 'BCcardL';
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 1rem;
+  overflow:auto;
+  margin: 1rem;
+  width: 10rem;
+  display: none;
+  position: absolute;
+  right: 7.3rem;
+  transform: translateX(50%);
+}
+
+.lnb ul li {
+  margin: 1rem 0rem;
+}
+.lnb ul li:hover {
+  color: #fff;
+}
+ol, ul {
+  padding-left: 0;
+}
