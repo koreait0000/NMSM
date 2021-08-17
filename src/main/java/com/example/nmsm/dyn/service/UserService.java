@@ -1,6 +1,7 @@
 package com.example.nmsm.dyn.service;
 
 import com.example.nmsm.dyn.dao.UserDAO;
+import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import com.example.nmsm.sta.model.LikeListEntity;
 import com.example.nmsm.sta.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,9 @@ public class UserService extends CommonService{
 
     public int insLike(LikeListEntity likeListEntity) {
         return userDAO.insLike(likeListEntity);
+    }
+
+    public String getUnmAuth(PrincipalDetails principalDetails){
+        return principalDetails.getUserEntity().getU_nm();
     }
 }

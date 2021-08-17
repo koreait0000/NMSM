@@ -25,7 +25,6 @@
       <li class="btn">CONTACT</li>
 
       <!-- Button trigger modal -->
-      <!-- TODO : 모달창 회원가입 로그인 정보 백엔드 넘기기 -->
       <sec:authorize access="isAnonymous()">
       <li class="btn" id="openBtn">
         LOG IN
@@ -35,9 +34,7 @@
       </sec:authorize>
 
       <sec:authorize access="isAuthenticated()">
-<%--            TODO : MJ : MyPage 버튼 수정해주세요
-            경로 /my/mypet
---%>
+
       <li class="menu btn" id="myBtn">
         <div class="foot-print foot"></div>
       </li>
@@ -48,9 +45,9 @@
           <a href="#"><li>프로필 수정</li></a>
           <a href="/my/myhotelbook"><li>예약관리</li></a>
           <a href="/my/mylike"><li>찜목록</li></a>
-
-          <!-- TODO : 호스트일때 나타나도록 -->
+        <sec:authorize access="hasRole('OWNER')">
           <a href="/my/myhotel"><li>호스트 호텔관리</li></a>
+        </sec:authorize>
         </ul>
       </div>
       </sec:authorize>

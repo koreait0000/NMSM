@@ -4,7 +4,7 @@ import com.example.nmsm.dyn.dao.HotelDAO;
 
 import com.example.nmsm.dyn.dao.UserDAO;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
-import com.example.nmsm.sta.model.BookInfoEntity;
+import com.example.nmsm.sta.model.*;
 import com.example.nmsm.sta.model.dto.BookInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelReviewDTO;
@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import com.example.nmsm.sta.model.BookInfoEntity;
-import com.example.nmsm.sta.model.HotelInfoEntity;
-import com.example.nmsm.sta.model.ServiceEntity;
 import com.example.nmsm.sta.model.dto.BookInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelInfoDTO;
 import com.example.nmsm.sta.model.dto.HotelReviewDTO;
@@ -32,35 +30,36 @@ public class HotelService extends CommonService{
 
     @Autowired
     private HotelDAO hotelDAO;
-
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private LocationService locationService;
 
 
     public List<HotelInfoDTO> getLikeHotel(PrincipalDetails principalDetails){
         List<HotelInfoDTO> list = hotelDAO.selectLikeHotelInfoByIuser(getIuser(principalDetails));
-        System.out.println("all: "+list.get(0).toString());
-        for(HotelServiceDTO a:list.get(0).getServiceList()){
-            System.out.println("service : "+a.getS_nm());
-        }
         return list;
     }
       
     public void registHotel(HotelInfoEntity hotelInfoEntity, PrincipalDetails principalDetails){
-        // TODO : 호텔이 있냐 없냐에 따라 insert or update
+        int ihotel = hotelDAO.selectHPkByIuser(getIuser(principalDetails));
         hotelInfoEntity.setIuser(getIuser(principalDetails));
-        hotelDAO.insertHotel(hotelInfoEntity);
-
+        System.out.println(ihotel);
+        if (ihotel == 0){
+            locationService.zipToLoc(hotelInfoEntity); // h_location 수정
+            hotelDAO.insertHotel(hotelInfoEntity);
+        }else {
+            hotelDAO.updateHotelInfo(hotelInfoEntity);
+        }
     }
     public HotelInfoDTO getMyHotel(PrincipalDetails principalDetails){
         return hotelDAO.selectMyHotelInfoByIuser(getIuser(principalDetails));
     }
 
     public List<HotelInfoDTO> selHotelList(BookInfoDTO bookInfoDTO) {
-        List<HotelInfoDTO> result = new ArrayList<>();
         int startIdx = (bookInfoDTO.getPage() - 1) * bookInfoDTO.getRecordCnt();
         bookInfoDTO.setStartIdx(startIdx);
-        result = hotelDAO.selHotelList(bookInfoDTO);
+        List<HotelInfoDTO> result = hotelDAO.selHotelList(bookInfoDTO);
         for (HotelInfoDTO hotelInfoDTO : result){
             System.out.println(hotelInfoDTO);
             System.out.println(hotelInfoDTO.getH_name());
@@ -130,6 +129,27 @@ public class HotelService extends CommonService{
             String fileName = iuser+"-"+(i+1)+".jpg";
             saveFile(baseDir,fileName,files[i]);
         }
+    }
+
+    public void registHotelService(PrincipalDetails principalDetails,
+                                   int[] iservice,
+                                   int[] s_price){
+        List<HotelServiceEntity> list = new ArrayList();
+        int ihotel = getIhotel(getIuser(principalDetails));
+        for(int i=0; i<iservice.length; i++){
+            HotelServiceEntity hotelServiceEntity = new HotelServiceEntity();
+            hotelServiceEntity.setIhotel(ihotel);
+            hotelServiceEntity.setIservice(iservice[i]);
+            hotelServiceEntity.setS_price(s_price[iservice[i]-1]);
+            System.out.println(hotelServiceEntity);
+            list.add(hotelServiceEntity);
+        }
+        hotelDAO.deleteService(ihotel);
+        hotelDAO.insertService(list);
+    }
+
+    public int getIhotel(int iuser){
+        return hotelDAO.selectHPkByIuser(iuser);
     }
 
 }

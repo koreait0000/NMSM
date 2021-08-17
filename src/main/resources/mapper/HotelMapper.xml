@@ -41,7 +41,7 @@
             LIMIT #{ startIdx }, #{ recordCnt }
         </if>
     </select>
-<!--    TODO : Mapper 작업 하기-->
+
     <select id="selHotelInfo" resultType="HotelInfoDTO">
         SELECT A.ihotel, A.h_name, A.h_capacity, A.h_location, A.h_address, A.h_price, A.mapX, A.mapY, A.h_preDetail,
                A.h_detail, A.h_tel, A.h_star, B.h_img
@@ -64,7 +64,13 @@
 
 
     <select id="selectMyHotelInfoByIuser" resultType="HotelInfoDTO">
+        select * from hotel_info
+        where iuser = #{iuser}
+    </select>
 
+    <select id="selectHPkByIuser" resultType="int">
+        select ihotel from hotel_info
+        where iuser = #{iuser}
     </select>
 
 
@@ -91,14 +97,52 @@
         (#{h_name},#{h_detail},#{h_address},#{h_location}, #{h_tel}, #{h_capacity})
     </insert>
 
+    <insert id="insertService">
+        insert into hotel_service
+        (s_price, ihotel, iservice)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.s_price}, #{item.ihotel}, #{item.iservice})
+        </foreach>
+    </insert>
+
     <update id="updHotelReview">
         UPDATE hotel_review
         SET review_star = #{review_star}, review_cnt = #{review_cnt}
         WHERE ireview = #{ireview}
     </update>
 
+    <update id="updHotelReviewImage">
+        UPDATE review_img
+        SET review_img = #{review_img}
+        WHERE ireview = #{ireview}
+    </update>
+
+    <update id="updateHotelInfo">
+        UPDATE hotel_info
+        set h_location = #{h_location},
+        h_name = #{h_name},
+        h_capacity = #{h_capacity},
+        h_address = #{h_address},
+        h_price = #{h_price},
+        h_preDetail = #{h_preDetail},
+        h_detail = #{h_detail},
+        h_tel = #{h_tel}
+        WHERE iuser = #{iuser}
+    </update>
+
     <delete id="delHotelReview">
         DELETE FROM hotel_review
+        WHERE ireview = #{ireview}
+    </delete>
+
+    <delete id="deleteService">
+        DELETE FROm hotel_service
+        WHERE ihotel = #{ihotel}
+    </delete>
+
+    <delete id="delHotelReviewImg">
+        DELETE FROM review_img
         WHERE ireview = #{ireview}
     </delete>
 
