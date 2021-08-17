@@ -86,8 +86,10 @@ i {
 .search-btn {
   border: none;
   border-radius: 100%;
-  background-color: #ff7606;
+  background-color: #ff7606 !important;
   padding: 1rem 1rem;
+  vertical-align: middle;
+  display: inline-block;
 }
 .search-btn:hover {
   background-color: #dd6604;
@@ -101,6 +103,7 @@ input {
   border-radius: 1rem;
   height: 3rem;
 }
+
 input[type="date-range"] {
   outline: none;
   border: none;
@@ -108,19 +111,21 @@ input[type="date-range"] {
   background: #f9edd7;
   border-radius: 1rem;
   height: 3rem;
+  width: 13rem;
 }
 input[type="text"] {
   outline: none;
   border: none;
   text-align: center;
   background: #f9edd7;
-  border-radius: 1rem;
+  border-radius: 1rem !important;
   height: 3rem;
+  width: 13rem;
 }
 
 select {
   height: 3rem;
-  background-color: #f9edd7;
+  background-color: #f9edd7 !important;
   border: none;
   border-radius: 1rem;
   width: 13rem;
@@ -129,7 +134,8 @@ select {
   justify-content: center;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: url("/image/down.svg") no-repeat 95% 50%;
+  background: url("/image/select.svg") no-repeat 90% 50%;
+  padding-left: 5rem;
 }
 
 select::-ms-expand {

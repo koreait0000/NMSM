@@ -31,7 +31,7 @@
 
 
   <section>
-    <div class="form-book container px-1 px-sm-5 mx-auto">
+    <div class="form-book container px-1 px-sm-2 mx-auto">
       <form autocomplete="off" action="/hotel/list" method="post">
         <div class="input-group flex-row d-flex justify-content-center">
           <div class="col input-daterange">
@@ -45,8 +45,8 @@
                       type="text"
                       id="start"
                       name="checkIN"
-                      class="form-control text-left mr-2"
-                      placeholder="From"/>
+                      class="form-control text-center"
+                      placeholder="FROM"/>
             </label>
 
 
@@ -62,8 +62,8 @@
                       type="text"
                       id="end"
                       name="checkOUT"
-                      class="form-control text-left ml-2"
-                      placeholder="To"/>
+                      class="form-control text-center"
+                      placeholder="TO"/>
             </label>
           </div>
           <div class="col">
@@ -85,7 +85,7 @@
             </label>
           </div>
           <div class="col">
-            <button class="search-btn"><i class="fas fa-search fa-1.2x"></i></button>
+            <button class="search-btn align-middle"><i class="fas fa-search fa-1.2x"></i></button>
           </div>
         </div>
       </form>
