@@ -28,9 +28,11 @@ public class HotelController {
 
 
     @PostMapping("/list")
-    public String selHotelList(Model model, BookInfoDTO bookInfoDTO,
-                               @AuthenticationPrincipal PrincipalDetails principalDetails) {
+    public String selHotelList(Model model, BookInfoDTO bookInfoDTO) {
         System.out.println(bookInfoDTO.getHLocation());
+        System.out.println(bookInfoDTO.getCheckIn());
+        System.out.println(bookInfoDTO.getCheckOut());
+        System.out.println(bookInfoDTO.getBookDogNum());
         model.addAttribute("list", hotelService.selHotelList(bookInfoDTO));
         model.addAttribute("maxPageVal", hotelService.selMaxPageVal(bookInfoDTO.getHLocation(), bookInfoDTO.getRecordCnt()));
         return "/hotel/list";
@@ -46,10 +48,16 @@ public class HotelController {
     }
 
     @GetMapping("/info")
-    public String selHotelInfo(Model model, BookInfoEntity bookInfoEntity){
+    public String selHotelInfo(Model model, BookInfoEntity bookInfoEntity,
+                               @AuthenticationPrincipal PrincipalDetails principalDetails){
         System.out.println("ihotel : " + bookInfoEntity.getIhotel());
         HotelInfoDTO data = hotelService.selHotelInfo(bookInfoEntity);
         model.addAttribute("data", data);
+        if(principalDetails != null){
+            model.addAttribute("loginUser", hotelService.getIuser(principalDetails));
+        } else {
+            model.addAttribute("loginUser", 0);
+        }
         return "/hotel/info";
     }
 
@@ -64,8 +72,8 @@ public class HotelController {
         result.put("list", hotelService.selHotelReview(bookInfoDTO));
         result.put("reviewNum", hotelService.selReviewNum(ihotel));
         result.put("maxPageVal", hotelService.selMaxPageVal(bookInfoDTO.getHLocation(), bookInfoDTO.getRecordCnt()));
-        result.put("chkHotelUse", hotelService.chkHotelUse(bookInfoDTO));
-
+        result.put("chkHotelUse", hotelService.chkHotelUse(bookInfoDTO, principalDetails));
+        System.out.println("chk" + hotelService.chkHotelUse(bookInfoDTO, principalDetails));
         return result;
     }
 

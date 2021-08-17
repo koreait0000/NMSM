@@ -23,7 +23,6 @@ public interface HotelDAO {
     int selectHPkByIuser(int iuser);
 
     int insHotelReview(HotelReviewDTO hotelReviewDTO);
-    int insHotelReviewImg(HotelReviewDTO hotelReviewDTO);
     int insAvgStar(int ihotel);
 
     int insertHotel(HotelInfoEntity hotelInfoEntity);

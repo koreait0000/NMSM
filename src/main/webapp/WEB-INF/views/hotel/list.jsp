@@ -18,14 +18,12 @@
                 <div class="card-header-text">
                   <h3 class="hotel-name">${item.h_name}</h3>
                   <!-- like -->
-                  <c:if test="${ not empty sessionScope.loginUser && item.isFav eq 1 }">
                     <i class="fas fa-kiss-wink-heart"></i>
-                  </c:if>
                   <!-- 별점 -->
                   <span class="hotel-rating">
-                                        <span style="width: ${item.h_star * 20}%;"></span>
-                                            ${item.h_star}
-                                    </span>
+                    <span style="width: ${item.h_star * 20}%;"></span>
+                      ${item.h_star}
+                  </span>
                 </div>
               </div>
               <!-- TODO : 호스트가 등록한 서비스 이미지 띄우기 (호텔정보) -->

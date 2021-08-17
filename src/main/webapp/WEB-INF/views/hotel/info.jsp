@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
   <script href="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	3230aea4ab512dde1e4de89760aa5719"></script>ㄴ
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	3230aea4ab512dde1e4de89760aa5719"></script>
 
 
 
@@ -10,7 +11,7 @@
   <section>
     <div class="container">
       <div class="hotel-detail">
-        <h1 class="hotel-name">${h_name}</h1>
+        <h1 class="hotel-name">${data.h_name}</h1>
         <div class="row">
           <div class="col-md-8">
             <div class="swiper-container mySwiper">
@@ -47,7 +48,7 @@
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
                       ${data.h_star}
-                    </span>
+              </span>
               <div class="hotel-location">
                 <i class="fas fa-map-marker-alt"></i>
                 <h4>${data.h_address}</h4>
@@ -100,28 +101,29 @@
           </div>
           <button onclick="calHotelPrice()">견적내기</button>
           <button type="submit">예약하기</button>
-          <hr />
           <h1 id="result"></h1>
-          <h1>총 합계 ₩280,889</h1>
         </div>
       </div>
 
       <div class="review-box">
-        <div class="p-2">
-          <div class="d-flex flex-row align-items-start">
-            <img
+        <c:if test="${chkHotelUse} > 0">
+          <div class="p-2">
+            <div class="d-flex flex-row align-items-start">
+              <img
                     src="/image/NM.png"
                     alt=""
                     width="60"
                     height="60"
                     style="border-radius: 50%"
-            />
-            <textarea
+              />
+              <textarea
                     class="form-control ml-1 shadow-none textarea"></textarea>
+            </div>
+            <div class="mt-2">
+              <button class="btn shadow-none" type="button" onclick="regReview(${iuser})">Post</button>
+            </div>
           </div>
-          <div class="mt-2">
-            <button class="btn shadow-none" type="button">Post</button>
-          </div>
+        </c:if>
           <h2>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -130,7 +132,10 @@
             <i class="fas fa-star"></i>
             ${data.h_star} (후기 ${result.reviewNum}개)
           </h2>
-          <div class="review">
+
+
+          <div class="reviewList" data-ihotel="${data.ihotel}" data-login-user-pk="${loginUser}"></div>
+
             <img
                     src="/image/NM.png"
                     alt=""
@@ -138,78 +143,7 @@
                     height="60"
                     style="border-radius: 50%"
             />
-            <!--호스트 프로필 사진 -->
-            <h4>host name1</h4>
-            <p>date 2021-07-12</p>
-            <p>
-              review contents : Lorem ipsum dolor, sit amet consectetur
-              adipisicing elit. Accusantium dolore optio impedit atque.
-              Eius eos voluptatibus soluta enim officiis corporis fuga.
-              Tenetur voluptates minima quidem a, et itaque accusamus est!
-            </p>
-          </div>
-          <div class="icon">
-            <div class="like">
-              <i class="fa fa-thumbs-o-up"></i>
-              <span>Like</span>
-            </div>
-            <div class="comment">
-              <i class="fa fa-commenting-o"></i>
-              <span>Comment</span>
-            </div>
-            <div class="share">
-              <i class="fa fa-share"></i>
-              <span>Share</span>
-            </div>
-          </div>
-          <br />
-          <hr />
-          <br />
-          <div class="review-profile">
-            <img
-                    src="/image/NM.png"
-                    alt=""
-                    width="60"
-                    height="60"
-                    style="border-radius: 50%"
-            />
-            <!--호스트 프로필 사진 -->
-            <h4>host name2</h4>
-            <p>date 2021-07-11</p>
-            <p>
-              review contents : Lorem ipsum dolor, sit amet consectetur
-              adipisicing elit. Accusantium dolore optio impedit atque.
-              Eius eos voluptatibus soluta enim officiis corporis fuga.
-              Tenetur voluptates minima quidem a, et itaque accusamus
-              est!
-            </p>
-          </div>
-          <div class="icon">
-            <div class="like">
-              <i class="fa fa-thumbs-o-up"></i>
-              <span>Like</span>
-            </div>
-            <div class="comment">
-              <i class="fa fa-commenting-o"></i>
-              <span>Comment</span>
-            </div>
-            <div class="share">
-              <i class="fa fa-share"></i>
-              <span>Share</span>
-            </div>
-          </div>
-          <br />
-          <hr />
-          <br />
-          <div class="review-profile">
-            <img
-                    src="/image/NM.png"
-                    alt=""
-                    width="60"
-                    height="60"
-                    style="border-radius: 50%"
-            />
-            <!--호스트 프로필 사진 -->
+
             <h4>host name3</h4>
             <p>date 2021-07-10</p>
             <p>
@@ -233,7 +167,6 @@
                 <span>Share</span>
               </div>
             </div>
-            <br>
           </div>
         </div>
       </div>
