@@ -20,16 +20,12 @@ public interface HotelDAO {
     HotelInfoDTO selectMyHotelInfoByIuser(int iuser);
 
     int insHotelReview(HotelReviewDTO hotelReviewDTO);
-    int insHotelReviewImg(HotelReviewDTO hotelReviewDTO);
     int insAvgStar(int ihotel);
-
     void insertHotel(HotelInfoEntity hotelInfoEntity);
 
     int updHotelReview(HotelReviewDTO hotelReviewDTO);
-    int updHotelReviewImg(HotelReviewDTO hotelReviewDTO);
 
     int delHotelReview(HotelReviewDTO hotelReviewDTO);
-    int delHotelReviewImg(HotelReviewDTO hotelReviewDTO);
 
     int selReviewNum(int ihotel);
     int selMaxPageVal(String hLocation, int recordCnt);

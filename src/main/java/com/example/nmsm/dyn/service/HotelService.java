@@ -81,16 +81,18 @@ public class HotelService extends CommonService{
     }
 
 
-    public int chkHotelUse(BookInfoEntity bookInfoEntity) {
-        return userDAO.chkHotelUse(bookInfoEntity);
+    public int chkHotelUse(BookInfoDTO bookInfoDTO, PrincipalDetails principalDetails) {
+        if(principalDetails == null){
+            return 0;
+        }
+        return userDAO.chkHotelUse(bookInfoDTO);
     }
 
     public int insHotelReview(HotelReviewDTO hotelReviewDTO) {
         int hr = hotelDAO.insHotelReview(hotelReviewDTO);
-        int hi = hotelDAO.insHotelReviewImg(hotelReviewDTO);
         int hs = hotelDAO.insAvgStar(hotelReviewDTO.getIhotel());
-        int result = hr + hi + hs;
-        return result; //result 값이 1보다 크면 insert 성공
+        int result = hr + hs;
+        return result; //result 값이 0보다 크면 insert 성공
 
     }
 
@@ -106,15 +108,10 @@ public class HotelService extends CommonService{
     }
 
     public int updHotelReview(HotelReviewDTO hotelReviewDTO) {
-        int img = hotelDAO.updHotelReviewImg(hotelReviewDTO);
-        int cnt = hotelDAO.updHotelReview(hotelReviewDTO);
-
-        return cnt;
+        return hotelDAO.updHotelReview(hotelReviewDTO);
     }
 
     public int delHotelReview(HotelReviewDTO hotelReviewDTO){
-        //TODO: 등록된 review에 사진이 있으면 사진 먼저 삭제
-        hotelDAO.delHotelReviewImg(hotelReviewDTO);
         return hotelDAO.delHotelReview(hotelReviewDTO);
     }
 
