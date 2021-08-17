@@ -93,6 +93,49 @@ i {
   background-color: #dd6604;
 }
 
+input {
+  outline: none;
+  border: none;
+  text-align: center;
+  background: #f9edd7;
+  border-radius: 1rem;
+  height: 3rem;
+}
+input[type="date-range"] {
+  outline: none;
+  border: none;
+  text-align: center;
+  background: #f9edd7;
+  border-radius: 1rem;
+  height: 3rem;
+}
+input[type="text"] {
+  outline: none;
+  border: none;
+  text-align: center;
+  background: #f9edd7;
+  border-radius: 1rem;
+  height: 3rem;
+}
+
+select {
+  height: 3rem;
+  background-color: #f9edd7;
+  border: none;
+  border-radius: 1rem;
+  width: 13rem;
+  text-align: center;
+  outline: none;
+  justify-content: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("/image/down.svg") no-repeat 95% 50%;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
 
 
 
