@@ -45,7 +45,7 @@ public class HotelService extends CommonService{
         int ihotel = hotelDAO.selectHPkByIuser(getIuser(principalDetails));
         hotelInfoEntity.setIuser(getIuser(principalDetails));
         System.out.println(ihotel);
-        if (ihotel != 0){
+        if (ihotel == 0){
             locationService.zipToLoc(hotelInfoEntity); // h_location 수정
             hotelDAO.insertHotel(hotelInfoEntity);
         }else {
