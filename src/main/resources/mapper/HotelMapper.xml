@@ -43,7 +43,7 @@
     </select>
 <!--    TODO : Mapper 작업 하기-->
     <select id="selHotelInfo" resultType="HotelInfoDTO">
-        SELECT A.h_name, A.h_capacity, A.h_location, A.h_address, A.h_price, A.mapX, A.mapY, A.h_preDetail,
+        SELECT A.ihotel, A.h_name, A.h_capacity, A.h_location, A.h_address, A.h_price, A.mapX, A.mapY, A.h_preDetail,
                A.h_detail, A.h_tel, A.h_star, B.h_img
         FROM hotel_info A
         LEFT JOIN hotel_img B
@@ -52,10 +52,13 @@
     </select>
 
     <select id="selHotelReview" resultType="HotelReviewDTO">
-        SELECT A.review_star, A.review_cnt, A.review_regdt, B.review_img
+        SELECT A.review_star, A.iuser, A.review_cnt, A.review_regdt, B.review_img,
+               C.u_nm
         FROM hotel_review A
         LEFT JOIN review_img B
         ON A.ireview = B.ireview
+        LEFT JOIN user C
+        ON A.iuser = C.iuser
     </select>
 
 
@@ -73,13 +76,6 @@
         ( review_star, review_cnt )
         VALUES
         ( #{review_star}, #{review_cnt} )
-    </insert>
-
-    <insert id="insHotelReviewImg">
-        INSERT INTO review_img
-        ( ireview, review_img )
-        VALUES
-        ( #{ireview}, #{h_r_img} )
     </insert>
 
     <update id="insAvgStar">
@@ -101,23 +97,10 @@
         WHERE ireview = #{ireview}
     </update>
 
-    <update id="updHotelReviewImage">
-        UPDATE review_img
-        SET review_img = #{review_img}
-        WHERE ireview = #{ireview}
-    </update>
-
     <delete id="delHotelReview">
         DELETE FROM hotel_review
         WHERE ireview = #{ireview}
     </delete>
-
-    <delete id="delHotelReviewImg">
-        DELETE FROM review_img
-        WHERE ireview = #{ireview}
-    </delete>
-
-
 
     <select id="selMaxPageVal" resultType="int">
         SELECT CEIL(COUNT(ihotel) / #{recordCnt})
