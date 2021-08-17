@@ -85,7 +85,7 @@
             </label>
           </div>
           <div class="col">
-            <button><i class="fas fa-search fa-1.2x"></i></button>
+            <button class="search-btn"><i class="fas fa-search fa-1.2x"></i></button>
           </div>
         </div>
       </form>
