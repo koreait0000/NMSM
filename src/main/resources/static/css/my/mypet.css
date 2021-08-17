@@ -56,7 +56,7 @@
 .foot-print {
     width:10rem;
     height: 10rem;
-    -webkit-mask: url(../img/foorprint.svg) no-repeat 50% 50%;
+    -webkit-mask: url(/image/footprint.svg) no-repeat 50% 50%;
     -webkit-mask-size: cover;
     mask-size: cover;
     background-color: #ff7606;

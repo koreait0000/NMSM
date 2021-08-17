@@ -4,22 +4,27 @@
 <div class="container">
     <section>
         <h1>나의 반려견</h1>
+
         <div class="mypet-box">
-            <%-- ${pets}를 이용해서 내 강아지 값 들고오기 --%>
-            <!-- TODO : 등록한 강아지 사진 / 이름 들고 오기 -->
-            <img src="/image/NM.png" alt="" width="200">
-            <h4>식빵이</h4>
+            <c:forEach items="${pets}" var="pet">
+            <div class="mypet">
+                <%-- TODO : 등록한 강아지 사진 바꾸기!--%>
+                <img src="/image/NM.png" alt="" width="200">
+                <h4>${pet.d_nm}</h4>
+            </div>
+            </c:forEach>
+            <div class="toggle-btn mypet">
+                <a>
+                    <img src="/image/footprint.svg" width="100">
+                    <h6>반려견 등록</h6>
+                </a>
+            </div>
         </div>
 
-        <div class="toggle-btn">
-            <a>
-                <img src="/image/foorprint.svg" width="100">
-                <h6>반려견 등록</h6>
-            </a>
-        </div>
+
 
         <div class="form-holder">
-            <form>
+            <form action="/my/mypet" method="post">
                 <ul>
                     <li>
                         <label>
@@ -27,7 +32,7 @@
                             <div>
                                 <label for="input-file">
                                     <!-- 사진 누르면 업로드 되도록 했음 -->
-                                    <div><img src="../img/NM.png" alt="" width="200"></div>
+                                    <div><img src="/image/NM.png" alt="" width="200"></div>
                                 </label>
                                 <input type="file" id="input-file"/>
                             </div>

@@ -3,9 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.nmsm.dyn.dao.UserDAO">
-    <select id="selectByUnm" resultType="UserEntity">
+    <select id="selectByUemail" resultType="UserEntity">
         select * from user
-        where u_nm = #{u_nm}
+        where u_email = #{u_email}
     </select>
 
     <select id="selectByEmail" resultType="UserEntity">

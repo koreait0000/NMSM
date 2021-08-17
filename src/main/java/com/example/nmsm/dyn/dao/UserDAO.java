@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserDAO {
 
-    UserEntity selectByUnm(String u_nm);
+    UserEntity selectByUemail(String u_email);
     UserEntity selectByEmail(String u_email);
     int insertUser(UserEntity userEntity);
     int insLike(LikeListEntity likeListEntity);
