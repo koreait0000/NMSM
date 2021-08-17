@@ -82,11 +82,12 @@
             <span>or</span>Log in
           </h2>
           <form id="loginForm" class="form-holder" method="post" action="/login">
-            <input type="email" class="input" placeholder="Email" />
+            <input type="email" class="input" placeholder="Email" name="u_email" />
             <input
               type="password"
               class="input"
               placeholder="Password"
+              name="u_pw"
             />
           </form>
           <button form="loginForm" class="submit-btn btn">Log in</button>
