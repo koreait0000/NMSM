@@ -95,7 +95,7 @@ i {
   background-color: #dd6604;
 }
 
-input {
+.form-input input {
   outline: none;
   border: none;
   text-align: center;
@@ -104,7 +104,7 @@ input {
   height: 3rem;
 }
 
-input[type="date-range"] {
+.form-input input[type="date-range"] {
   outline: none;
   border: none;
   text-align: center;
@@ -113,7 +113,7 @@ input[type="date-range"] {
   height: 3rem;
   width: 13rem;
 }
-input[type="text"] {
+.form-input input[type="text"] {
   outline: none;
   border: none;
   text-align: center;
@@ -123,7 +123,7 @@ input[type="text"] {
   width: 13rem;
 }
 
-select {
+.form-input select {
   height: 3rem;
   background-color: #f9edd7 !important;
   border: none;
@@ -138,7 +138,7 @@ select {
   padding-left: 5rem;
 }
 
-select::-ms-expand {
+.form-input select::-ms-expand {
   display: none;
 }
 

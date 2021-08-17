@@ -45,7 +45,7 @@
                       type="text"
                       id="start"
                       name="checkIN"
-                      class="form-control text-center"
+                      class="form-control text-center form-input"
                       placeholder="FROM"/>
             </label>
 
@@ -62,7 +62,7 @@
                       type="text"
                       id="end"
                       name="checkOUT"
-                      class="form-control text-center"
+                      class="form-control text-center form-input"
                       placeholder="TO"/>
             </label>
           </div>
@@ -70,7 +70,7 @@
             <label
             >위치
               <div>
-                <select name="hLocation">
+                <select name="hLocation" class="form-input">
                 <c:forEach var="loc" items="${locs}">
                   <option value="${loc.loc_code}">${loc.loc_name}</option>
                 </c:forEach>
@@ -81,7 +81,7 @@
           <div class="col">
             <label
             >반려견
-              <input type="number" placeholder="마리 수" name="bookDogNum" min="1" >
+              <input class="form-input" type="number" placeholder="마리 수" name="bookDogNum" min="1" >
             </label>
           </div>
           <div class="col">
