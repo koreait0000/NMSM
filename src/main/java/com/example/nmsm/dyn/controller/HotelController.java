@@ -38,6 +38,7 @@ public class HotelController {
         return "/hotel/list";
     }
 
+    @ResponseBody
     @PostMapping("/like")
     public Map<String, Integer> insLikeHotel(@RequestBody LikeListEntity likeListEntity,
                                              @AuthenticationPrincipal PrincipalDetails principalDetails){
@@ -46,7 +47,7 @@ public class HotelController {
         result.put("result", userService.insLikeHotel(likeListEntity));
         return result;
     }
-
+    @ResponseBody
     @DeleteMapping("/delLike")
     public Map<String, Integer> delLikeHotel(LikeListEntity likeListEntity,
                                              @AuthenticationPrincipal PrincipalDetails principalDetails) {
@@ -56,6 +57,7 @@ public class HotelController {
         return result;
     }
 
+    @ResponseBody
     @GetMapping("/like")
     public Map<String, Integer> selLike(LikeListEntity likeListEntity,
                                         @AuthenticationPrincipal PrincipalDetails principalDetails) {

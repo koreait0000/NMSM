@@ -53,12 +53,12 @@ function dateDiff(_date1, _date2) {
 
 ////////////////////////////////////////review/////////////////////////////////////////////
 
-var reviewListElem = document.querySelector('#reviewList');
-var reviewCntElem = document.querySelector('#reviewCnt');
+let reviewListElem = document.querySelector('#reviewList');
+let reviewCntElem = document.querySelector('#reviewCnt');
 
 function regReview() {
-  var reviewCnt = reviewCntElem.value;
-  var param = {
+  let reviewCnt = reviewCntElem.value;
+  let param = {
     ihotel: reviewListElem.dataset.ihotel,
     cnt: reviewCnt
   };
@@ -113,16 +113,20 @@ function delReview(ireview) {
 
 ///////////////////////////like///////////////////////
 //star 눌렀을 때 동작
-var likeIconElem = document.querySelector('#likeIcon');
-likeIconElem.addEventListener('click', function() {
-  if(likeIconElem.classList.contains('far')) {
-    insLikeAjax();
-  } else {
-    delLikeAjax();
-  }
-});
+let likeIconElem = document.querySelector('#likeIcon');
+if (likeIconElem !== null){
+  likeIconElem.addEventListener('click', function() {
+    if(likeIconElem.classList.contains('far')) {
+      insLikeAjax();
+    } else {
+      delLikeAjax();
+    }
+  });
+}
+
 
 function insLikeAjax() {
+  console.log(reviewListElem);
   const param = {
     ihotel : reviewListElem.dataset.ihotel
   };
@@ -164,18 +168,18 @@ function delLikeAjax() {
 }
 
 //like 여부 확인
-// function chkLikeAjax() {
-//   fetch('like?ihotel=' + reviewListElem.dataset.ihotel)
-//       .then(function(res) {
-//         return res.json();
-//       })
-//       .then(function (myJson) {
-//         toggleLike(myJson.result);
-//       })
-// }
+function chkLikeAjax() {
+  fetch('like?ihotel=' + reviewListElem.dataset.ihotel)
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function (myJson) {
+        toggleLike(myJson.result);
+      })
+}
 
 function toggleLike(toggle) {
-
+  console.log(likeIconElem);
         switch (toggle) {
           case 0:  // delete like
             likeIconElem.classList.remove('fas');
@@ -189,7 +193,7 @@ function toggleLike(toggle) {
 }
 
 calHotelPrice();
-
+chkLikeAjax();
 
 
 
