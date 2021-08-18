@@ -4,6 +4,8 @@
 <img src="/imsi/놀멍쉬멍_기획서2.jpg">
 <img src="/imsi/놀멍쉬멍_기획서3.jpg">
 <img src="/imsi/놀멍쉬멍_기획서4.jpg">
+<img src="/imsi/놀멍쉬멍_기획서5.jpg">
+
 
 ## flow chart
 <img src="/imsi/NMSM.png" height="600">
