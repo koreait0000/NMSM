@@ -39,9 +39,9 @@
     </delete>
 
     <select id="selLike" resultType="int">
-        SELECT *
+        SELECT count(*)
         FROM like_list
-        WHERE iuser = #{ iuser } AND #{ ihotel }
+        WHERE iuser = #{ iuser } AND ihotel = #{ ihotel }
     </select>
 
 </mapper>

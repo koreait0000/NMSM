@@ -113,10 +113,14 @@
               <div><input type="number" id="dogNum" placeholder="마리수"/></div>
             </label>
           </div>
+
           <button class="btn" onclick="calHotelPrice()">견적내기</button>
           <button class="btn" type="submit">예약하기</button>
           <h1 id="result"></h1>
+
           </form>
+          <button onclick="calHotelPrice()">견적내기</button>
+          <h1 id="result"></h1>
         </div>
       </div>
 
@@ -140,7 +144,7 @@
                     class="form-control ml-1 shadow-none textarea" id="reviewCnt" onsubmit="return false"></textarea>
             </div>
             <div class="mt-2">
-              <button class="btn shadow-none" type="button" onclick="regReview(${iuser})">Post</button>
+              <button class="btn shadow-none" type="button" onclick="regReview(${loginUser})">Post</button>
             </div>
           </div>
         </c:if>
@@ -154,7 +158,7 @@
           </h2>
 
 
-          <div class="reviewList" data-login-user-pk="${loginUser}" data-ihotel="${data.ihotel}">
+          <div id="reviewList" data-login-user-pk="${loginUser}" data-ihotel="${data.ihotel}">
             <c:forEach var="item" items="${list}">
               <img
                       src="/image/NM.png"
