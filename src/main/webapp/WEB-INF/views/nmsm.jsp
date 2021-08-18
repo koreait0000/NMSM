@@ -33,7 +33,7 @@
     <div class="form-book container px-1 px-sm-5 mx-auto">
       <form autocomplete="off" action="/hotel/list" method="get">
         <div class="input-group flex-row d-flex justify-content-center">
-          <div class="col input-daterange form-input">
+          <div class="col-3 input-daterange form-input">
             <label
                     class="ml-3 form-control-placeholder"
                     id="start-p"
@@ -50,7 +50,7 @@
 
 
           </div>
-          <div class="col input-daterange form-input">
+          <div class="col-3 input-daterange form-input">
             <label
                     class="ml-3 form-control-placeholder"
                     id="end-p"
@@ -65,7 +65,7 @@
                       placeholder="TO"/>
             </label>
           </div>
-          <div class="col">
+          <div class="col-3">
             <label
             >위치
               <div class="form-input">
@@ -77,13 +77,13 @@
               </div>
             </label>
           </div>
-          <div class="col form-input">
+          <div class="col-2 form-input">
             <label
             >반려견
               <input type="number" placeholder="마리 수" name="bookDogNum" min="1" >
             </label>
           </div>
-          <div class="col">
+          <div class="col-1">
             <button class="search-btn align-middle"><i class="fas fa-search fa-1.2x"></i></button>
           </div>
         </div>
