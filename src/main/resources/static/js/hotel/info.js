@@ -164,15 +164,15 @@ function delLikeAjax() {
 }
 
 //like 여부 확인
-function chkLikeAjax() {
-  fetch('like?ihotel=' + reviewListElem.dataset.ihotel)
-      .then(function(res) {
-        return res.json();
-      })
-      .then(function (myJson) {
-        toggleLike(myJson.result);
-      })
-}
+// function chkLikeAjax() {
+//   fetch('like?ihotel=' + reviewListElem.dataset.ihotel)
+//       .then(function(res) {
+//         return res.json();
+//       })
+//       .then(function (myJson) {
+//         toggleLike(myJson.result);
+//       })
+// }
 
 function toggleLike(toggle) {
 
@@ -189,7 +189,7 @@ function toggleLike(toggle) {
 }
 
 calHotelPrice();
-chkLikeAjax();
+
 
 
 

@@ -103,10 +103,10 @@
             <label>체크아웃<input type="date" id="checkOUT" /></label>
             <label>반려견<input type="number" id="dogNum" placeholder="마리수"/></label>
           </div>
-          <button onclick="calHotelPrice()">견적내기</button>
           <button type="submit">예약하기</button>
-          <h1 id="result"></h1>
           </form>
+          <button onclick="calHotelPrice()">견적내기</button>
+          <h1 id="result"></h1>
         </div>
       </div>
 
@@ -180,16 +180,4 @@
   </section>
 </div>
 
-<div class="modal hidden">
-  <!-- 모달창 백그라운드-->
-  <div class="modal-content" id="scale-up-center">
-    <!-- 회원가입 -->
-    <div class="signup">
-      <form id="regist" class="form-holder" method="post" action="/hotel/review">
-        <input name="reviewCnt" type="text" class="input" value="${item.cnt}" />
-      </form>
-      <button form="regist" class="submit-btn btn">수정</button>
-    </div>
-    <div class="modal-overlay"></div>
-  </div>
-</div>
+
