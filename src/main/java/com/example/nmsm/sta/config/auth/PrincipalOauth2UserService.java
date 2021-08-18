@@ -41,6 +41,9 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             case "naver":
                 oAuth2UserInfo = new NaverUserInfo((Map<String, Object>) oAuth2User.getAttributes().get("response"));
                 break;
+            case "kakao":
+                oAuth2UserInfo = new KakaoUserInfo(oAuth2User.getAttributes());
+                break;
             default:
                 System.out.println("지원하지 않는 로그인");
         }

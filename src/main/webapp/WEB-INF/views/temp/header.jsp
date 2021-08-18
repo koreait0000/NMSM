@@ -99,8 +99,9 @@
               <a href="/oauth2/authorization/google">
                 <img class="google" src="/image/google.png" alt="" />
               </a>
-<%--                  TODO : 카카오 설정 넣기--%>
-              <a><img class="kakao" src="/image/kakaotalk.png" alt="" /></a>
+              <a href="/oauth2/authorization/kakao">
+                <img class="kakao" src="/image/kakaotalk.png" alt="" />
+              </a>
             </div>
           </div>
         </div>
