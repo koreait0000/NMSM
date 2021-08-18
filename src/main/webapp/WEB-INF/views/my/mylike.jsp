@@ -10,14 +10,19 @@
     <div class="card-box">
       <ul>
         <c:forEach items="${list}" var="item">
-        <li class="card">
+        <li class="card" onclick="location.href='/hotel/info?ihotel=${item.ihotel}';">
           <img src="${itme.h_img}" class="card-image" alt="" />
           <div class="card-overlay">
             <div class="card-header">
               <svg class="card-arc" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" /></svg>
               <div class="card-header-text">
                 <h3 class="hotel-name">${item.h_name}</h3>
-                <span class="hotel-rating">&star;&star;&star;&star;&star; h_star</span>
+                <span class="hotel-rating">
+                <c:forEach begin="1" end="${item.h_star}">
+                  &star;
+                </c:forEach>
+                ${item.h_star}
+                </span>
               </div>
             </div>
             <img src="/image/parking.png" alt="" width="30">

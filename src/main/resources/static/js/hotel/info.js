@@ -56,6 +56,20 @@ function dateDiff(_date1, _date2) {
 let reviewListElem = document.querySelector('#reviewList');
 let reviewCntElem = document.querySelector('#reviewCnt');
 
+function selReview() {
+
+}
+
+function selReviewAjax(param) {
+  fetch('review?ihotel=' + reviewListElem.dataset.ihotel)
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function (myJson) {
+        console.log(myJson);
+      })
+}
+
 function regReview() {
   let reviewCnt = reviewCntElem.value;
   let param = {
