@@ -26,16 +26,22 @@
         (#{u_nm},#{u_email},#{u_pw},#{u_birth},#{u_tel},#{auth})
     </insert>
 
-    <insert id="insLike">
+    <insert id="insLikeHotel">
         INSERT INTO like_list
             ( iuser, ihotel )
         VALUES
             ( #{ iuser }, #{ ihotel })
     </insert>
 
-    <delete id="delLike">
+    <delete id="delLikeHotel">
         DELETE FROM like_list
         WHERE iuser = #{ iuser } AND #{ ihotel }
     </delete>
+
+    <select id="selLike" resultType="int">
+        SELECT *
+        FROM like_list
+        WHERE iuser = #{ iuser } AND #{ ihotel }
+    </select>
 
 </mapper>

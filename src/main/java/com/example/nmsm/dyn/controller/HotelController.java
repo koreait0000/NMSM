@@ -27,7 +27,7 @@ public class HotelController {
     private UserService userService;
 
 
-    @PostMapping("/list")
+    @GetMapping("/list")
     public String selHotelList(Model model, BookInfoDTO bookInfoDTO) {
         System.out.println(bookInfoDTO.getHLocation());
         System.out.println(bookInfoDTO.getCheckIn());
@@ -39,11 +39,29 @@ public class HotelController {
     }
 
     @PostMapping("/like")
-    public Map<String, Integer> insLikeHotel(@AuthenticationPrincipal PrincipalDetails principalDetails,
-                                             LikeListEntity likeListEntity){
-        Map<String, Integer> result = new HashMap();
+    public Map<String, Integer> insLikeHotel(@RequestBody LikeListEntity likeListEntity,
+                                             @AuthenticationPrincipal PrincipalDetails principalDetails){
         likeListEntity.setIuser(userService.getIuser(principalDetails));
-        result.put("result", userService.insLike(likeListEntity));
+        Map<String, Integer> result = new HashMap();
+        result.put("result", userService.insLikeHotel(likeListEntity));
+        return result;
+    }
+
+    @DeleteMapping("/delLike")
+    public Map<String, Integer> delLikeHotel(LikeListEntity likeListEntity,
+                                             @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        likeListEntity.setIuser(hotelService.getIuser(principalDetails));
+        Map<String, Integer> result = new HashMap();
+        result.put("result", userService.delLikeHotel(likeListEntity));
+        return result;
+    }
+
+    @GetMapping("/like")
+    public Map<String, Integer> selLike(LikeListEntity likeListEntity,
+                                        @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        likeListEntity.setIuser(hotelService.getIuser(principalDetails));
+        Map<String, Integer> result = new HashMap();
+        result.put("result", userService.selLike(likeListEntity));
         return result;
     }
 
@@ -52,17 +70,16 @@ public class HotelController {
                                @AuthenticationPrincipal PrincipalDetails principalDetails){
         System.out.println("ihotel : " + bookInfoEntity.getIhotel());
         HotelInfoDTO data = hotelService.selHotelInfo(bookInfoEntity);
+
         model.addAttribute("data", data);
-        if(principalDetails != null){
+        if(principalDetails != null) {
             model.addAttribute("loginUser", hotelService.getIuser(principalDetails));
-        } else {
-            model.addAttribute("loginUser", 0);
         }
         return "/hotel/info";
     }
 
     @ResponseBody
-    @GetMapping("/review")
+    @GetMapping("/review/{ihotel}")
     public Map<String, Object> selHotelReview(@RequestBody BookInfoDTO bookInfoDTO,
                                               @AuthenticationPrincipal PrincipalDetails principalDetails){
         int ihotel = bookInfoDTO.getIhotel();

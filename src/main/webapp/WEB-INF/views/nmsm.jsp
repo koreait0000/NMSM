@@ -31,8 +31,8 @@
 
 
   <section>
-    <div class="form-book container px-1 px-sm-2 mx-auto">
-      <form autocomplete="off" action="/hotel/list" method="post">
+    <div class="form-book container px-1 px-sm-5 mx-auto">
+      <form autocomplete="off" action="/hotel/list" method="get">
         <div class="input-group flex-row d-flex justify-content-center">
           <div class="col input-daterange">
             <label

@@ -11,7 +11,10 @@ public interface UserDAO {
 
     UserEntity selectByUemail(String u_email);
     UserEntity selectByEmail(String u_email);
+    int selLike(LikeListEntity likeListEntity);
     int insertUser(UserEntity userEntity);
-    int insLike(LikeListEntity likeListEntity);
+    int insLikeHotel(LikeListEntity likeListEntity);
     int chkHotelUse(BookInfoDTO bookInfoDTO);
+    int delLikeHotel(LikeListEntity likeListEntity);
+
 }

@@ -12,4 +12,5 @@ public class BookInfoDTO extends BookInfoEntity {
     private String hLocation;
     private int bookDogNum;
     private int perStar;
+    private int loginUser;
 }
