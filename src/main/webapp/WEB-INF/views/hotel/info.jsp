@@ -14,7 +14,6 @@
         <h1 class="hotel-name">${data.h_name}</h1>
         <div class="row">
           <div class="col-md-12">
-
             <div class="swiper-container mySwiper">
               <div class="swiper-wrapper">
                 <!--호텔 사진 반복문 돌리기-->
@@ -33,14 +32,22 @@
         </div>
       </div>
 
-      <div class="hotel-contents">
+      <div class="hotel-contents container">
         <div class="hotel-article">
-          <h1>${data.h_name}</h1>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h1>${data.h_name}</h1>
+              </div>
+              <div class="col">
+                <!-- 좋아요 버튼 -->
+                <sec:authorize access="isAuthenticated()">
+                <h1><i id="likeIcon" class="far fa-heart"></i></h1>
+                </sec:authorize>
+              </div>
+            </div>
+          </div>
 
-          <!-- 좋아요 버튼 -->
-          <sec:authorize access="isAuthenticated()">
-          <i id="likeIcon" class="far fa-heart"></i>
-          </sec:authorize>
           <div class="container">
             <div class="row">
               <div class="col">
@@ -74,7 +81,9 @@
           <h6>
             호텔 설명(간단한 한줄 설명) : ${data.h_preDetail}
           </h6>
+
           <hr />
+
           <div class="service-box">
             <div class="service">
               <img src="/image/parking.png" alt="" width="60" />
@@ -93,11 +102,13 @@
               <p>픽업 서비스</p>
             </div>
           </div>
+
           <h5>수용 가능한 반려견 ${data.h_capacity}마리</h5>
-            <p>
-              호텔 설명: ${data.h_detail}
-            </p>
-          </div>
+
+          <p>
+            호텔 설명: ${data.h_detail}
+          </p>
+        </div>
 
         <div class="booking-box">
           <form action="/hotel/book" method="get">
@@ -124,8 +135,8 @@
         </div>
       </div>
 
-      <div class="map-box">
-        <div id="map" ></div>
+      <div>
+        <div id="map" class="map"></div>
       </div>
 
 

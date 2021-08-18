@@ -45,6 +45,7 @@
 
 .service-box {
   display: flex;
+  margin: 1.5rem;
 }
 
 .service {
@@ -104,4 +105,9 @@ section {
 .icon {
   display: flex;
   margin-right: 1rem;
+}
+.map {
+  width: 68rem;
+  height: 20rem;
+  margin: 3rem 1rem;
 }
