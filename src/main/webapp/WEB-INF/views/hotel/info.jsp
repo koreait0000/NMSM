@@ -7,16 +7,14 @@
 
 
 
-<div class="wrap">
+<div class="container">
   <section>
     <div class="container">
       <div class="hotel-detail">
         <h1 class="hotel-name">${data.h_name}</h1>
-        <sec:authorize access="isAuthenticated()">
-          <i id="likeIcon" class="far fa-star"></i>
-        </sec:authorize>
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
+
             <div class="swiper-container mySwiper">
               <div class="swiper-wrapper">
                 <!--호텔 사진 반복문 돌리기-->
@@ -32,41 +30,47 @@
               <div class="swiper-pagination"></div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div id="map" style="width:500px;height:400px;"></div>
-          </div>
         </div>
       </div>
 
       <div class="hotel-contents">
         <div class="hotel-article">
           <h1>${data.h_name}</h1>
-          <div class="row">
-            <div class="col-10">
-              <!--호스트 프로필 -->
-              <span class="hotel-rating">
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      ${data.h_star}
-              </span>
-              <div class="hotel-location">
-                <i class="fas fa-map-marker-alt"></i>
-                <h4>${data.h_address}</h4>
+
+          <!-- 좋아요 버튼 -->
+          <sec:authorize access="isAuthenticated()">
+          <i id="likeIcon" class="far fa-heart"></i>
+          </sec:authorize>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <!--호스트 프로필 -->
+                <span class="hotel-rating">
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        ${data.h_star}
+                </span>
+                <div class="hotel-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <h4>${data.h_address}</h4>
+                </div>
+              </div>
+              <div class="col">
+                <img
+                        src="/image/NM.png"
+                        alt=""
+                        width="70"
+                        height="70"
+                        style="border-radius: 50%"
+                        class="align-middle"
+                />
               </div>
             </div>
-            <div class="col">
-              <img
-                      src="/image/NM.png"
-                      alt=""
-                      width="70"
-                      height="70"
-                      style="border-radius: 50%"
-              />
-            </div>
           </div>
+
           <h6>
             호텔 설명(간단한 한줄 설명) : ${data.h_preDetail}
           </h6>
@@ -90,25 +94,40 @@
             </div>
           </div>
           <h5>수용 가능한 반려견 ${data.h_capacity}마리</h5>
+            <p>
+              호텔 설명: ${data.h_detail}
+            </p>
+          </div>
 
-          <p>
-            호텔 설명: ${data.h_detail}
-          </p>
-        </div>
         <div class="booking-box">
           <form action="/hotel/book" method="get">
           <h1 id="h_price">₩${data.h_price}/박</h1>
           <div class="booking-option">
-            <label>체크인<input type="date" id="checkIN"/></label>
-            <label>체크아웃<input type="date" id="checkOUT" /></label>
-            <label>반려견<input type="number" id="dogNum" placeholder="마리수"/></label>
+            <label>체크인
+              <div><input type="date" id="checkIN"/></div>
+            </label>
+            <label>체크아웃
+              <div><input type="date" id="checkOUT" /></div>
+            </label>
+            <label>반려견
+              <div><input type="number" id="dogNum" placeholder="마리수"/></div>
+            </label>
           </div>
-          <button type="submit">예약하기</button>
+
+          <button class="btn" onclick="calHotelPrice()">견적내기</button>
+          <button class="btn" type="submit">예약하기</button>
+          <h1 id="result"></h1>
+
           </form>
           <button onclick="calHotelPrice()">견적내기</button>
           <h1 id="result"></h1>
         </div>
       </div>
+
+      <div class="map-box">
+        <div id="map" ></div>
+      </div>
+
 
       <div class="review-box">
         <c:if test="${chkHotelUse} > 0">
