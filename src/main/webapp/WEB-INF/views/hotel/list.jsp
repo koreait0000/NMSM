@@ -7,8 +7,7 @@
     <div class="container">
       <div class="row card-box">
         <c:forEach items="${list}" var="item">
-        <a href="/hotel/info?ihotel=${item.ihotel}">
-          <div class="col card">
+          <div class="col card" onclick="location.href='/hotel/info?ihotel=${item.ihotel}';">
             <!-- TODO : 호스트가 등록한 호텔 메인 이미지 -->
             <!-- TODO : 호스트가 등록한 호텔정보 띄우기, 반복문 -->
             <img src="/image/NM.png" class="card-image" alt="" />
@@ -23,8 +22,12 @@
                   </c:if>
                   <!-- 별점 -->
                   <span class="hotel-rating">
-                    <span style="width: ${item.h_star * 20}%;"></span>
-                      ${item.h_star}
+<%--                    <span style="width: ${item.h_star * 20}%;"></span>--%>
+<%--                      ${item.h_star}--%>
+                    <c:forEach begin="1" end="${item.h_star}">
+                      &star;
+                    </c:forEach>
+                    ${item.h_star}
                   </span>
                 </div>
               </div>
@@ -35,7 +38,6 @@
               <p class="hotel-description">${item.h_preDetail}</p>
             </div>
           </div>
-        </a>
         </c:forEach>
       </div>
     </div>

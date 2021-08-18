@@ -115,7 +115,7 @@
           <h1 id="h_price">₩${data.h_price}/박</h1>
           <div class="booking-option">
             <label>체크인
-              <div><input type="date" id="checkIN"/></div>
+              <div><input type="date" id="checkIN" /></div>
             </label>
             <label>체크아웃
               <div><input type="date" id="checkOUT" /></div>
@@ -124,13 +124,11 @@
               <div><input type="number" id="dogNum" placeholder="마리수"/></div>
             </label>
           </div>
-
-          <button class="btn" onclick="calHotelPrice()">견적내기</button>
-          <button class="btn" type="submit">예약하기</button>
-          <h1 id="result"></h1>
-
           </form>
-          <button onclick="calHotelPrice()">견적내기</button>
+            <span>
+              <button class="btn" type="submit">예약하기</button>
+              <button class="btn" onclick="calHotelPrice()">견적내기</button>
+          </span>
           <h1 id="result"></h1>
         </div>
       </div>
