@@ -28,13 +28,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
-//            .antMatchers("").permitAll() // 허용
-//            .antMatchers("").authenticated() // 인증 필요
-//            .antMatchers().access("hasRole('ROLE_ADMIN')")
+//            .antMatchers("/**").permitAll() // 허용
+            .antMatchers("/my/**").authenticated() // 인증 필요
+            .antMatchers("/my/myhotel").access("hasRole('ROLE_OWNER')")
             .anyRequest().permitAll()
             // 로그인 관련 부분
             .and()
             .formLogin()
+            .loginPage("/")
             .loginProcessingUrl("/login")
             .usernameParameter("u_email")
             .passwordParameter("u_pw")
@@ -45,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .logoutSuccessUrl("/")
             .and()
             .oauth2Login()
-            .loginPage("/login")
+            .loginPage("/")
             .successHandler(new LoginSuccessHandler())
             .userInfoEndpoint()
             .userService(principalOauth2UserService); // 로그인 후 처리

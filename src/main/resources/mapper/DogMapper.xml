@@ -6,6 +6,7 @@
 
     <select id="selectDogInfoByUpk" resultType="DogInfoEntity">
         select * from dog_info
+        where iuser = #{iuser}
     </select>
 
     <select id="selectAllDogBreed" resultType="DogBreedEntity">
