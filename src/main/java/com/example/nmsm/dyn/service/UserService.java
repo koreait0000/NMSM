@@ -23,7 +23,15 @@ public class UserService extends CommonService{
         return userDAO.insertUser(userEntity);
     }
 
-    public int insLike(LikeListEntity likeListEntity) {
-        return userDAO.insLike(likeListEntity);
+    public int insLikeHotel(LikeListEntity likeListEntity) {
+        return userDAO.insLikeHotel(likeListEntity);
+    }
+
+    public int delLikeHotel(LikeListEntity likeListEntity) {
+        return userDAO.delLikeHotel(likeListEntity);
+    }
+
+    public int selLike(LikeListEntity likeListEntity) {
+        return userDAO.selLike(likeListEntity);
     }
 }

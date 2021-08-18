@@ -18,7 +18,9 @@
                 <div class="card-header-text">
                   <h3 class="hotel-name">${item.h_name}</h3>
                   <!-- like -->
-                    <i class="fas fa-kiss-wink-heart"></i>
+                  <c:if test="${item.like eq 1}">
+                    <i class="far fa-star"></i>
+                  </c:if>
                   <!-- 별점 -->
                   <span class="hotel-rating">
                     <span style="width: ${item.h_star * 20}%;"></span>

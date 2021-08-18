@@ -12,6 +12,9 @@
     <div class="container">
       <div class="hotel-detail">
         <h1 class="hotel-name">${data.h_name}</h1>
+        <sec:authorize access="isAuthenticated()">
+          <i id="likeIcon" class="far fa-star"></i>
+        </sec:authorize>
         <div class="row">
           <div class="col-md-8">
             <div class="swiper-container mySwiper">
@@ -93,6 +96,7 @@
           </p>
         </div>
         <div class="booking-box">
+          <form action="/hotel/book" method="get">
           <h1 id="h_price">₩${data.h_price}/박</h1>
           <div class="booking-option">
             <label>체크인<input type="date" id="checkIN"/></label>
@@ -102,6 +106,7 @@
           <button onclick="calHotelPrice()">견적내기</button>
           <button type="submit">예약하기</button>
           <h1 id="result"></h1>
+          </form>
         </div>
       </div>
 
@@ -117,7 +122,7 @@
                     style="border-radius: 50%"
               />
               <textarea
-                    class="form-control ml-1 shadow-none textarea"></textarea>
+                    class="form-control ml-1 shadow-none textarea" id="reviewCnt" onsubmit="return false"></textarea>
             </div>
             <div class="mt-2">
               <button class="btn shadow-none" type="button" onclick="regReview(${iuser})">Post</button>
@@ -130,50 +135,61 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
-            ${data.h_star} (후기 ${result.reviewNum}개)
+            ${data.h_star} (후기 ${reviewNum}개)
           </h2>
 
 
-          <div class="reviewList" data-ihotel="${data.ihotel}" data-login-user-pk="${loginUser}"></div>
-
-            <img
-                    src="/image/NM.png"
-                    alt=""
-                    width="60"
-                    height="60"
-                    style="border-radius: 50%"
-            />
-
-            <h4>host name3</h4>
-            <p>date 2021-07-10</p>
-            <p>
-              review contents : Lorem ipsum dolor, sit amet consectetur
-              adipisicing elit. Accusantium dolore optio impedit atque.
-              Eius eos voluptatibus soluta enim officiis corporis fuga.
-              Tenetur voluptates minima quidem a, et itaque accusamus
-              est!
-            </p>
-            <div class="icon">
-              <div class="like">
-                <i class="fa fa-thumbs-o-up"></i>
-                <span>Like</span>
+          <div class="reviewList" data-login-user-pk="${loginUser}" data-ihotel="${data.ihotel}">
+            <c:forEach var="item" items="${list}">
+              <img
+                      src="/image/NM.png"
+                      alt=""
+                      width="60"
+                      height="60"
+                      style="border-radius: 50%"
+              />
+              <h4>${item.u_nm}</h4>
+              <p>${item.review_regdt}</p>
+              <p>
+                  ${item.review_cnt}
+              </p>
+              <div class="icon">
+                <div class="like">
+                  <i class="fa fa-thumbs-o-up"></i>
+                  <span>Like</span>
+                </div>
+                <div class="comment">
+                  <i class="fa fa-commenting-o"></i>
+                  <span>Comment</span>
+                </div>
+                <div class="share">
+                  <i class="fa fa-share"></i>
+                  <span>Share</span>
+                </div>
               </div>
-              <div class="comment">
-                <i class="fa fa-commenting-o"></i>
-                <span>Comment</span>
-              </div>
-              <div class="share">
-                <i class="fa fa-share"></i>
-                <span>Share</span>
-              </div>
-            </div>
+            </c:forEach>
+            <c:if test="${loginUser eq item.iuser}">
+              <ul>
+                <li class="btn" id="openBtn">수정</li>
+                <li class="btn" onclick="delReview(${item.ireview})">삭제</li>
+              </ul>
+            </c:if>
           </div>
-        </div>
       </div>
     </div>
-</div>
-</div>
-</div>
-</section>
+  </section>
 </div>
 
+<div class="modal hidden">
+  <!-- 모달창 백그라운드-->
+  <div class="modal-content" id="scale-up-center">
+    <!-- 회원가입 -->
+    <div class="signup">
+      <form id="regist" class="form-holder" method="post" action="/hotel/review">
+        <input name="reviewCnt" type="text" class="input" value="${item.cnt}" />
+      </form>
+      <button form="regist" class="submit-btn btn">수정</button>
+    </div>
+    <div class="modal-overlay"></div>
+  </div>
+</div>
