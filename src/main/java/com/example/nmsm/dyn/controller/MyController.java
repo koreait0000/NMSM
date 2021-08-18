@@ -1,13 +1,11 @@
 package com.example.nmsm.dyn.controller;
 
-import com.example.nmsm.dyn.service.HotelService;
+import com.example.nmsm.dyn.service.*;
 import com.example.nmsm.sta.config.auth.PrincipalDetails;
 import com.example.nmsm.sta.model.DogInfoEntity;
 import com.example.nmsm.sta.model.HotelInfoEntity;
+import com.example.nmsm.sta.model.HotelServiceEntity;
 import com.example.nmsm.sta.model.UserEntity;
-import com.example.nmsm.dyn.service.BookInfoService;
-import com.example.nmsm.dyn.service.DogInfoService;
-import com.example.nmsm.dyn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/my")
@@ -32,8 +32,9 @@ public class MyController {
     @Autowired
     private BookInfoService bookInfoService;
     @Autowired
-
     private HotelService hotelService;
+    @Autowired
+    private LocationService locationService;
 
     @PostMapping("/regist")// check
     public String doRegist(UserEntity userEntity){
@@ -81,30 +82,30 @@ public class MyController {
     public String goMyHotel(Model model,
                            @AuthenticationPrincipal PrincipalDetails principalDetails){
 
-        System.out.println("myhotel");
         model.addAttribute("services", hotelService.getAllService());
-//        hotelInfoService.getMyHotel(principalDetails);
+        model.addAttribute("hotel", hotelService.getMyHotel(principalDetails));
         return "/my/myhotel";
     }
     @PostMapping("/myhotel")
     public String registHotel(HotelInfoEntity hotelInfoEntity,
                               String h_address_1,
                               String h_address_2,
+                              int[] iservice,
+                              int[] s_price,
                               @RequestParam MultipartFile[] files,
                               @AuthenticationPrincipal PrincipalDetails principalDetails){
-        // TODO : myhotel.jsp 에서 service 받아오기. checkbox 필요
-        hotelInfoEntity.setH_address(h_address_1+h_address_2);
-        System.out.println(hotelInfoEntity);
-        System.out.println("registHotel");
-        hotelService.regisHotelImg(principalDetails,files);
-        hotelService.registHotel(hotelInfoEntity,principalDetails);
-
-        return "/my/myhotel";
+        hotelInfoEntity.setH_address(h_address_1+h_address_2); // h_address 수정
+        hotelService.registHotel(hotelInfoEntity,principalDetails); // hotel 등록
+        hotelService.regisHotelImg(principalDetails,files); // hotel image 등록
+        hotelService.registHotelService(principalDetails,iservice,s_price);
+        return "redirect:/my/myhotel";
     }
 
     @GetMapping("/myhotelbook")
-    public String goMyHotelBook(){
+    public String goMyHotelBook(Model model,
+                                @AuthenticationPrincipal PrincipalDetails principalDetails){
 
+        model.addAttribute("u_nm",userService.getUnmAuth(principalDetails));
         return "/my/myhotelbook";
     }
 

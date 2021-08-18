@@ -15,7 +15,7 @@
             </c:forEach>
             <div class="toggle-btn mypet">
                 <a>
-                    <img src="/image/footprint.svg" width="100">
+                    <img src="/image/footprint.svg" class="foot-print foot-toggle">
                     <h6>반려견 등록</h6>
                 </a>
             </div>
@@ -28,7 +28,7 @@
                 <ul>
                     <li>
                         <label>
-                            <div class="form-label"><div class="foot-print foot"></div><h4>반려견 사진등록</h4></div>
+                            <div class="form-label"><div class="foot-print foot-title"></div><h4>반려견 사진등록</h4></div>
                             <div>
                                 <label for="input-file">
                                     <!-- 사진 누르면 업로드 되도록 했음 -->
@@ -41,21 +41,21 @@
 
                     <li>
                         <label>
-                            <div class="form-label"><div class="foot-print foot"></div><h4>반려견 이름</h4></div>
+                            <div class="form-label"><div class="foot-print foot-title"></div><h4>반려견 이름</h4></div>
                             <div><input type="text" placeholder="이름 입력" name="d_nm"></div>
                         </label>
                     </li>
 
                     <li>
                         <label>
-                            <div class="form-label"><div class="foot-print foot"></div><h4>반려견 생년월일</h4></div>
+                            <div class="form-label"><div class="foot-print foot-title"></div><h4>반려견 생년월일</h4></div>
                             <div><input type="date" name="d_birth"></div>
                         </label>
                     </li>
 
                     <li>
                         <label>
-                            <div class="form-label"><div class="foot-print foot"></div><h4>반려견 성별</h4></div>
+                            <div class="form-label"><div class="foot-print foot-title"></div><h4>반려견 성별</h4></div>
                             <div class="toggle">
                   <span class="gender check">
                     <input type="radio" name="d_gender" id="dog-gender-m" value="true" checked>
@@ -72,7 +72,7 @@
 
                     <li>
                         <label>
-                            <div class="form-label"><div class="foot-print foot"></div><h4>중성화</h4></div>
+                            <div class="form-label"><div class="foot-print foot-title"></div><h4>중성화</h4></div>
                             <div class="toggle">
                   <span class="dog-net check">
                     <input type="radio" name="d_neuter" value="false" id="dog-net" checked>
@@ -89,7 +89,7 @@
 
                     <li>
                         <label>
-                            <div class="form-label"><div class="foot-print foot"></div><h4>반려견 견종</h4></div>
+                            <div class="form-label"><div class="foot-print foot-title"></div><h4>반려견 견종</h4></div>
                             <div class="select">
                                 <select name="breed_pk">
                                     <c:forEach items="${breeds}" var="breed">
@@ -102,7 +102,7 @@
 
                     <li>
                         <label>
-                            <div class="form-label"><div class="foot-print foot"></div><h4>유형</h4></div>
+                            <div class="form-label"><div class="foot-print foot-title"></div><h4>유형</h4></div>
 
                             <div class="toggle">
                   <span class="dog-size check">
@@ -123,7 +123,7 @@
 
                     <li>
                         <label>
-                            <div class="form-label"><div class="foot-print foot"></div><h4>반려견 등록번호</h4></div>
+                            <div class="form-label"><div class="foot-print foot-title"></div><h4>반려견 등록번호</h4></div>
 
                             <div class="toggle">
                   <span class="dog-number check">

@@ -16,7 +16,6 @@ public class HotelInfoEntity {
     private String h_preDetail;
     private String h_detail;
     private String h_tel;
-    private int h_service; //
     private int h_star;
 
 }

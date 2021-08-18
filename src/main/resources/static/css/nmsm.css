@@ -7,7 +7,7 @@ body {
 
 .title {
   font-family: "Noto Sans KR", sans-serif;
-  margin: 30px 0px;
+  margin: 5rem 20rem;
   z-index: 1;
 }
 
@@ -76,18 +76,73 @@ body {
   justify-content: space-around;
   vertical-align: middle;
   z-index: 10000;
-  margin-top: 18rem;
+  margin-top: 8rem;
 }
 
 i {
-  border: none;
-  border-radius: 100%;
-  background-color: #ff7606;
-  padding: 1rem 1rem;
   color: white;
   font-size: 2rem;
-  margin-left: 3rem;
 }
+.search-btn {
+  border: none;
+  border-radius: 100%;
+  background-color: #ff7606 !important;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+  display: inline-block;
+}
+.search-btn:hover {
+  background-color: #dd6604;
+}
+
+.form-input input {
+  outline: none;
+  border: none;
+  text-align: center;
+  background: #f9edd7;
+  border-radius: 1rem;
+  height: 3rem;
+}
+
+.form-input input[type="date-range"] {
+  outline: none;
+  border: none;
+  text-align: center;
+  background: #f9edd7;
+  border-radius: 1rem;
+  height: 3rem;
+  width: 13rem;
+}
+.form-input input[type="text"] {
+  outline: none;
+  border: none;
+  text-align: center;
+  background: #f9edd7;
+  border-radius: 1rem !important;
+  height: 3rem;
+  width: 13rem;
+}
+
+.form-input select {
+  height: 3rem;
+  background-color: #f9edd7 !important;
+  border: none;
+  border-radius: 1rem;
+  width: 13rem;
+  text-align: center;
+  outline: none;
+  justify-content: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("/image/select.svg") no-repeat 90% 50%;
+  padding-left: 5rem;
+}
+
+.form-input select::-ms-expand {
+  display: none;
+}
+
+
 
 
 
