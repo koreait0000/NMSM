@@ -29,12 +29,11 @@
     </div>
   </div>
 
-
   <section>
     <div class="form-book container px-1 px-sm-5 mx-auto">
       <form autocomplete="off" action="/hotel/list" method="get">
         <div class="input-group flex-row d-flex justify-content-center">
-          <div class="col input-daterange">
+          <div class="col input-daterange form-input">
             <label
                     class="ml-3 form-control-placeholder"
                     id="start-p"
@@ -45,13 +44,13 @@
                       type="text"
                       id="start"
                       name="checkIN"
-                      class="form-control text-center form-input"
+                      class="form-control text-center"
                       placeholder="FROM"/>
             </label>
 
 
           </div>
-          <div class="col input-daterange">
+          <div class="col input-daterange form-input">
             <label
                     class="ml-3 form-control-placeholder"
                     id="end-p"
@@ -62,15 +61,15 @@
                       type="text"
                       id="end"
                       name="checkOUT"
-                      class="form-control text-center form-input"
+                      class="form-control text-center"
                       placeholder="TO"/>
             </label>
           </div>
           <div class="col">
             <label
             >위치
-              <div>
-                <select name="hLocation" class="form-input">
+              <div class="form-input">
+                <select name="hLocation">
                 <c:forEach var="loc" items="${locs}">
                   <option value="${loc.loc_code}">${loc.loc_name}</option>
                 </c:forEach>
@@ -78,10 +77,10 @@
               </div>
             </label>
           </div>
-          <div class="col">
+          <div class="col form-input">
             <label
             >반려견
-              <input class="form-input" type="number" placeholder="마리 수" name="bookDogNum" min="1" >
+              <input type="number" placeholder="마리 수" name="bookDogNum" min="1" >
             </label>
           </div>
           <div class="col">

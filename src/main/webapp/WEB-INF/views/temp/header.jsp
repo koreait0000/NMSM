@@ -48,6 +48,7 @@
         <sec:authorize access="hasRole('OWNER')">
           <a href="/my/myhotel"><li>호스트 호텔관리</li></a>
         </sec:authorize>
+          <a href="/logout"><li>로그아웃</li></a>
         </ul>
       </div>
       </sec:authorize>

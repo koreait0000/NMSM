@@ -83,6 +83,7 @@ i {
   color: white;
   font-size: 2rem;
 }
+
 .search-btn {
   border: none;
   border-radius: 100%;
@@ -104,7 +105,7 @@ i {
   height: 3rem;
 }
 
-.form-input input[type="date-range"] {
+.form-input input[type="daterange"] {
   outline: none;
   border: none;
   text-align: center;
